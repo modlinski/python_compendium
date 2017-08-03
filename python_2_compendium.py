@@ -19,8 +19,8 @@
 # Types are categories for things within Python with which Python will work. Types are:
 #
 #     - integer - whole number from negative infinity to infinity: -1, 0, 1,
-#     - float - short for "floating point number" any rational number, usually used with decimals: -1.5, 0.0, 1.5,
-#     - string - set of letters, numbers, or other characters: "word", "123",
+#     - float - short for 'floating point number' any rational number, usually used with decimals: -1.5, 0.0, 1.5,
+#     - string - set of letters, numbers, or other characters: 'word', '123',
 #     - tuple - list with a fixed number of elements: (1, 2, 3,),
 #     - list - list without a fixed number of elements: [1, 2, 3],
 #     - dictionary - type with multiple elements, in which values are addressed by keys: {1: 'a','b': 2,3: 3}.
@@ -53,142 +53,107 @@
 # print 5.0 ** 2
 #
 #
-STRINGS
+# STRINGS
+#
+# print 'quintessential'[0]  # first character
+# print 'quintessential'[2:5]  # characters from 3rd to 5th
+# print 'quintessential'[2:]  # characters from 3rd
+# print 'hello' + ' world'  # concatenated string
+# print 'hello ' * 2
+#
+# print 'surreptitious'.upper()  # converts lowercase characters to uppercase
+# print 'surreptitious'.lower()  # converts uppercase characters to lowercase
+# print 'surreptitious'.capitalize()  # capitalizes first letter
+# print 'Surreptitious'.swapcase()  # inverts case for all letters
+# print 'hello world'.title()  # returns 'titlecased' version of string
+# print 'luminescence'.isalpha()  # returns true if string contains at least 1 character and all characters are letters
+# print '-'.join(['a', 'b', 'c'])  # merges the strings, with defined string separator
+# print 'a-b-c'.split('-')  # splits strings according to delimiter string
+#
+#
+# LISTS
+#
+# print [0, 1, 2, 3][0]  # first element
+# print [0, 1, 2, 3][1:3]  # elements from 2nd to 3rd
+# print [0, 1, 2, 3][2:]  # elements from 3rd element
+# print [0, 1, 2, 3] + [4, 5, 6, 7]  # concatenated lists
+# print [0, 1, 2, 3] * 2
+#
+# example_list = ['a', 'b', 'c', 0, 1, 2]
+#
+# example_list.append('aurora')  # appends object to the list - returns None
+# example_list.extend('aurora')  # appends the contents of sequence to the list - returns None
+# example_list.insert(3, 'new')  # inserts object to the list at defined index - returns None
+# example_list.remove('c')  # removes object from list - returns None
+# example_list.reverse()  # reverses objects of list - returns None
+# example_list.sort()  # sorts objects of list - returns None
+#
+# print example_list
+#
+# print example_list.count(1)  # number of occurrence of object
+# print example_list.index('a')  # index of occurrence of object, the lowest
+# print example_list.pop()  # removes and returns the last object from the list
+#
+#
+# TUPLES
+#
+# example_tuple = 'a', 'b', 'c', 0, 1, 2  # brackets are not to required for tuples
+# single_tuple = (1, )  # one element tuple requires comma at the end
+#
+# print (0, 1, 2, 3)[0]  # first element
+# print (0, 1, 2, 3)[1:3]  # elements from 2nd to 3rd
+# print (0, 1, 2, 3)[2:]  # elements from 3rd element
+# print (0, 1, 2, 3) + (4, 5, 6, 7)  # concatenated lists
+# print (0, 1, 2, 3) * 2
+#
+#
+# DICTS
+#
+# Dictionaries values - no restrictions.
+# Dictionaries keys - must be unique; must be immutable (e.q. list are not allowed)
+#
+# example_dict = {1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five'}
+# dict_to_append = {6: 'six', 7: 'seven'}
+#
+# example_dict.clear()  # remove all entries in dict - returns None
+# example_dict.update(dict_to_append)  # appends the contents of given dict to the original dict - returns None
+#
+# print example_dict
+#
+# print example_dict[1]  # value for key: 1, if key is not available returns Exception
+# print example_dict.keys()  # all keys
+# print example_dict.values()  # all values
+# print example_dict.items()  # list of dict's (key, value) tuple pairs
+# print example_dict.copy()  # shallow copy of a dict
+# print example_dict.get(1)  # returns a value for the given key, if key is not available returns None
+# print example_dict.has_key(1)  # true if key in dict
+#
+# keys_tuple = ('key_1', 'key_2', 'key_3')
+#
+# print dict.fromkeys(keys_tuple)
+# print dict.fromkeys(keys_tuple, 'value_for_all')
 
 
 
 
-
-
-# strng = 'Hello world!'
-#
-# print strng              # Prints complete string
-# print strng[0]           # Prints first character of the string
-# print strng[2:5]         # Prints characters starting from 3rd to 5th
-# print strng[2:]          # Prints string starting from 3rd character
-# print strng * 2          # Prints string two times
-# print strng + "TEST"     # Prints concatenated string
-#
-# print strng.capitalize()           # Capitalizes first letter of string
-# print strng.swapcase()             # Inverts case for all letters in string
-# print strng.title()                # Returns "titlecased" version of string
-# print strng.upper()                # Converts lowercase letters in string to uppercase.
-# print strng.lower()                # Converts all uppercase letters in string to lowercase.
-# print "this".isalpha()             # Returns true if string has at least 1 character and all characters are alphabetic and false otherwise.
-# print "-".join(("a", "b", "c"))    # Merges (concatenates) the string representations of elements in sequence seq into a string, with separator string.
-# print strng.split()                # Splits string according to delimiter str (space if not provided) and returns list of substrings; split into at most num substrings if given.
-# print len(strng)
-#
-# """3. Lists"""
-
-#
-# lst = ['abcd', 786 , 2.23, 'john', 70.2]
-# tinylist = [123, 'john']
-#
-# print lst                # Prints complete list
-# print lst[0]             # Prints first element of the list
-# print lst[1:3]           # Prints elements starting from 2nd till 3rd
-# print lst[2:]            # Prints elements starting from 3rd element
-# print tinylist * 2       # Prints list two times
-# print lst + tinylist     # Prints concatenated lists
-# del lst[0]
-# print 70.2 in lst
-# print len(lst)                     # Gives the total length of the list
-# print cmp([1 , 1 , 1], [2, 2, 2])  # Compares elements of both lists
-# print max([3,3,3,90])              # Returns item from the list with max value
-# print min([-5,2,3,4])              # Returns item from the list with min value
-# print list((1,2,3,'xyx'))          # Converts a tuple into list
-#
-# lst.append('stringi')   # Appends object obj to list
-# lst.extend('stringi')   # Appends the contents of seq to list
-# lst.count('i')          # Returns count of how many times obj occurs in list
-# lst.index('i')          # Returns the lowest index in list that obj appears
-# lst.insert(0, [2,3])    # Inserts object obj into list at offset index
-# lst.pop()               # Removes and returns last object or obj from list
-# lst.remove('stringi')   # Removes object obj from list
-# lst.reverse()           # Reverses objects of list in place
-# lst.sort()              # Sorts objects of list, use compare func if given
-#
-# """4. Tuples - are similar to the list. The main differences between lists and
-# tuples are: Lists are enclosed in brackets [] and their elements and size can
-# be changed, while tuples are enclosed in parentheses () and cannot be updated.
-# Tuples can be thought of as read-only lists."""
-
-#
-# tpl = ( 'abcd', 786 , 2.23, 'john', 70.2  )
-# tinytuple = (123, 'john')
-#
-# tpl_2 = "P", "W", "R", "rzygi"   # Any set of multiple objects, comma-separated, written without identifying symbols, i.e., brackets for lists, default to tuples
-# singel_tuple = (1, )             # To write a tuple containing a single value you have to include a comma, even though there is only one value
-#
-# print tpl                        # Prints complete list
-# print tpl[0]                     # Prints first element of the list
-# print tpl[1:3]                   # Prints elements starting from 2nd till 3rd
-# print tpl[2:]                    # Prints elements starting from 3rd element
-# print tinytuple * 2              # Prints list two times
-# print tpl + tinytuple            # Prints concatenated lists
-# print len((1, 2, 3))
-# print 3 in (1, 2, 3)
-# print min((2, 4, 6, 8, 10))
-# print max((2, 4, 6, 8, 10))
-#
-# """5. Dictionaries. Dictionary values have no restrictions. However, same is not
-# true for the keys. More than one entry per key not allowed (which means no
-# duplicate key is allowed) and keys must be immutable (which means you can use strings,
-# numbers or tuples as dictionary keys but something like ['key'] is not allowed)."""
-
-# dct = {}
-# dct['one'] = "This is one"
-# dct[2]     = "This is two"
-# dct[2]     = "This is new two"
-#
-# tinydict = {'name': 'john','code':6734, 'dept': 'sales'}
-# slownik = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
-#
-# print dct['one']          # Prints value for 'one' key
-# print dct[2]              # Prints value for 2 key
-# print tinydict            # Prints complete dictionary
-# print tinydict.keys()     # Prints all the keys
-# print tinydict.values()   # Prints all the values
-# dct.copy()                # Returns a shallow copy of dictionary dict
-# dct.clear()               # remove all entries in dict
-# del slownik['Name']       # remove entry with key 'Name'
-# slownik['Age'] = 8        # update existing entry
-# slownik['High'] = '1.8'   # Add new entry
-# print dct
-# print len(slownik)        # Gives the total length of the dictionary
-# print str(slownik)        # Produces a printable string representation of a dict
-# print type(slownik)       # Returns the type of the passed variable
-#
-# seq = ('name', 'age', 'sex')
-# dct_2 = dict.fromkeys(seq)
-# dct_2 = dict.fromkeys(seq, 10)    #  Create a new dictionary with keys from seq and values set to value.
-# print slownik.get('Age')          # The method get() returns a value for the given key. If key is not available then returns default value None.
-# print slownik.has_key('Class')    # Returns true if key in dictionary dict, false otherwise
-# print slownik.items()             # Returns a list of dict's (key, value) tuple pairs
-# print slownik.keys()              # Returns list of dictionary dict's keys
-# print slownik.values()            # Returns list of dictionary dict's values
-# slownik.update(tinydict)
-# print slownik
-#
-# """Sets. A set contains an unordered collection of unique and immutable objects.
+'''Sets. A set contains an unordered collection of unique and immutable objects.
 # The set data type is, as the name implies, a Python implementation of the sets
 # as they are known from mathematics. This explains, why sets unlike lists or tuples
 # can't have multiple occurrences of the same element. Though sets can't contain
 # mutable objects, sets are mutable. Frozensets are like sets except that they
-# cannot be changed."""
+# cannot be changed.'''
 
 #
-# print set("It's new for me")           # Converts something to a set.
+# print set('It's new for me')           # Converts something to a set.
 #
-# cities = set(["Frankfurt", "Basel","Freiburg"])
-# cities.add("Strasbourg")
+# cities = set(['Frankfurt', 'Basel','Freiburg'])
+# cities.add('Strasbourg')
 # print cities
 #
-# print frozenset("It's new for me")     # Converts something to a frozen set.
-# cities = frozenset(["Frankfurt", "Basel","Freiburg"])
+# print frozenset('It's new for me')     # Converts something to a frozen set.
+# cities = frozenset(['Frankfurt', 'Basel','Freiburg'])
 #
-# """Data Type Conversion"""
+# '''Data Type Conversion'''
 
 #
 # print int('6')                         # Converts x to an integer. base specifies the base if x is a string.
@@ -203,7 +168,7 @@ STRINGS
 # print dict([(2, 4),(3, 9),(4, 16)])    # Creates a dictionary. d must be a sequence of (key,value) tuples.
 # print divmod(17, 5)                    # the pair (x // y, x % y)
 #
-# """Python language supports the following types of operators.
+# '''Python language supports the following types of operators.
 #
 # - Arithmetic Operators (+, -, /, //, **)
 # - Comparison (Relational) Operators (==, !=, <, >, <=, >=)
@@ -213,9 +178,9 @@ STRINGS
 # - Membership Operators (not in, in)
 # - Identity Operators (is, is not)
 #
-# Let us have a look on all operators one by one."""
+# Let us have a look on all operators one by one.'''
 #
-# """Loops."""
+# '''Loops.'''
 
 #
 # # 1 Example (for, break)
@@ -233,7 +198,7 @@ STRINGS
 #    var = var -1
 #    if var == 5:
 #       break
-# print "Good bye!"
+# print 'Good bye!'
 #
 # # 3 Example (for, continue)
 #
@@ -250,7 +215,7 @@ STRINGS
 #    if var == 5:
 #       continue
 #    print 'Current variable value :', var
-# print "Good bye!"
+# print 'Good bye!'
 #
 # # 5 Example (for, pass)
 #
@@ -260,7 +225,7 @@ STRINGS
 #       print 'This is pass block'
 #    print 'Current Letter :', letter
 #
-# print "Good bye!"
+# print 'Good bye!'
 #
 # # 6 Example (nested loops)
 #
@@ -270,12 +235,12 @@ STRINGS
 #    while(j <= (i/j)):
 #       if not(i%j): break
 #       j = j + 1
-#    if (j > i/j) : print i, " is prime"
+#    if (j > i/j) : print i, ' is prime'
 #    i = i + 1
 #
-# print "Good bye!"
+# print 'Good bye!'
 #
-# """Mathematical Functions"""
+# '''Mathematical Functions'''
 
 #
 # import math
@@ -295,9 +260,9 @@ STRINGS
 # print min(-100, 40, 8)     # The smallest of its arguments: the value closest to negative infinity
 # print cmp(80, 100)         # -1 if x < y, 0 if x == y, or 1 if x > y
 #
-# """Trigonometric Functions"""
+# '''Trigonometric Functions'''
 #
-# """Random Number Functions"""
+# '''Random Number Functions'''
 
 #
 # import random
@@ -308,17 +273,17 @@ STRINGS
 # print random.shuffle([20, 16, 10, 5]) # Randomizes the items of a list in place. Returns None.
 # print random.uniform(5, 10)           # A random float r, such that x is less than or equal to r and r is less than y
 #
-# """Date and time"""
+# '''Date and time'''
 #
-# """Functions"""
+# '''Functions'''
 #
-# """Modules"""
+# '''Modules'''
 #
-# """Files I/O"""
+# '''Files I/O'''
 #
-# """Exceptions"""
+# '''Exceptions'''
 #
-# """General build-in methods like del, len etc"""
+# '''General build-in methods and expressions like del, len, print, pprint etc, yield, in, not in, is'''
 #
 #
 #
@@ -340,16 +305,16 @@ STRINGS
 # print lista_extend
 # print lista_append
 #
-# print "To jest {0} i {1}".format('first','second')
-# print "To jest %s i %s" % ('first', 'second')
+# print 'To jest {0} i {1}'.format('first','second')
+# print 'To jest %s i %s' % ('first', 'second')
 #
 # d = {1:'one',2:'two',3:'three'}
 #
 # # Creates a real list of tuples and returns that. Probably takes more memory and time initially but accessing each element is fast
-# print "Value : %s" %  d.items()
+# print 'Value : %s' %  d.items()
 #
-# # Returns a generator - object that "creates" one item at a time every time next() is called on it. Probably takes less space and time initially, but a bit more time in generating each element.
-# print "Value : %s" %  d.iteritems()
+# # Returns a generator - object that 'creates' one item at a time every time next() is called on it. Probably takes less space and time initially, but a bit more time in generating each element.
+# print 'Value : %s' %  d.iteritems()
 #
 # # In loop d.iteritems() and d.items() works the same way
 # print 'd.items():'
@@ -384,13 +349,13 @@ STRINGS
 # # - byte array
 # # Note that! What if I need a mutable string to do something like character swapping? Well then use a byte array!
 #
-# # The data type "set" is a collection type, like list or tuple. A set contains an unordered collection of unique and immutable objects. It is like dictionary with no values.
-# # The data typ "frozenset" is like set except that it cannot be changed, i.e. it is immutable (so as you should remember it can be a dictionary key)
+# # The data type 'set' is a collection type, like list or tuple. A set contains an unordered collection of unique and immutable objects. It is like dictionary with no values.
+# # The data typ 'frozenset' is like set except that it cannot be changed, i.e. it is immutable (so as you should remember it can be a dictionary key)
 #
 # # 2 ways of creation a set
-# items_set = {"arrow", "spear", "arrow", "arrow", "rock"}
+# items_set = {'arrow', 'spear', 'arrow', 'arrow', 'rock'}
 # numbers_set = set([1, 2, 2, 3, 3, 4])
-# letters_set = set("A Python Tutorial")
+# letters_set = set('A Python Tutorial')
 #
 # print items_set
 # print len(items_set)
@@ -405,37 +370,37 @@ STRINGS
 # print type(letters_set)
 #
 # # Use in and not-in keywords
-# if "rock" in items_set:
-#     print("Rock exists")
+# if 'rock' in items_set:
+#     print('Rock exists')
 #
-# if "clock" not in items_set:
-#     print("Cloak not found")
+# if 'clock' not in items_set:
+#     print('Cloak not found')
 #
 # # We can't create a set of mutable elements like lists
-# list_of_languages = ["Python","Perl"]
-# list_of_cities = ["Paris", "Berlin"]
+# list_of_languages = ['Python','Perl']
+# list_of_cities = ['Paris', 'Berlin']
 # # impossible_set = set((list_of_languages, list_of_cities))
 #
 # # Examples of set operations
 #
-# set_1 = {"red","green"}
-# set_1.add("yellow")
-# set_1.remove("red")
+# set_1 = {'red','green'}
+# set_1.add('yellow')
+# set_1.remove('red')
 # print set_1
 #
-# set_2 = {"Stuttgart", "Konstanz", "Freiburg"}
+# set_2 = {'Stuttgart', 'Konstanz', 'Freiburg'}
 # set_2.clear()
 # print set_2
 #
-# set_3 = {"a","b","c","d","e"}
-# set_4 = {"b","c"}
-# set_5 = {"c","d"}
+# set_3 = {'a','b','c','d','e'}
+# set_4 = {'b','c'}
+# set_5 = {'c','d'}
 #
 # print set_3.difference(set_4)
 # print set_3.difference(set_4).difference(set_5)
 #
-# set_6 = {"a","b","c","d","e"}
-# set_7 = {"c","d"}
+# set_6 = {'a','b','c','d','e'}
+# set_7 = {'c','d'}
 # print set_6.issubset(set_7)
 # print set_7.issubset(set_6)
 # print set_6.issubset(set_6)
@@ -444,8 +409,8 @@ STRINGS
 # print set_6 < set_6
 # print set_7 <= set_6
 #
-# set_8 = {"a","b","c","d","e"}
-# set_9 = {"c","d"}
+# set_8 = {'a','b','c','d','e'}
+# set_9 = {'c','d'}
 # print set_8.issuperset(set_9)
 # print set_9.issuperset(set_8)
 # print set_8.issuperset(set_8)
@@ -456,7 +421,7 @@ STRINGS
 #
 # # 2 ways of creation a frozenset
 #
-# list_to_frozen = ["bird", "plant", "fish"]
+# list_to_frozen = ['bird', 'plant', 'fish']
 # icecube = frozenset(list_to_frozen)
 # print(icecube)
 #
@@ -542,7 +507,7 @@ STRINGS
 # # isort
 # # coverage
 #
-# """do funkcji check_letter piszemy testy"""
+# '''do funkcji check_letter piszemy testy'''
 #
 # import unittest
 #
@@ -571,7 +536,7 @@ STRINGS
 #
 # alfabet()
 #
-# """slicem żeby przechodzić co drugą literę"""
+# '''slicem żeby przechodzić co drugą literę'''
 # def alfabet_2():
 #     litery = list(string.ascii_lowercase)
 #     for i in range(len(litery)):
@@ -580,17 +545,17 @@ STRINGS
 #
 # alfabet_2()
 #
-# """można funkcją reverse"""
+# '''można funkcją reverse'''
 # def palindrom(a):
 #     if a == a[::-1]:
-#         print "To jest palindrom"
+#         print 'To jest palindrom'
 #     else:
-#         print "To nie jest palindrom"
+#         print 'To nie jest palindrom'
 #
 # palindrom('atata')
 # palindrom('tonie')
 #
-# """można było użyć funkcji filter"""
+# '''można było użyć funkcji filter'''
 # def filtr(*args):
 #     odfiltrowane = []
 #     for i in args:
@@ -600,8 +565,8 @@ STRINGS
 #
 # filtr('a', 'c', 2, 5)
 #
-# """Przy użyciu filter napisać funkcję, który z podanej listy odfiltrowuje
-# wyrazy dłuższe niż n"""
+# '''Przy użyciu filter napisać funkcję, który z podanej listy odfiltrowuje
+# wyrazy dłuższe niż n'''
 #
 # #def filtr_2(*args):
 # #    odfiltrowane = []
@@ -650,8 +615,8 @@ STRINGS
 # #sq = squares()
 # #for x in range(100):
 # #   import pdb; pdb.set_track() # put pdb here ane step into functions
-# #    print "number %s" (sq.next())
-# #    print "number %s" (sq.next())
+# #    print 'number %s' (sq.next())
+# #    print 'number %s' (sq.next())
 #
 # # napisz generator zwracająćy n liczb ciągu F
 #
@@ -703,14 +668,14 @@ STRINGS
 # # !/usr/bin/env python
 # # -*- coding: utf-8 -*-
 #
-# """W ten sposób dodajemy dłuższe komentarze wielolinijkowe. Poniżej znajduje
-# się streszczenie najważniejszych zagadnień z kursu na codeacademy.com."""
+# '''W ten sposób dodajemy dłuższe komentarze wielolinijkowe. Poniżej znajduje
+# się streszczenie najważniejszych zagadnień z kursu na codeacademy.com.'''
 #
 # # Krótkie komentarze jednolinijkowe dodajemy tak
 #
-# """Podstawowe typy i proste instrukcje"""
+# '''Podstawowe typy i proste instrukcje'''
 #
-# print "Welcome to Python!"
+# print 'Welcome to Python!'
 # print 'Welcome to' + 'Python!'
 # print 'This isn\'t flying, this is falling with style!'
 #
@@ -724,16 +689,16 @@ STRINGS
 # print WAZNE
 # my_float = 9.23
 # my_bool = True
-# how_much = raw_input("How much whisky is he going to drink?")
-# zm1, zm2, zm3 = 1, 2, "john"
+# how_much = raw_input('How much whisky is he going to drink?')
+# zm1, zm2, zm3 = 1, 2, 'john'
 #
-# print "I'm %s years old. I have %s litres of whisky... I'm going to drink %s \
-# litres today!" % (my_int, my_float, how_much)
+# print 'I'm %s years old. I have %s litres of whisky... I'm going to drink %s \
+# litres today!' % (my_int, my_float, how_much)
 #
-# """Stringi"""
+# '''Stringi'''
 #
-# napis = "Przykladowy string"
-# dwa_napisy = napis + " oraz kolejny string"
+# napis = 'Przykladowy string'
+# dwa_napisy = napis + ' oraz kolejny string'
 # print dwa_napisy.split()
 # fifth_letter = napis[4]
 # a_few_letters = napis[0:5]
@@ -742,7 +707,7 @@ STRINGS
 # napis.lower()
 # napis.upper()
 #
-# """Importowanie"""
+# '''Importowanie'''
 #
 # from datetime import datetime
 #
@@ -764,7 +729,7 @@ STRINGS
 #
 # print sqrt(16)
 #
-# """Comparators and booleans"""
+# '''Comparators and booleans'''
 #
 # bool_1 = 3 < 5
 # bool_2 = 5 < 4
@@ -774,7 +739,7 @@ STRINGS
 #
 # print bool_1, bool_2, bool_3, bool_4, bool_5
 #
-# """
+# '''
 # True and True is True
 # True and False is False
 # False and True is False
@@ -795,13 +760,13 @@ STRINGS
 # Parentheses () ensure your expressions are evaluated in the order you want.
 # Anything in parentheses is evaluated as its own unit.
 #
-# """
+# '''
 #
-# bool_6 = (True or 7 > 6) and (not 6 ** 2 != 36) or (5 == "Alpha")
+# bool_6 = (True or 7 > 6) and (not 6 ** 2 != 36) or (5 == 'Alpha')
 #
 # print bool_6
 #
-# """Funkcje i instrukcja warunkowa if"""
+# '''Funkcje i instrukcja warunkowa if'''
 #
 #
 # def greater_less_equal_5(answer):
@@ -841,13 +806,13 @@ STRINGS
 #
 #
 # def plane_ride_cost(city):
-#    if city == "Charlotte":
+#    if city == 'Charlotte':
 #       return 183
-#    elif city == "Tampa":
+#    elif city == 'Tampa':
 #       return 220
-#    elif city == "Pittsburgh":
+#    elif city == 'Pittsburgh':
 #       return 222
-#    elif city == "Los Angeles":
+#    elif city == 'Los Angeles':
 #       return 475
 #
 #
@@ -864,9 +829,9 @@ STRINGS
 #    return hotel_cost(days) + plane_ride_cost(city) + rental_car_cost(days) + spending_money
 #
 #
-# print trip_cost("Los Angeles", 5, 600)
+# print trip_cost('Los Angeles', 5, 600)
 #
-# """Listy"""
+# '''Listy'''
 #
 # numbers = [8, 7, 6, 5, 'slowo', [3, 2, 1]]
 # suma_list = numbers + [11, 12, 13]
@@ -879,7 +844,7 @@ STRINGS
 # print numbers[::-1]
 # index = numbers.index(8)
 # print index
-# numbers.insert(index, "wrzutka")
+# numbers.insert(index, 'wrzutka')
 # print numbers
 # numbers.append([4, 5])
 # numbers.extend([200, 99])
@@ -890,8 +855,8 @@ STRINGS
 # print numbers
 # del numbers[0]
 # letters = ['a', 'b', 'c', 'd']
-# print " ".join(letters)
-# print "---".join(letters)
+# print ' '.join(letters)
+# print '---'.join(letters)
 # ex_list = [4, 16, 17]
 # [cc, dd, ee] = ex_list
 # ff, gg, hh = ex_list
@@ -908,7 +873,7 @@ STRINGS
 # list_c = zip(list_a, list_b)
 # print list_c
 #
-# """Dictionaries"""
+# '''Dictionaries'''
 #
 # d = {'key1': 777, 'key2': 888, 'key3': [1, 4, 7, 11, 13]}
 # print d['key1']
@@ -919,7 +884,7 @@ STRINGS
 # print d['key3'][0]
 # print d.items()
 #
-# """Pętla for"""
+# '''Pętla for'''
 #
 # my_list = [1, 9, 3, 8, 5, 7]
 # for number in my_list:
@@ -938,17 +903,17 @@ STRINGS
 #       print b
 #
 # grades = {
-#    "Michal": 3.5,
-#    "Piotr": 2.0,
-#    "Filip": 5.0,
-#    "Janusz": 4.5
+#    'Michal': 3.5,
+#    'Piotr': 2.0,
+#    'Filip': 5.0,
+#    'Janusz': 4.5
 # }
 #
 # for key in grades:
 #    print key
 #    print grades[key]
 #
-# word = "Programming is fun!"
+# word = 'Programming is fun!'
 # for letter in word:
 #    if letter not in ['o', 'a', 'i', 'u', 'y', 'e']:
 #       print letter
@@ -972,27 +937,27 @@ STRINGS
 #       return True
 #
 #
-# """Pętla while"""
+# '''Pętla while'''
 #
 # loop_condition = True
 # while loop_condition:
-#    print "I am a loop, formally"
+#    print 'I am a loop, formally'
 #    loop_condition = False
 #
 # import random
 #
-# print "Lucky Numbers! 3 numbers will be generated."
-# print "If one of them is a '5', you lose!"
+# print 'Lucky Numbers! 3 numbers will be generated.'
+# print 'If one of them is a '5', you lose!'
 # count = 0
 # while count < 3:
 #    num = random.randint(1, 6)
 #    print num
 #    if num == 5:
-#       print "Sorry, you lose!"
+#       print 'Sorry, you lose!'
 #       break
 #    count += 1
 # else:
-#    print "You win!"
+#    print 'You win!'
 #
 # count = 0
 # while True:
@@ -1003,15 +968,15 @@ STRINGS
 #
 # guesses_left = 3
 # while guesses_left > 0:
-#    guess = int(raw_input("Your guess: "))
+#    guess = int(raw_input('Your guess: '))
 #    if guess == guesses_left:
-#       print "You win"
+#       print 'You win'
 #       break
 #    guesses_left = guesses_left - 1
 # else:
-#    print "You lose"
+#    print 'You lose'
 #
-# """list comprehension - dobry sposób do generowania list"""
+# '''list comprehension - dobry sposób do generowania list'''
 #
 # evens_to_50 = [i for i in range(51) if i % 2 == 0]
 #
@@ -1023,14 +988,14 @@ STRINGS
 #
 # threes_and_fives = [x for x in range(1, 16) if x % 3 == 0 or x % 5 == 0]
 #
-# """Anonymous function - gdy użyjemy razem funkcji filter oraz lambda, funkcja
-# filter użyji lambdy, aby określić co ma filtrować z listy"""
+# '''Anonymous function - gdy użyjemy razem funkcji filter oraz lambda, funkcja
+# filter użyji lambdy, aby określić co ma filtrować z listy'''
 #
 # my_list = range(16)
 # print filter(lambda x: x % 3 == 0, my_list)
 #
-# languages = ["HTML", "JavaScript", "Python", "Ruby"]
-# print filter(lambda x: x == "Python", languages)
+# languages = ['HTML', 'JavaScript', 'Python', 'Ruby']
+# print filter(lambda x: x == 'Python', languages)
 #
 # squares = [x ** 2 for x in range(1, 11)]
 # print filter(lambda x: 30 < x < 70, squares)
