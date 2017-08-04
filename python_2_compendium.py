@@ -1,7 +1,6 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
 # VARIABLE AND DATA TYPES
 #
 # Variable types are determined by the value stored within the variable. There are three main categories of variable
@@ -98,7 +97,8 @@
 # TUPLES
 #
 # example_tuple = 'a', 'b', 'c', 0, 1, 2  # brackets are not to required for tuples
-# single_tuple = (1, )  # one element tuple requires comma at the end
+# single_tuple = (1, )  # one element tuple requires comma at the end - if comma is omitted the type of object is the
+# same like type of element inside brackets
 #
 # print (0, 1, 2, 3)[0]  # first element
 # print (0, 1, 2, 3)[1:3]  # elements from 2nd to 3rd
@@ -132,188 +132,153 @@
 #
 # print dict.fromkeys(keys_tuple)
 # print dict.fromkeys(keys_tuple, 'value_for_all')
-
-
-
-
-'''Sets. A set contains an unordered collection of unique and immutable objects.
-# The set data type is, as the name implies, a Python implementation of the sets
-# as they are known from mathematics. This explains, why sets unlike lists or tuples
-# can't have multiple occurrences of the same element. Though sets can't contain
-# mutable objects, sets are mutable. Frozensets are like sets except that they
-# cannot be changed.'''
-
 #
-# print set('It's new for me')           # Converts something to a set.
 #
-# cities = set(['Frankfurt', 'Basel','Freiburg'])
-# cities.add('Strasbourg')
-# print cities
+# SETS
 #
-# print frozenset('It's new for me')     # Converts something to a frozen set.
-# cities = frozenset(['Frankfurt', 'Basel','Freiburg'])
+# Contains an unordered collection of unique and immutable objects. Sets are mutable and frozensets immutable.
 #
-# '''Data Type Conversion'''
-
+# print(set('ineffable'))  # converts something to a set.
+# print(frozenset('sonorous'))  # converts something to a frozen set.
 #
-# print int('6')                         # Converts x to an integer. base specifies the base if x is a string.
-# print long('5500'[3])                  # Converts x to a long integer. base specifies the base if x is a string.
-# print float(7)                         # Converts x to a floating-point number.
-# print complex('150000'[1])             # Creates a complex number.
-# print str(123456789)                   # Converts object x to a string representation.
-# print repr(98765)                      # Converts object x to an expression string.
-# print eval('1 + 4')                    # Interprets a string as code and evaluates it.
-# print tuple([1, 2, 3])                 # Converts s to a tuple.
-# print list((2, 4, 6))                  # Converts s to a list.
-# print dict([(2, 4),(3, 9),(4, 16)])    # Creates a dictionary. d must be a sequence of (key,value) tuples.
-# print divmod(17, 5)                    # the pair (x // y, x % y)
+# list_to_convert = ['A', 'B', 'C', 'D', 'A']
+# set_from_list = set(list_to_convert)
+# set_from_list.add('E')
 #
-# '''Python language supports the following types of operators.
+# print set_from_list
 #
-# - Arithmetic Operators (+, -, /, //, **)
-# - Comparison (Relational) Operators (==, !=, <, >, <=, >=)
-# - Assignment Operators (=, +=, -=, *=, /=, %=, **=, //=)
-# - Logical Operators (and, or, not)
-# - Bitwise Operators (&, |, ^, ~, >>, <<)
-# - Membership Operators (not in, in)
-# - Identity Operators (is, is not)
 #
-# Let us have a look on all operators one by one.'''
+# BUILD-IN METHODS - DATA TYPE CONVERSION
 #
-# '''Loops.'''
-
+# import datetime
+# now = datetime.datetime.now()
 #
-# # 1 Example (for, break)
+# print(int('6'))  # converts x to an integer
+# print(long('5500'))  # converts x to a long integer
+# print(float(7))  # converts x to a floating-point number
+# print(complex('1+2j'))  # creates a complex number
+# print(str(now))  # converts x to a string representation - computes a string containing the value of now
+# print(repr(now))  # converts x to an expression string - returns the code needed to rebuild now object with eval()
+# print(eval('1 + 4'))  # interprets a string as code and evaluates it
+# print(tuple([1, 2, 3]))  # converts x to a tuple
+# print(list((2, 4, 6)))  # converts x to a list
+# print(dict([(2, 4), (3, 9), (4, 16)]))  # creates a dictionary from a sequence of (key,value) tuples
 #
-# for letter in 'Python':
-#    if letter == 'h':
-#       break
-#    print 'Current Letter :', letter
 #
-# # 2 Example (while, break)
+# BUILD-IN METHODS - MATH
 #
-# var = 10
-# while var > 0:
-#    print 'Current variable value :', var
-#    var = var -1
-#    if var == 5:
-#       break
-# print 'Good bye!'
+# print(divmod(17, 5))  # the pair (x // y, x % y)
+# print round(80.23456, 2)  # x rounded to n digits from the decimal point - round(0.5) is 1.0, round(-0.5) is -1.0
+# print pow(100, 2)  # the value of x**y
+# print max(54, 99, 1000)  # the largest of its arguments: the value closest to positive infinity
+# print min(-100, 40, 8)  # the smallest of its arguments: the value closest to negative infinity
+# print cmp(80, 100)  # -1 if x < y, 0 if x == y, or 1 if x > y
 #
-# # 3 Example (for, continue)
 #
-# for letter in 'Python':
-#    if letter == 'h':
-#       continue
-#    print 'Current Letter :', letter
+# OPERATORS
 #
-# # 4 Example (while, continue)
+# Python language supports the following types of operators:
+#
+#     - arithmetic operators (+, -, /, //, **)
+#     - comparison (relational) operators (==, !=, <, >, <=, >=)
+#     - assignment operators (=, +=, -=, *=, /=, %=, **=, //=)
+#     - logical operators (and, or, not)
+#     - bitwise operators (&, |, ^, ~, >>, <<)
+#     - membership operators (not in, in)
+#     - identity operators (is, is not)
+#
+#
+# SIMPLE LOOPS EXAMPLES
+#
+# 1 example: for, break
+#
+# for letter in 'python':
+#     if letter == 'h':
+#         break
+#     print 'current letter :', letter
+#
+# 2 example: while, break
 #
 # var = 10
 # while var > 0:
-#    var = var -1
-#    if var == 5:
-#       continue
-#    print 'Current variable value :', var
-# print 'Good bye!'
+#     print 'current variable value :', var
+#     var -= 1
+#     if var == 5:
+#         break
 #
-# # 5 Example (for, pass)
+# 3 example: for, continue
+#
+# for letter in 'python':
+#     if letter == 'h':
+#         continue
+#     print 'current letter :', letter
+#
+# 4 example: while, continue
+#
+# var = 10
+# while var > 0:
+#     var -= 1
+#     if var == 5:
+#         continue
+#     print 'current variable value :', var
+#
+# 5 example: for, pass
 #
 # for letter in 'Python':
-#    if letter == 'h':
-#       pass
-#       print 'This is pass block'
-#    print 'Current Letter :', letter
-#
-# print 'Good bye!'
-#
-# # 6 Example (nested loops)
-#
-# i = 2
-# while(i < 100):
-#    j = 2
-#    while(j <= (i/j)):
-#       if not(i%j): break
-#       j = j + 1
-#    if (j > i/j) : print i, ' is prime'
-#    i = i + 1
-#
-# print 'Good bye!'
-#
-# '''Mathematical Functions'''
+#     if letter == 'h':
+#         pass
+#         print 'this is pass block'
+#     print 'current letter :', letter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #
-# import math
-#
-# print math.ceil(70.5)      # The ceiling of x: the smallest integer not less than x
-# print math.exp(3)          # The exponential of x: e^x
-# print math.floor(-45.17)   # The floor of x: the largest integer not greater than x
-# print math.fabs(-45.17)    # The absolute value of x
-# print math.log(100.12)     # The natural logarithm of x, for x>0
-# print math.log10(100.12)   # The base-10 logarithm of x for x>0
-# print math.modf(10.05)     # The fractional and integer parts of x in a two-item tuple. Both parts have the same sign as x. The integer part is returned as a float.
-# print math.sqrt(100)       # The square root of x for x > 0
-#
-# print round(80.23456, 2)   # x rounded to n digits from the decimal point. Python rounds away from zero as a tie-breaker: round(0.5) is 1.0 and round(-0.5) is -1.0.
-# print pow(100, 2)          # The value of x**y.
-# print max(54, 99, 1000)    # The largest of its arguments: the value closest to positive infinity
-# print min(-100, 40, 8)     # The smallest of its arguments: the value closest to negative infinity
-# print cmp(80, 100)         # -1 if x < y, 0 if x == y, or 1 if x > y
-#
-# '''Trigonometric Functions'''
-#
-# '''Random Number Functions'''
-
-#
-# import random
-#
-# print random.choice('A String')       # A random item from a list, tuple, or string.
-# print random.randrange(100, 1000, 5)  # A randomly selected element from range(start, stop, step)
-# print random.random()                 # A random float r, such that 0 is less than or equal to r and r is less than 1
-# print random.shuffle([20, 16, 10, 5]) # Randomizes the items of a list in place. Returns None.
-# print random.uniform(5, 10)           # A random float r, such that x is less than or equal to r and r is less than y
-#
-# '''Date and time'''
-#
-# '''Functions'''
-#
-# '''Modules'''
-#
-# '''Files I/O'''
-#
-# '''Exceptions'''
-#
-# '''General build-in methods and expressions like del, len, print, pprint etc, yield, in, not in, is'''
-#
-#
-#
-#
-#
-# # w Pythonie 2.x. True może mieć przypisaną wartość False
-#
-# my_dict = {'key_1': 'value_1', 'key_2': 'value_2', 'key_3': 'value_3'}
-#
-# # print my_dict.get('key_4') # nie wyrzuca wyjątków tylko None
-# # print my_dict['key_4']     # wyrzuca wyjątki
-#
-# lista_extend = ['a', 'b', 'c', 1, 2, 3]
-# lista_append = ['a', 'b', 'c', 1, 2, 3]
-#
-# lista_extend.extend([4, 5, 6])
-# lista_append.append([4, 5, 6])
-#
-# print lista_extend
-# print lista_append
-#
+# '''General build-in methods and expressions like del, len, print, pprint etc, yield'''
 # print 'To jest {0} i {1}'.format('first','second')
 # print 'To jest %s i %s' % ('first', 'second')
-#
+# # w Pythonie 2.x. True może mieć przypisaną wartość False
+
+
+
+
 # d = {1:'one',2:'two',3:'three'}
 #
-# # Creates a real list of tuples and returns that. Probably takes more memory and time initially but accessing each element is fast
+# # Creates a real list of tuples and returns that. Probably takes more memory and time initially but accessing
+# each element is fast
 # print 'Value : %s' %  d.items()
 #
-# # Returns a generator - object that 'creates' one item at a time every time next() is called on it. Probably takes less space and time initially, but a bit more time in generating each element.
+# # Returns a generator - object that 'creates' one item at a time every time next() is called on it. Probably takes
+# less space and time initially, but a bit more time in generating each element.
 # print 'Value : %s' %  d.iteritems()
 #
 # # In loop d.iteritems() and d.items() works the same way
@@ -327,30 +292,28 @@
 #     if d[k] is v: print '\tthey are the same object'
 #     else: print '\tthey are different'
 #
-# # Jednoelementowa tupla bez przecinka przyjmuje w Pythonie typ elementu znajdującego się wewnątrz
+
+
+
+
+
+# Mutability of Common Types. Some objects are mutable, meaning they can be altered and some are immutable.
+# The following are immutable objects:
+# - numeric types (int, float, complex)
+# - string
+# - tuple
+# - frozen set
+# - bytes
+# The following objects are mutable:
+# - list
+# - dict
+# - set
+# - byte array
+# Note that! What if I need a mutable string to do something like character swapping? Well then use a byte array!
 #
-# print type(('napis', ))
-# print type((12345, ))
-#
-# print type(('napis'))
-# print type((12345))
-#
-# # Mutability of Common Types. Some objects are mutable, meaning they can be altered and some are immutable.
-# # The following are immutable objects:
-# # - numeric types (int, float, complex)
-# # - string
-# # - tuple
-# # - frozen set
-# # - bytes
-# # The following objects are mutable:
-# # - list
-# # - dict
-# # - set
-# # - byte array
-# # Note that! What if I need a mutable string to do something like character swapping? Well then use a byte array!
-#
-# # The data type 'set' is a collection type, like list or tuple. A set contains an unordered collection of unique and immutable objects. It is like dictionary with no values.
-# # The data typ 'frozenset' is like set except that it cannot be changed, i.e. it is immutable (so as you should remember it can be a dictionary key)
+# # The data type 'set' is a collection type, like list or tuple. A set contains an unordered collection of unique and
+#  immutable objects. It is like dictionary with no values. The data typ 'frozenset' is like set except that it cannot
+# be changed, i.e. it is immutable (so as you should remember it can be a dictionary key)
 #
 # # 2 ways of creation a set
 # items_set = {'arrow', 'spear', 'arrow', 'arrow', 'rock'}
@@ -440,7 +403,8 @@
 # print_everything('apple', 'banana', 'cabbage')
 # table_things(apple = 'fruit', cabbage = 'vegetable')
 #
-# # list(iterable) - is one of built-in function, which returns a list whose items are the same and in the same order as iterable's items
+# # list(iterable) - is one of built-in function, which returns a list whose items are the same and in the same order
+# as iterable's items
 # print list('michal')
 #
 # # enumerate(sequence, start=0) - is one of the built-in Python functions - it returns an enumerate object
@@ -453,14 +417,7 @@
 #
 #
 #
-# # Kolejność importowania w Pythonie:
-# #   - biblioteki standardowe
-# #   - zewnętrzne frameworki/narzędzia
-# #   - lokalnie np. moduły naszej aplikacji
-#
-# # you can change the name of imported function
-#
-# from time import sleep as wait
+
 #
 # # Klasy w Pythonie:
 # # - każda klasa, która nie dziedziczy po innej, powinna dziedziczyć po klasie object
@@ -664,71 +621,42 @@
 # # KLASY/METODY DO TESTOWANIA
 #
 #
-#
-# # !/usr/bin/env python
-# # -*- coding: utf-8 -*-
-#
-# '''W ten sposób dodajemy dłuższe komentarze wielolinijkowe. Poniżej znajduje
-# się streszczenie najważniejszych zagadnień z kursu na codeacademy.com.'''
-#
-# # Krótkie komentarze jednolinijkowe dodajemy tak
-#
-# '''Podstawowe typy i proste instrukcje'''
-#
-# print 'Welcome to Python!'
-# print 'Welcome to' + 'Python!'
+
+
+
+
+
+
 # print 'This isn\'t flying, this is falling with style!'
-#
-# my_int = -10
-# my_int = abs(my_int)
-# my_int = 11 % 3
-# my_int = 7 ** 2
-# my_string = str(my_int)
-# my_int = int(my_string)
-# WAZNE = 5 / 2
-# print WAZNE
-# my_float = 9.23
-# my_bool = True
 # how_much = raw_input('How much whisky is he going to drink?')
-# zm1, zm2, zm3 = 1, 2, 'john'
-#
 # print 'I'm %s years old. I have %s litres of whisky... I'm going to drink %s \
 # litres today!' % (my_int, my_float, how_much)
-#
-# '''Stringi'''
-#
-# napis = 'Przykladowy string'
-# dwa_napisy = napis + ' oraz kolejny string'
-# print dwa_napisy.split()
-# fifth_letter = napis[4]
-# a_few_letters = napis[0:5]
-# len(napis)
-# str(my_int)
-# napis.lower()
-# napis.upper()
-#
+
+
+
+
+
+
+
 # '''Importowanie'''
-#
-# from datetime import datetime
-#
-# now = datetime.now()
-# print '%s/%s/%s %s:%s:%s' % (now.month, now.day, now.year, now.hour,
-#                              now.minute, now.second)
+# Kolejność importowania w Pythonie:
+#   - biblioteki standardowe
+#   - zewnętrzne frameworki/narzędzia
+#   - lokalnie np. moduły naszej aplikacji
 #
 # import math
-#
+# from math import exp
+# from math import *
 # print math.sqrt(25)
 #
-# print dir(math)
-#
-# from math import exp
-#
 # print exp(4)
-#
-# from math import *
-#
 # print sqrt(16)
 #
+# you can change the name of imported function
+#
+# from time import sleep as wait
+
+
 # '''Comparators and booleans'''
 #
 # bool_1 = 3 < 5
