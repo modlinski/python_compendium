@@ -24,6 +24,21 @@
 #     - list - list without a fixed number of elements: [1, 2, 3],
 #     - dictionary - type with multiple elements, in which values are addressed by keys: {1: 'a','b': 2,3: 3}.
 #
+# The following types are immutable objects:
+#
+#     - numeric types (int, float, complex),
+#     - string,
+#     - tuple,
+#     - frozen set,
+#     - bytes.
+#
+# The following objects are mutable objects:
+#
+#     - list,
+#     - dict,
+#     - set,
+#     - byte array.
+#
 # print dir(int)
 # print dir(float)
 # print dir(str)
@@ -72,9 +87,12 @@
 #
 # LISTS
 #
-# print [0, 1, 2, 3][0]  # first element
-# print [0, 1, 2, 3][1:3]  # elements from 2nd to 3rd
-# print [0, 1, 2, 3][2:]  # elements from 3rd element
+# print [0, 1, 2, 3, 4, 5, 6, 7][0:7:2]  # string[first:last:+step], '+' starts from the beginning
+# print [0, 1, 2, 3, 4, 5, 6, 7][7:0:-2]  # string[first:last:-step], '-' starts from the end
+# print [0, 1, 2, 3, 4, 5, 6, 7][1:5]  # string[first:last] returns elements indexed from 1 do last-1
+# print [0, 1, 2, 3, 4, 5, 6, 7][0]  # first element
+# print [0, 1, 2, 3, 4, 5, 6, 7][5:]  # returns substring containing elements indexed from 5 to the end
+# print [0, 1, 2, 3, 4, 5, 6, 7][:5]  # returns substring containing elements indexed from beginning to 5
 # print [0, 1, 2, 3] + [4, 5, 6, 7]  # concatenated lists
 # print [0, 1, 2, 3] * 2
 #
@@ -92,6 +110,9 @@
 # print example_list.count(1)  # number of occurrence of object
 # print example_list.index('a')  # index of occurrence of object, the lowest
 # print example_list.pop()  # removes and returns the last object from the list
+#
+# a, b, c, d, e, f = example_list
+# print a, b, c, d, e, f
 #
 #
 # TUPLES
@@ -138,14 +159,37 @@
 #
 # Contains an unordered collection of unique and immutable objects. Sets are mutable and frozensets immutable.
 #
-# print(set('ineffable'))  # converts something to a set.
-# print(frozenset('sonorous'))  # converts something to a frozen set.
+# print {'ineffable', 'ineffable', 'aquiver', 'nefarious'}  # returns a set of elements
+# print set(['ineffable', 'ineffable', 'aquiver', 'nefarious'])  # returns a set of elements
+# print set('ineffable')  # returns a set of elements
+# print(frozenset('sonorous'))  # # returns a frozenset of elements
 #
 # list_to_convert = ['A', 'B', 'C', 'D', 'A']
 # set_from_list = set(list_to_convert)
 # set_from_list.add('E')
+# set_from_list.remove('D')
+# set_from_list.clear()
 #
 # print set_from_list
+#
+# set_1 = {1, 2, 3, 4, 5, 6}
+# set_2 = {3, 4, 5, 6, 7, 8}
+# set_3 = {5, 6, 7, 8, 9, 0}
+# set_4 = {1, 2, 3}
+#
+# print set_1.difference(set_2)
+# print set_1.difference(set_2).difference(set_3)
+#
+# print set_4.issubset(set_1)  # True
+# print set_4.issubset(set_4)  # True
+# print set_1.issubset(set_4)  # False
+#
+# print set_4.issuperset(set_1)  # False
+# print set_4.issuperset(set_4)  # True
+# print set_1.issuperset(set_4)  # True
+#
+# print set_1 > set_2
+# print set_1 > set_4
 #
 #
 # BUILD-IN METHODS - DATA TYPE CONVERSION
@@ -153,21 +197,21 @@
 # import datetime
 # now = datetime.datetime.now()
 #
-# print(int('6'))  # converts x to an integer
-# print(long('5500'))  # converts x to a long integer
-# print(float(7))  # converts x to a floating-point number
-# print(complex('1+2j'))  # creates a complex number
-# print(str(now))  # converts x to a string representation - computes a string containing the value of now
-# print(repr(now))  # converts x to an expression string - returns the code needed to rebuild now object with eval()
-# print(eval('1 + 4'))  # interprets a string as code and evaluates it
-# print(tuple([1, 2, 3]))  # converts x to a tuple
-# print(list((2, 4, 6)))  # converts x to a list
-# print(dict([(2, 4), (3, 9), (4, 16)]))  # creates a dictionary from a sequence of (key,value) tuples
+# print int('6')  # converts x to an integer
+# print long('5500')  # converts x to a long integer
+# print float(7)  # converts x to a floating-point number
+# print complex('1+2j')  # creates a complex number
+# print str(now)  # converts x to a string representation - computes a string containing the value of now
+# print repr(now)  # converts x to an expression string - returns the code needed to rebuild now object with eval()
+# print eval('1 + 4')  # interprets a string as code and evaluates it
+# print tuple([1, 2, 3])  # converts x to a tuple
+# print list((2, 4, 6))  # converts x to a list
+# print dict([(2, 4), (3, 9), (4, 16)])  # creates a dictionary from a sequence of (key,value) tuples
 #
 #
 # BUILD-IN METHODS - MATH
 #
-# print(divmod(17, 5))  # the pair (x // y, x % y)
+# print divmod(17, 5)  # the pair (x // y, x % y)
 # print round(80.23456, 2)  # x rounded to n digits from the decimal point - round(0.5) is 1.0, round(-0.5) is -1.0
 # print pow(100, 2)  # the value of x**y
 # print max(54, 99, 1000)  # the largest of its arguments: the value closest to positive infinity
@@ -263,12 +307,10 @@
 
 
 #
-# '''General build-in methods and expressions like del, len, print, pprint etc, yield'''
+# '''General build-in methods and expressions like del, sum, len, sorted, print, pprint etc, yield, range, zip'''
 # print 'To jest {0} i {1}'.format('first','second')
 # print 'To jest %s i %s' % ('first', 'second')
 # # w Pythonie 2.x. True może mieć przypisaną wartość False
-
-
 
 
 # d = {1:'one',2:'two',3:'three'}
@@ -293,101 +335,6 @@
 #     else: print '\tthey are different'
 #
 
-
-
-
-
-# Mutability of Common Types. Some objects are mutable, meaning they can be altered and some are immutable.
-# The following are immutable objects:
-# - numeric types (int, float, complex)
-# - string
-# - tuple
-# - frozen set
-# - bytes
-# The following objects are mutable:
-# - list
-# - dict
-# - set
-# - byte array
-# Note that! What if I need a mutable string to do something like character swapping? Well then use a byte array!
-#
-# # The data type 'set' is a collection type, like list or tuple. A set contains an unordered collection of unique and
-#  immutable objects. It is like dictionary with no values. The data typ 'frozenset' is like set except that it cannot
-# be changed, i.e. it is immutable (so as you should remember it can be a dictionary key)
-#
-# # 2 ways of creation a set
-# items_set = {'arrow', 'spear', 'arrow', 'arrow', 'rock'}
-# numbers_set = set([1, 2, 2, 3, 3, 4])
-# letters_set = set('A Python Tutorial')
-#
-# print items_set
-# print len(items_set)
-# print type(items_set)
-#
-# print numbers_set
-# print len(numbers_set)
-# print type(numbers_set)
-#
-# print letters_set
-# print len(letters_set)
-# print type(letters_set)
-#
-# # Use in and not-in keywords
-# if 'rock' in items_set:
-#     print('Rock exists')
-#
-# if 'clock' not in items_set:
-#     print('Cloak not found')
-#
-# # We can't create a set of mutable elements like lists
-# list_of_languages = ['Python','Perl']
-# list_of_cities = ['Paris', 'Berlin']
-# # impossible_set = set((list_of_languages, list_of_cities))
-#
-# # Examples of set operations
-#
-# set_1 = {'red','green'}
-# set_1.add('yellow')
-# set_1.remove('red')
-# print set_1
-#
-# set_2 = {'Stuttgart', 'Konstanz', 'Freiburg'}
-# set_2.clear()
-# print set_2
-#
-# set_3 = {'a','b','c','d','e'}
-# set_4 = {'b','c'}
-# set_5 = {'c','d'}
-#
-# print set_3.difference(set_4)
-# print set_3.difference(set_4).difference(set_5)
-#
-# set_6 = {'a','b','c','d','e'}
-# set_7 = {'c','d'}
-# print set_6.issubset(set_7)
-# print set_7.issubset(set_6)
-# print set_6.issubset(set_6)
-# print set_6 > set_7
-# print set_7 < set_6
-# print set_6 < set_6
-# print set_7 <= set_6
-#
-# set_8 = {'a','b','c','d','e'}
-# set_9 = {'c','d'}
-# print set_8.issuperset(set_9)
-# print set_9.issuperset(set_8)
-# print set_8.issuperset(set_8)
-# print set_8 > set_9
-# print set_8 >= set_9
-# print set_8 >= set_8
-# print set_8 > set_8
-#
-# # 2 ways of creation a frozenset
-#
-# list_to_frozen = ['bird', 'plant', 'fish']
-# icecube = frozenset(list_to_frozen)
-# print(icecube)
-#
 # # *args = list of arguments
 # # **kwargs = dictionary of arguments, in which keys = names of argument, values = values of argument
 # # it is used when you are not sure how many named/unnamed arguments might be passed to your function
@@ -416,8 +363,6 @@
 #
 #
 #
-#
-
 #
 # # Klasy w Pythonie:
 # # - każda klasa, która nie dziedziczy po innej, powinna dziedziczyć po klasie object
@@ -759,48 +704,17 @@
 #
 # print trip_cost('Los Angeles', 5, 600)
 #
-# '''Listy'''
-#
-# numbers = [8, 7, 6, 5, 'slowo', [3, 2, 1]]
-# suma_list = numbers + [11, 12, 13]
-# print sorted(numbers)
-# print sum(numbers[5])
-# print numbers[0] + numbers[2]
-# print numbers[1:3]
-# print numbers[2:]
-# print numbers[:2]
-# print numbers[::-1]
-# index = numbers.index(8)
-# print index
-# numbers.insert(index, 'wrzutka')
-# print numbers
-# numbers.append([4, 5])
-# numbers.extend([200, 99])
-# numbers.remove(8)
-# print numbers
-# print len(numbers)
-# numbers.sort()
-# print numbers
-# del numbers[0]
-# letters = ['a', 'b', 'c', 'd']
-# print ' '.join(letters)
-# print '---'.join(letters)
-# ex_list = [4, 16, 17]
-# [cc, dd, ee] = ex_list
-# ff, gg, hh = ex_list
-# print cc, ff
-# print dd, gg
-# print ee, hh
-#
-# range(6)  # => [0,1,2,3,4,5]
-# range(1, 6)  # => [1,2,3,4,5]
-# range(1, 6, 3)  # => [1,4]
-#
-# list_a = [3, 9, 17, 15, 19]
-# list_b = [2, 4, 8, 10, 30, 40, 50, 60, 70, 80, 90]
-# list_c = zip(list_a, list_b)
-# print list_c
-#
+
+
+
+
+
+
+
+
+
+
+
 # '''Dictionaries'''
 #
 # d = {'key1': 777, 'key2': 888, 'key3': [1, 4, 7, 11, 13]}
