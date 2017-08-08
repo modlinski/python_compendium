@@ -39,12 +39,16 @@
 #     - set,
 #     - byte array.
 #
-# print dir(int)
-# print dir(float)
-# print dir(str)
-# print dir(tuple)
-# print dir(list)
-# print dir(dict)
+#
+# CODE INTROSPECTION
+#
+# print type(int)  # return type of an object
+# print id(int)  # return the “identity” of an object that is unique and constant for this object during its lifetime
+# print dir(int)  # return a list of valid attributes for that object
+# print callable(int)  # return True if the object argument appears callable, False if not
+# print getattr(int, 'real')  # return the value of the named attribute
+# print hasattr(int, 'real')  # return True if the string is the name of one of the object’s attributes
+# print help()  # invoke the built-in help system - this function is intended for interactive use
 #
 #
 # NUMBERS
@@ -144,7 +148,10 @@
 # print example_dict[1]  # value for key: 1, if key is not available returns Exception
 # print example_dict.keys()  # all keys
 # print example_dict.values()  # all values
-# print example_dict.items()  # list of dict's (key, value) tuple pairs
+# print example_dict.items()  # real list of dict's (key, value) tuple pairs
+# print example_dict.iteritems()  # generator 'creating' one item at a time every time next() is called on it
+#     - items() probably takes more memory and time initially but accessing each element is fast
+#     - iteritems() probably takes less space and time initially, but a bit more time in generating each element.
 # print example_dict.copy()  # shallow copy of a dict
 # print example_dict.get(1)  # returns a value for the given key, if key is not available returns None
 # print example_dict.has_key(1)  # true if key in dict
@@ -234,6 +241,8 @@
 #
 # SIMPLE LOOPS EXAMPLES
 #
+# It is possible to use a 'for' loop through: list, dict, string etc.
+#
 # 1 example: for, break
 #
 # for letter in 'python':
@@ -273,18 +282,72 @@
 #         pass
 #         print 'this is pass block'
 #     print 'current letter :', letter
-
-
-
-
-
-
-
-
-
-
-
-
+#
+# 6 example: for, enumerate(example_list)
+#
+# example_list = ['first', 'second', 'third']
+# for index, item in enumerate(example_list, start=0):
+#     print index + 1, item
+#
+# 7 example: for, zip(list_1, list_2)
+#
+# list_1 = [3, 9, 17, 15, 19]
+# list_2 = [2, 4, 8, 10, 30, 40, 50, 60, 70, 80, 90]
+# for a, b in zip(list_1, list_2):
+#     if a > b:
+#         print a
+#     else:
+#         print b
+#
+# 8 example: for, items()
+#
+# example_dict = {1: 1, 2: 2, 3: 3, 4: 4}
+#
+# for k, v in example_dict.items():
+#     if example_dict[k] is v:
+#         print 'objects are the same'
+#     else:
+#         print 'objects are different'
+#
+# # 9 example: for, iteritems()
+#
+# example_dict = {1: 1, 2: 2, 3: 3, 4: 4}
+#
+# for k, v in example_dict.iteritems():
+#     if example_dict[k] is v:
+#         print 'objects are the same'
+#     else:
+#         print 'objects are different'
+#
+#
+# IMPORTING
+#
+# Importing order in Python:
+#   - standard library
+#   - external frameworks/tools
+#   - local modules
+#
+# import math  # imports entire library
+# print math.sqrt(25)
+#
+# from math import *  # imports entire library, not recommended because of polluting the namespace
+# print sqrt(25)
+#
+# from math import sqrt
+# print sqrt(25)
+#
+# from math import sqrt as pierwiastek
+# print pierwiastek(25)
+#
+#
+# LIST AND DICT COMPREHENSION
+#
+# evens_to_50 = [x for x in range(51) if x % 2 == 0]
+# doubles_by_3 = [x * 2 for x in range(1, 6) if (x * 2) % 3 == 0]
+# even_squares = [x ** 2 for x in range(1, 11) if x % 2 == 0]
+# cubes_by_four = [x ** 3 for x in range(1, 11) if (x ** 3) % 4 == 0]
+# threes_and_fives = [x for x in range(1, 16) if x % 3 == 0 or x % 5 == 0]
+# squares = {x: x**2 for x in [1,2,3,4,5]}
 
 
 
@@ -310,34 +373,18 @@
 # '''General build-in methods and expressions like del, sum, len, sorted, print, pprint etc, yield, range, zip'''
 # print 'To jest {0} i {1}'.format('first','second')
 # print 'To jest %s i %s' % ('first', 'second')
-# # w Pythonie 2.x. True może mieć przypisaną wartość False
+# print 'This isn\'t flying, this is falling with style!'
+# how_much = raw_input('How much whisky is he going to drink?')
+# print 'I'm %s years old. I have %s litres of whisky... I'm going to drink %s \
+# litres today!' % (my_int, my_float, how_much)
 
 
-# d = {1:'one',2:'two',3:'three'}
-#
-# # Creates a real list of tuples and returns that. Probably takes more memory and time initially but accessing
-# each element is fast
-# print 'Value : %s' %  d.items()
-#
-# # Returns a generator - object that 'creates' one item at a time every time next() is called on it. Probably takes
-# less space and time initially, but a bit more time in generating each element.
-# print 'Value : %s' %  d.iteritems()
-#
-# # In loop d.iteritems() and d.items() works the same way
-# print 'd.items():'
-# for k, v in d.items():
-#     if d[k] is v: print '\tthey are the same object'
-#     else: print '\tthey are different'
-#
-# print 'd.iteritems():'
-# for k, v in d.iteritems():
-#     if d[k] is v: print '\tthey are the same object'
-#     else: print '\tthey are different'
-#
 
-# # *args = list of arguments
-# # **kwargs = dictionary of arguments, in which keys = names of argument, values = values of argument
-# # it is used when you are not sure how many named/unnamed arguments might be passed to your function
+# w Pythonie 2.x. True może mieć przypisaną wartość False
+#
+# *args = list of arguments
+# **kwargs = dictionary of arguments, in which keys = names of argument, values = values of argument
+# it is used when you are not sure how many named/unnamed arguments might be passed to your function
 #
 # def print_everything(*args):
 #     for count, thing in enumerate(args):
@@ -350,33 +397,17 @@
 # print_everything('apple', 'banana', 'cabbage')
 # table_things(apple = 'fruit', cabbage = 'vegetable')
 #
-# # list(iterable) - is one of built-in function, which returns a list whose items are the same and in the same order
-# as iterable's items
-# print list('michal')
-#
-# # enumerate(sequence, start=0) - is one of the built-in Python functions - it returns an enumerate object
-# choices = ['pizza', 'pasta', 'salad', 'nachos']
-# print enumerate(choices) # it prints nothing interesting for you
-# print list(enumerate(choices, 2))
-# for index, item in enumerate(choices, 1):
-#     print index, item
 #
 #
 #
 #
-# # Klasy w Pythonie:
-# # - każda klasa, która nie dziedziczy po innej, powinna dziedziczyć po klasie object
-# # - nie każda klasa musi mieć metodę __init__
 #
-# # list comprehension
+# Klasy w Pythonie:
+# - każda klasa, która nie dziedziczy po innej, powinna dziedziczyć po klasie object
+# - nie każda klasa musi mieć metodę __init__
 #
-# evens_to_50 = [i for i in range(51) if i % 2 == 0]
 #
-# # dict comprehension
-#
-# squares = {x: x**2 for x in [1,2,3,4,5]}
-#
-# # zip
+# zip
 #
 # keys = ['a','b','c']
 # values = [1,2,3]
@@ -388,26 +419,15 @@
 # print dict_from_zip
 #
 #
-# # introspekcja kodu: dir, callable, getattr
+# xrange - generator - wczytuje i zwraca po jednym elemencie z listy
+# range - iterator - wczytuje od razu całą listę
+# w Pythonie 3 jest tylko xrange
 #
-# #
-# dir
-#
-# # sprawdza czy jest wywoływalne?
-# callable
-#
-# # wyciąga dany atrybut z obiektu?
-# getattr
-#
-# # xrange - generator - wczytuje i zwraca po jednym elemencie z listy
-# # range - iterator - wczytuje od razu całą listę
-# # w Pythonie 3 jest tylko xrange
-#
-# # pylint - sprawdza powielające się zmienne, ich nazwy, funkcje itp. wyświetla jakość kodu w skali 1-10,
-# # brakujące docstringi, białe znaki itp., hierarchia importów - podpowiada bo będzie bardziej czytelne
-#
-# # isort
-# # coverage
+# pylint - sprawdza powielające się zmienne, ich nazwy, funkcje itp. wyświetla jakość kodu w skali 1-10,
+# brakujące docstringi, białe znaki itp., hierarchia importów - podpowiada bo będzie bardziej czytelne
+
+# isort
+# coverage
 #
 # '''do funkcji check_letter piszemy testy'''
 #
@@ -470,9 +490,9 @@
 # '''Przy użyciu filter napisać funkcję, który z podanej listy odfiltrowuje
 # wyrazy dłuższe niż n'''
 #
-# #def filtr_2(*args):
-# #    odfiltrowane = []
-# #    for i in args:
+#def filtr_2(*args):
+#    odfiltrowane = []
+#    for i in args:
 #
 # to_100 = [i for i in range(0,101)]
 # evens_to_100 = [i for i in range(0,101) if i % 2 == 0]
@@ -480,7 +500,7 @@
 # print to_100
 # print evens_to_100
 #
-# # liste liter alfabetu
+# liste liter alfabetu
 # lista_liter = [i for i in string.ascii_lowercase]
 # print lista_liter
 #
@@ -490,16 +510,16 @@
 #
 # print slownik
 #
-# # odfiltrować krótsze niż 5
+# odfiltrować krótsze niż 5
 #
 # lista_slow = ['michalem', 'michalowi', 'ani']
 # shorts = [i for i in lista_slow if len(i) < 5]
 #
 # print shorts
 #
-# # list_c + lambda żeby kwadraty liczy od 1 do 50
+# list_c + lambda żeby kwadraty liczy od 1 do 50
 #
-# # lambdą i list comprehensions zrobić kwadraty od 1 do 50
+# lambdą i list comprehensions zrobić kwadraty od 1 do 50
 # kwadrat = lambda x: x**2
 # sqr_to_50 = [kwadrat(i) for i in range(51)]
 # print sqr_to_50
@@ -507,20 +527,20 @@
 # print map(lambda x: x**2, range(51)) # dla każdego argumentu z listy wykona się funkcja
 #
 #
-# #def squares():
-# #    x = 1
-# #    while True:
-# #        yield x
-# #        yield x ** 2
-# #        x = x + 1
-# #
-# #sq = squares()
-# #for x in range(100):
-# #   import pdb; pdb.set_track() # put pdb here ane step into functions
-# #    print 'number %s' (sq.next())
-# #    print 'number %s' (sq.next())
+# def squares():
+#     x = 1
+#     while True:
+#         yield x
+#         yield x ** 2
+#         x = x + 1
 #
-# # napisz generator zwracająćy n liczb ciągu F
+# sq = squares()
+# for x in range(100):
+#    import pdb; pdb.set_track() # put pdb here ane step into functions
+#     print 'number %s' (sq.next())
+#     print 'number %s' (sq.next())
+#
+# napisz generator zwracająćy n liczb ciągu F
 #
 # a,b = 0,1
 # def fibI():
@@ -540,11 +560,11 @@
 # parzyste = [i for i in lista if i % 2 == 0]
 # print parzyste
 #
-# #print dir(str)
-# #print getattr(str, 'upper')
-# #print callable('find')
+# print dir(str)
+# print getattr(str, 'upper')
+# print callable('find')
 #
-# # przefiltruj wywoływalne metody obiektu
+# przefiltruj wywoływalne metody obiektu
 # def atrybuty(obj):
 #     atrybuty = dir(obj)
 #     for i in atrybuty:
@@ -554,54 +574,18 @@
 #
 # atrybuty(list)
 #
-# #Testy jednostkowe i asercja
-# #
-# #import unittest
-# #
-# #class MathTest(unittest, TestCase):
-# #
-# #    def test_add(self):
-# #        self.assertEqual(2+3, 5)
-# #
-# # KLASY/METODY DO TESTOWANIA
+# Testy jednostkowe i asercja
+#
+# import unittest
+#
+# class MathTest(unittest, TestCase):
+#
+#    def test_add(self):
+#        self.assertEqual(2+3, 5)
+#
+# KLASY/METODY DO TESTOWANIA
 #
 #
-
-
-
-
-
-
-# print 'This isn\'t flying, this is falling with style!'
-# how_much = raw_input('How much whisky is he going to drink?')
-# print 'I'm %s years old. I have %s litres of whisky... I'm going to drink %s \
-# litres today!' % (my_int, my_float, how_much)
-
-
-
-
-
-
-
-# '''Importowanie'''
-# Kolejność importowania w Pythonie:
-#   - biblioteki standardowe
-#   - zewnętrzne frameworki/narzędzia
-#   - lokalnie np. moduły naszej aplikacji
-#
-# import math
-# from math import exp
-# from math import *
-# print math.sqrt(25)
-#
-# print exp(4)
-# print sqrt(16)
-#
-# you can change the name of imported function
-#
-# from time import sleep as wait
-
-
 # '''Comparators and booleans'''
 #
 # bool_1 = 3 < 5
@@ -649,186 +633,6 @@
 #       return -1
 #    else:
 #       return 0
-#
-#
-# print greater_less_equal_5(4)
-#
-#
-# def biggest_number(*args):
-#    print max(args)
-#    return max(args)
-#
-#
-# def smallest_number(*args):
-#    print min(args)
-#    return min(args)
-#
-#
-# def distance_from_zero(arg):
-#    print abs(arg)
-#    return abs(arg)
-#
-#
-# biggest_number(-10, -5, 5, 10)
-# smallest_number(-10, -5, 5, 10)
-# distance_from_zero(-10)
-#
-#
-# def hotel_cost(nights):
-#    return 140 * nights
-#
-#
-# def plane_ride_cost(city):
-#    if city == 'Charlotte':
-#       return 183
-#    elif city == 'Tampa':
-#       return 220
-#    elif city == 'Pittsburgh':
-#       return 222
-#    elif city == 'Los Angeles':
-#       return 475
-#
-#
-# def rental_car_cost(days):
-#    if days < 3:
-#       return 40 * days
-#    elif days >= 7:
-#       return 40 * days - 50
-#    elif days >= 3:
-#       return 40 * days - 20
-#
-#
-# def trip_cost(city, days, spending_money):
-#    return hotel_cost(days) + plane_ride_cost(city) + rental_car_cost(days) + spending_money
-#
-#
-# print trip_cost('Los Angeles', 5, 600)
-#
-
-
-
-
-
-
-
-
-
-
-
-# '''Dictionaries'''
-#
-# d = {'key1': 777, 'key2': 888, 'key3': [1, 4, 7, 11, 13]}
-# print d['key1']
-# d['key1'] = 'new1'
-# d['key4'] = 'new2'
-# del d['key2']
-# print d
-# print d['key3'][0]
-# print d.items()
-#
-# '''Pętla for'''
-#
-# my_list = [1, 9, 3, 8, 5, 7]
-# for number in my_list:
-#    print 2 * number
-#
-# choices = ['pizza', 'pasta', 'salad', 'nachos']
-# for index, item in enumerate(choices):
-#    print index + 1, item
-#
-# list_a = [3, 9, 17, 15, 19]
-# list_b = [2, 4, 8, 10, 30, 40, 50, 60, 70, 80, 90]
-# for a, b in zip(list_a, list_b):
-#    if a > b:
-#       print a
-#    else:
-#       print b
-#
-# grades = {
-#    'Michal': 3.5,
-#    'Piotr': 2.0,
-#    'Filip': 5.0,
-#    'Janusz': 4.5
-# }
-#
-# for key in grades:
-#    print key
-#    print grades[key]
-#
-# word = 'Programming is fun!'
-# for letter in word:
-#    if letter not in ['o', 'a', 'i', 'u', 'y', 'e']:
-#       print letter
-#
-#
-# def digit_sum(n):
-#    x = str(n)
-#    suma = 0
-#    for i in x:
-#       suma = suma + int(i)
-#    return suma
-#
-#
-# def is_prime(x):
-#    if x < 2:
-#       return False
-#    for n in range(2, x):
-#       if x % n == 0:
-#          return False
-#    else:
-#       return True
-#
-#
-# '''Pętla while'''
-#
-# loop_condition = True
-# while loop_condition:
-#    print 'I am a loop, formally'
-#    loop_condition = False
-#
-# import random
-#
-# print 'Lucky Numbers! 3 numbers will be generated.'
-# print 'If one of them is a '5', you lose!'
-# count = 0
-# while count < 3:
-#    num = random.randint(1, 6)
-#    print num
-#    if num == 5:
-#       print 'Sorry, you lose!'
-#       break
-#    count += 1
-# else:
-#    print 'You win!'
-#
-# count = 0
-# while True:
-#    print count
-#    count += 1
-#    if count >= 10:
-#       break
-#
-# guesses_left = 3
-# while guesses_left > 0:
-#    guess = int(raw_input('Your guess: '))
-#    if guess == guesses_left:
-#       print 'You win'
-#       break
-#    guesses_left = guesses_left - 1
-# else:
-#    print 'You lose'
-#
-# '''list comprehension - dobry sposób do generowania list'''
-#
-# evens_to_50 = [i for i in range(51) if i % 2 == 0]
-#
-# doubles_by_3 = [x * 2 for x in range(1, 6) if (x * 2) % 3 == 0]
-#
-# even_squares = [x ** 2 for x in range(1, 11) if x % 2 == 0]
-#
-# cubes_by_four = [x ** 3 for x in range(1, 11) if (x ** 3) % 4 == 0]
-#
-# threes_and_fives = [x for x in range(1, 16) if x % 3 == 0 or x % 5 == 0]
 #
 # '''Anonymous function - gdy użyjemy razem funkcji filter oraz lambda, funkcja
 # filter użyji lambdy, aby określić co ma filtrować z listy'''
