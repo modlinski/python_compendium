@@ -313,3 +313,7 @@ print # wypisuje pustą linię
 osoby = [w, s]
 for osoba in osoby:
     osoba.powiedz() # działa zarówno dla Wykładowców, jak i Studentów
+
+# Klasy w Pythonie:
+# - każda klasa, która nie dziedziczy po innej, powinna dziedziczyć po klasie object
+# - nie każda klasa musi mieć metodę __init__
