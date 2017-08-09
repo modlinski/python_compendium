@@ -50,6 +50,42 @@
 # print hasattr(int, 'real')  # return True if the string is the name of one of the object’s attributes
 # print help()  # invoke the built-in help system - this function is intended for interactive use
 #
+# example - filter callable methods of object:
+#
+# def callable_methods(obj):
+#     attributes = dir(obj)
+#     for attr in attributes:
+#         if callable(getattr(obj, str(attr))):
+#             print attr
+#
+# callable_methods(list)
+#
+#
+# COMPARATORS AND BOOLEANS
+#
+# Anything in parentheses () is evaluated as its own unit.
+# 'not' is evaluated first
+# 'and' is evaluated next
+# 'or' is evaluated last
+#
+# True and True is True
+# True and False is False
+# False and False is False
+# True or True is True
+# True or False is True
+# False or False is False
+# Not True is False
+# Not False is True
+#
+# bool_1 = 3 < 5
+# bool_2 = 5 < 4
+# bool_3 = 5 == 5
+# bool_4 = 5 != 2.5 * 2
+# bool_5 = 5 >= 5
+# bool_6 = (True or 7 > 6) and (not 6 ** 2 != 36) or (5 == 'Alpha')
+#
+# print bool_1, bool_2, bool_3, bool_4, bool_5, bool_6
+#
 #
 # NUMBERS
 #
@@ -239,7 +275,7 @@
 #     - identity operators (is, is not)
 #
 #
-# SIMPLE LOOPS EXAMPLES
+# IF STATEMENT AND SIMPLE LOOPS EXAMPLES
 #
 # It is possible to use a 'for' loop through: list, dict, string etc.
 #
@@ -320,7 +356,7 @@
 #         print 'objects are different'
 #
 #
-# IMPORTING
+# IMPORTS, LIBRARIES, UTILITIES
 #
 # Importing order in Python:
 #   - standard library
@@ -339,6 +375,29 @@
 # from math import sqrt as pierwiastek
 # print pierwiastek(25)
 #
+# pylint - Python tool that checks for errors in Python code, tries to enforce a coding standard and looks for code
+# smells. It can also look for certain type errors, it can recommend suggestions about how particular blocks can be
+# refactored and can offer you details about the code’s complexity. Other similar projects would include the now defunct
+# pychecker, pyflakes, flake8 and mypy. The default coding style used by Pylint is close to PEP 008.
+# (to install on Ubuntu: sudo apt-get install pylint)
+#
+# isort - Python tool to sort imports alphabetically and separate them automatically into sections. It provides a
+# command line utility, Python library and plugins for various editors to quickly sort all your imports. It is very
+# useful in Django projects, especially in views where we usually deal with a great amount of imports.
+# (to install on Ubuntu: sudo apt-get install isort)
+#
+# coverage - Python tool for measuring code coverage of Python programs. It monitors your program, noting which parts
+# of the code have been executed, then analyzes the source to identify code that could have been executed but was not.
+# Coverage measurement is typically used to gauge the effectiveness of tests. It can show which parts of your code are
+# being exercised by tests, and which are not.
+# (to install on Ubuntu: need to install the python-dev and gcc support files before installing coverage via pip)
+#
+# pdb - module that defines an interactive source code debugger for Python programs. It supports setting (conditional)
+# breakpoints and single stepping at the source line level, inspection of stack frames, source code listing, and
+# evaluation of arbitrary Python code in the context of any stack frame. It also supports post-mortem debugging and can
+# be called under program control.
+# (to install on Ubuntu: import pdb)
+#
 #
 # LIST AND DICT COMPREHENSION
 #
@@ -348,65 +407,28 @@
 # cubes_by_four = [x ** 3 for x in range(1, 11) if (x ** 3) % 4 == 0]
 # threes_and_fives = [x for x in range(1, 16) if x % 3 == 0 or x % 5 == 0]
 # squares = {x: x**2 for x in [1,2,3,4,5]}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#
-# '''General build-in methods and expressions like del, sum, len, sorted, print, pprint etc, yield, range, zip'''
-# print 'To jest {0} i {1}'.format('first','second')
-# print 'To jest %s i %s' % ('first', 'second')
-# print 'This isn\'t flying, this is falling with style!'
-# how_much = raw_input('How much whisky is he going to drink?')
-# print 'I'm %s years old. I have %s litres of whisky... I'm going to drink %s \
-# litres today!' % (my_int, my_float, how_much)
-
-
-
-# w Pythonie 2.x. True może mieć przypisaną wartość False
-#
-# *args = list of arguments
-# **kwargs = dictionary of arguments, in which keys = names of argument, values = values of argument
-# it is used when you are not sure how many named/unnamed arguments might be passed to your function
-#
-# def print_everything(*args):
-#     for count, thing in enumerate(args):
-#         print '{0}. {1}'.format(count, thing)
-#
-# def table_things(**kwargs):
-#     for name, value in kwargs.items():
-#         print '{0} = {1}'.format(name, value)
-#
-# print_everything('apple', 'banana', 'cabbage')
-# table_things(apple = 'fruit', cabbage = 'vegetable')
 #
 #
+# BUILD-IN METHODS AND GENERAL EXPRESSIONS
 #
+# example_list = ['one', 'two', 'three']
+# del example_list[0]   # del statements - removes an object
+# print example_list
 #
-#
-#
-# Klasy w Pythonie:
-# - każda klasa, która nie dziedziczy po innej, powinna dziedziczyć po klasie object
-# - nie każda klasa musi mieć metodę __init__
-#
-#
+# print sum([2, 2, 2, 2, 2], 2)  # Sums start and the items of an iterable from left to right and returns the total.
+# start defaults to 0. The iterable‘s items are normally numbers, and the start value is not allowed to be a string.
+
+
+
+
+# len
+# sorted
+# print
+# yield
+# range
+# xrange - generator - wczytuje i zwraca po jednym elemencie z listy
+# range - iterator - wczytuje od razu całą listę
+# w Pythonie 3 jest tylko xrange
 # zip
 #
 # keys = ['a','b','c']
@@ -417,17 +439,22 @@
 # for (k,v) in zip(keys, values):
 #     dict_from_zip[k] = v
 # print dict_from_zip
-#
-#
-# xrange - generator - wczytuje i zwraca po jednym elemencie z listy
-# range - iterator - wczytuje od razu całą listę
-# w Pythonie 3 jest tylko xrange
-#
-# pylint - sprawdza powielające się zmienne, ich nazwy, funkcje itp. wyświetla jakość kodu w skali 1-10,
-# brakujące docstringi, białe znaki itp., hierarchia importów - podpowiada bo będzie bardziej czytelne
+# raw_input
+# print 'To jest {0} i {1}'.format('first','second')
+# print 'To jest %s i %s' % ('first', 'second')
+# print 'This isn\'t flying, this is falling with style!'
+# print 'I'm %s years old. I have %s litres of whisky... I'm going to drink %s \
+# litres today!' % (my_int, my_float, how_much)
 
-# isort
-# coverage
+
+
+
+
+
+
+
+
+# UNIT TESTING
 #
 # '''do funkcji check_letter piszemy testy'''
 #
@@ -447,133 +474,6 @@
 # if __name__ == '__main__':
 #     unittest.main()
 #
-#
-#
-# import string
-#
-# def alfabet():
-#     litery = list(string.ascii_lowercase)
-#     for i in litery:
-#         print i
-#
-# alfabet()
-#
-# '''slicem żeby przechodzić co drugą literę'''
-# def alfabet_2():
-#     litery = list(string.ascii_lowercase)
-#     for i in range(len(litery)):
-#         if i % 2 == 0:
-#             print litery[i]
-#
-# alfabet_2()
-#
-# '''można funkcją reverse'''
-# def palindrom(a):
-#     if a == a[::-1]:
-#         print 'To jest palindrom'
-#     else:
-#         print 'To nie jest palindrom'
-#
-# palindrom('atata')
-# palindrom('tonie')
-#
-# '''można było użyć funkcji filter'''
-# def filtr(*args):
-#     odfiltrowane = []
-#     for i in args:
-#         if i not in list(string.ascii_lowercase):
-#             odfiltrowane.append(i)
-#     print odfiltrowane
-#
-# filtr('a', 'c', 2, 5)
-#
-# '''Przy użyciu filter napisać funkcję, który z podanej listy odfiltrowuje
-# wyrazy dłuższe niż n'''
-#
-#def filtr_2(*args):
-#    odfiltrowane = []
-#    for i in args:
-#
-# to_100 = [i for i in range(0,101)]
-# evens_to_100 = [i for i in range(0,101) if i % 2 == 0]
-#
-# print to_100
-# print evens_to_100
-#
-# liste liter alfabetu
-# lista_liter = [i for i in string.ascii_lowercase]
-# print lista_liter
-#
-# # slownik liter alfabetu z kluczami
-#
-# slownik = {i: ord(i) for i in string.ascii_lowercase}
-#
-# print slownik
-#
-# odfiltrować krótsze niż 5
-#
-# lista_slow = ['michalem', 'michalowi', 'ani']
-# shorts = [i for i in lista_slow if len(i) < 5]
-#
-# print shorts
-#
-# list_c + lambda żeby kwadraty liczy od 1 do 50
-#
-# lambdą i list comprehensions zrobić kwadraty od 1 do 50
-# kwadrat = lambda x: x**2
-# sqr_to_50 = [kwadrat(i) for i in range(51)]
-# print sqr_to_50
-#
-# print map(lambda x: x**2, range(51)) # dla każdego argumentu z listy wykona się funkcja
-#
-#
-# def squares():
-#     x = 1
-#     while True:
-#         yield x
-#         yield x ** 2
-#         x = x + 1
-#
-# sq = squares()
-# for x in range(100):
-#    import pdb; pdb.set_track() # put pdb here ane step into functions
-#     print 'number %s' (sq.next())
-#     print 'number %s' (sq.next())
-#
-# napisz generator zwracająćy n liczb ciągu F
-#
-# a,b = 0,1
-# def fibI():
-#     global a,b
-#     while True:
-#         yield a
-#         a,b = b, a+b  # nie można tego rozbić na 2 linijki!!!!!!
-#
-# f=fibI()
-# lista = []
-# for i in range (10):
-#     lista.append(f.next())
-# print lista
-#
-# # następnie użyj list_c aby wypisać tylko parzyste
-#
-# parzyste = [i for i in lista if i % 2 == 0]
-# print parzyste
-#
-# print dir(str)
-# print getattr(str, 'upper')
-# print callable('find')
-#
-# przefiltruj wywoływalne metody obiektu
-# def atrybuty(obj):
-#     atrybuty = dir(obj)
-#     for i in atrybuty:
-#         a = getattr(obj, str(i))
-#         if callable(a) == True:
-#             print i
-#
-# atrybuty(list)
-#
 # Testy jednostkowe i asercja
 #
 # import unittest
@@ -583,56 +483,32 @@
 #    def test_add(self):
 #        self.assertEqual(2+3, 5)
 #
-# KLASY/METODY DO TESTOWANIA
+# PYTHON TRICKS
+# w Pythonie 2.x. True może mieć przypisaną wartość False
 #
+# *args = list of arguments
+# **kwargs = dictionary of arguments, in which keys = names of argument, values = values of argument
+# it is used when you are not sure how many named/unnamed arguments might be passed to your function
 #
-# '''Comparators and booleans'''
+# def print_everything(*args):
+#     for count, thing in enumerate(args):
+#         print '{0}. {1}'.format(count, thing)
 #
-# bool_1 = 3 < 5
-# bool_2 = 5 < 4
-# bool_3 = 5 == 5
-# bool_4 = 5 != 2.5 * 2
-# bool_5 = 5 >= 5
+# def table_things(**kwargs):
+#     for name, value in kwargs.items():
+#         print '{0} = {1}'.format(name, value)
 #
-# print bool_1, bool_2, bool_3, bool_4, bool_5
+# print_everything('apple', 'banana', 'cabbage')
+# table_things(apple='fruit', cabbage='vegetable')
 #
-# '''
-# True and True is True
-# True and False is False
-# False and True is False
-# False and False is False
+# list_c + lambda żeby kwadraty liczy od 1 do 50
 #
-# True or True is True
-# True or False is True
-# False or True is True
-# False or False is False
+# lambdą i list comprehensions zrobić kwadraty od 1 do 50
+# kwadrat = lambda x: x**2
+# sqr_to_50 = [kwadrat(i) for i in range(51)]
+# print sqr_to_50
 #
-# Not True is False
-# Not False is True
-#
-# 'not' is evaluated first
-# 'and' is evaluated next
-# 'or' is evaluated last
-#
-# Parentheses () ensure your expressions are evaluated in the order you want.
-# Anything in parentheses is evaluated as its own unit.
-#
-# '''
-#
-# bool_6 = (True or 7 > 6) and (not 6 ** 2 != 36) or (5 == 'Alpha')
-#
-# print bool_6
-#
-# '''Funkcje i instrukcja warunkowa if'''
-#
-#
-# def greater_less_equal_5(answer):
-#    if answer > 5:
-#       return 1
-#    elif answer < 5:
-#       return -1
-#    else:
-#       return 0
+# print map(lambda x: x**2, range(51)) # dla każdego argumentu z listy wykona się funkcja
 #
 # '''Anonymous function - gdy użyjemy razem funkcji filter oraz lambda, funkcja
 # filter użyji lambdy, aby określić co ma filtrować z listy'''
@@ -645,3 +521,5 @@
 #
 # squares = [x ** 2 for x in range(1, 11)]
 # print filter(lambda x: 30 < x < 70, squares)
+#
+# Check orders of paragraphs, missing build-in methods and general statemens and Python tricks, list of useful libraries
