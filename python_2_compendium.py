@@ -411,24 +411,35 @@
 #
 # BUILD-IN METHODS AND GENERAL EXPRESSIONS
 #
+# to_print = raw_input('What\'s the result of 2+2: ')
+# print 'You said that the result of {0} + {1} is {2}'.format(2, 2, to_print)
+# print 'You said that the result of %s + %s is %s' % (2, 2, to_print)
+# print 'Beautiful english word list: Assemblage, Bucolic, Comely, Denouement, Ebullience, Forbearance, Gossamer, ' \
+#       'Harbinger, Ineffable, Labyrinthine, Mellifluous, Nemesis, Opulent'
 # example_list = ['one', 'two', 'three']
 # del example_list[0]   # del statements - removes an object
 # print example_list
-#
-# print sum([2, 2, 2, 2, 2], 2)  # Sums start and the items of an iterable from left to right and returns the total.
-# start defaults to 0. The iterable‘s items are normally numbers, and the start value is not allowed to be a string.
+# print sum([2, 2, 2, 2, 2], 2)  # sums value items in iterable object from start point
+# print len('string_with_25_characters')  # return the length (the number of items) of an object
+# print sorted([1, 2, 3, 4, 5])  # return a new sorted list from the items in iterable object
 
 
 
+# FINISH HERE
+# http://anandology.com/python-practice-book/iterators.html
+# https://stackoverflow.com/questions/9884132/what-exactly-are-pythons-iterator-iterable-and-iteration-protocols
 
-# len
-# sorted
-# print
+# range() creates a list, which all values are stored in memory and you can read from it item by item during iteration
+# (in Python 3 range is supported, but the type is 'range' not 'list' )
+# for num in range(2, 50, 4):
+#     print num
+# xrange() creates a generator object, that is iterator, which all values are not stored in the memory. They generate
+# the values on the fly (in Python 3 xrange is not supported)
+# for num in xrange(2, 50, 4):
+#     print num
+
 # yield
-# range
-# xrange - generator - wczytuje i zwraca po jednym elemencie z listy
-# range - iterator - wczytuje od razu całą listę
-# w Pythonie 3 jest tylko xrange
+#
 # zip
 #
 # keys = ['a','b','c']
@@ -439,12 +450,10 @@
 # for (k,v) in zip(keys, values):
 #     dict_from_zip[k] = v
 # print dict_from_zip
-# raw_input
-# print 'To jest {0} i {1}'.format('first','second')
-# print 'To jest %s i %s' % ('first', 'second')
-# print 'This isn\'t flying, this is falling with style!'
-# print 'I'm %s years old. I have %s litres of whisky... I'm going to drink %s \
-# litres today!' % (my_int, my_float, how_much)
+
+
+
+
 
 
 
