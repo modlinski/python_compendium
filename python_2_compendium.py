@@ -445,6 +445,42 @@
 #         print 'objects are different'
 #
 #
+# FUNCTIONS
+#
+# def len_string(word):
+#     word = str(word)
+#     len_str = len(word)
+#     return len_str
+#
+# def substring(word, length, letter):
+#     word = str(word)
+#     letter -= 1
+#     sub_str = word[letter:letter + length]
+#     return sub_str
+#
+# def recursive_reverse(word):  # recursive function
+#     word = str(word)
+#     if len_string(word) == 0:
+#         return ''
+#     else:
+#         a = substring(word, len_string(word) - 1, 1)
+#         b = substring(word, 1, len_string(word))
+#         return b + recursive_reverse(a)
+#
+# print(recursive_reverse('paulina'))
+#
+# def print_everything(*args):  # list of arguments
+#     for count, thing in enumerate(args):
+#         print '{0}. {1}'.format(count, thing)
+#
+# def table_things(**kwargs): # dict of arguments, in which keys = names of arguments, values = values of arguments
+#     for name, value in kwargs.items():
+#         print '{0} = {1}'.format(name, value)
+#
+# print_everything('apple', 'banana', 'cabbage')
+# table_things(apple='fruit', cabbage='vegetable')
+#
+#
 # IMPORTS, LIBRARIES, UTILITIES
 #
 # Importing order in Python:
@@ -522,7 +558,38 @@
 # keys = ['a', 'b', 'c']
 # values = [1, 2, 3]
 # print zip(keys, values)  # returns a list of tuples
-
+#
+#
+# UNIT TESTING
+#
+# import unittest
+#
+# def check_letter(word, letter):  # method to test
+#     if letter in word:
+#         return True
+#     else:
+#         return False
+#
+# class TestLetters(unittest.TestCase):
+#     def test_letter_m_in(self):
+#         x = check_letter('michal', 'm')
+#         self.assertTrue(x)
+#     def test_letter_i_in(self):
+#         x = check_letter('michal', 'i')
+#         self.assertTrue(x)
+#     def test_letter_c_in(self):
+#         x = check_letter('michal', 'c')
+#         self.assertTrue(x)
+#     def test_letter_f_not_in(self):
+#         x = check_letter('michal', 'f')
+#         self.assertFalse(x)
+#
+# class TestMath(unittest.TestCase):
+#    def test_add(self):
+#        self.assertEqual(2+3, 5)
+#
+# if __name__ == '__main__':
+#     unittest.main()
 
 
 
@@ -531,61 +598,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-# UNIT TESTING
-#
-# '''do funkcji check_letter piszemy testy'''
-#
-# import unittest
-#
-# def check_letter(word, letter):
-#     if letter in word:
-#         return True
-#     else:
-#         return False
-#
-# class Test1(unittest.TestCase):
-#     def test_letter(self):
-#         x = check_letter('michal', 'i')
-#         self.assertTrue(x)
-#
-# if __name__ == '__main__':
-#     unittest.main()
-#
-# Testy jednostkowe i asercja
-#
-# import unittest
-#
-# class MathTest(unittest, TestCase):
-#
-#    def test_add(self):
-#        self.assertEqual(2+3, 5)
-#
 # PYTHON TRICKS
 # w Pythonie 2.x. True może mieć przypisaną wartość False
 #
-# *args = list of arguments
-# **kwargs = dictionary of arguments, in which keys = names of argument, values = values of argument
-# it is used when you are not sure how many named/unnamed arguments might be passed to your function
-#
-# def print_everything(*args):
-#     for count, thing in enumerate(args):
-#         print '{0}. {1}'.format(count, thing)
-#
-# def table_things(**kwargs):
-#     for name, value in kwargs.items():
-#         print '{0} = {1}'.format(name, value)
-#
-# print_everything('apple', 'banana', 'cabbage')
-# table_things(apple='fruit', cabbage='vegetable')
+
 #
 # list_c + lambda żeby kwadraty liczy od 1 do 50
 #
