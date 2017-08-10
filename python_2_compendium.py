@@ -539,25 +539,45 @@
 # to_print = raw_input('What\'s the result of 2+2: ')
 # print 'You said that the result of {0} + {1} is {2}'.format(2, 2, to_print)
 # print 'You said that the result of %s + %s is %s' % (2, 2, to_print)
+#
 # print 'Beautiful english word list: Assemblage, Bucolic, Comely, Denouement, Ebullience, Forbearance, Gossamer, ' \
 #       'Harbinger, Ineffable, Labyrinthine, Mellifluous, Nemesis, Opulent'
+#
 # example_list = ['one', 'two', 'three']
 # del example_list[0]   # del statements - removes an object
 # print example_list
+#
 # print sum([2, 2, 2, 2, 2], 2)  # sums value items in iterable object from start point
+#
 # print len('string_with_25_characters')  # return the length (the number of items) of an object
+#
 # print sorted([1, 2, 3, 4, 5])  # return a new sorted list from the items in iterable object
+#
 # range() creates a list, which all values are stored in memory and you can read from it item by item during iteration
 # (in Python 3 range is supported, but the type is 'range' not 'list' )
 # for num in range(2, 50, 4):
 #     print num
+#
 # xrange() creates a generator object, that is iterator, which all values are not stored in the memory. They generate
 # the values on the fly (in Python 3 xrange is not supported)
 # for num in xrange(2, 50, 4):
 #     print num
+#
 # keys = ['a', 'b', 'c']
 # values = [1, 2, 3]
 # print zip(keys, values)  # returns a list of tuples
+#
+# The lambda operator/lambda function is a expression using to create small anonymous functions (which do not need to
+# bounded to a name) at runtime. These functions are throw-away functions - they are just needed where they have been
+# created. Lambda functions are mainly used in combination with the functions filter(), map() and reduce().
+#
+# def moreThanFive(element):
+#     return element > 5
+#
+# print filter(moreThanFive, range(0, 11))  # returns a list from elements of iterable for which function returns true
+# print filter(lambda x: 30 < x < 70, [x ** 2 for x in range(1, 11)])
+#
+# print map(lambda x, y: x**y, range(1, 5), range(2, 6))  # apply function to every item of iterables and return a list
 #
 #
 # UNIT TESTING
@@ -590,38 +610,8 @@
 #
 # if __name__ == '__main__':
 #     unittest.main()
-
-
-
-# FINISH HERE
-
-
-
-
+#
+#
 # PYTHON TRICKS
-# w Pythonie 2.x. True może mieć przypisaną wartość False
 #
-
-#
-# list_c + lambda żeby kwadraty liczy od 1 do 50
-#
-# lambdą i list comprehensions zrobić kwadraty od 1 do 50
-# kwadrat = lambda x: x**2
-# sqr_to_50 = [kwadrat(i) for i in range(51)]
-# print sqr_to_50
-#
-# print map(lambda x: x**2, range(51)) # dla każdego argumentu z listy wykona się funkcja
-#
-# '''Anonymous function - gdy użyjemy razem funkcji filter oraz lambda, funkcja
-# filter użyji lambdy, aby określić co ma filtrować z listy'''
-#
-# my_list = range(16)
-# print filter(lambda x: x % 3 == 0, my_list)
-#
-# languages = ['HTML', 'JavaScript', 'Python', 'Ruby']
-# print filter(lambda x: x == 'Python', languages)
-#
-# squares = [x ** 2 for x in range(1, 11)]
-# print filter(lambda x: 30 < x < 70, squares)
-#
-# Check orders of paragraphs, missing build-in methods and general statemens and Python tricks, list of useful libraries
+# False = True  # In Python 2 False can be assigned to True
