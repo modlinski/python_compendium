@@ -1,14 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Python jest językiem wspierającym różne paradygmaty programowania: obiektowy,
-imperatywny oraz w mniejszym stopniu funkcyjny. Posiada dynamiczny system typów,
-co oznacza, że zmienne nie posiadają typów przypisanych statycznie, czyli przed
-uruchomieniem programu. Typ zmiennej wynika z wartości jaką dana zmienna przechowuje.
-Jest to jeden ze sposobów na zwolnienie programisty z obowiązku deklarowania typów
-zmiennych. Ułatwia to operacje na zmiennych, utrudnia natomiast kontrolę integralności
-programu. Zmienna może w różnych momentach wykonania programu przechowywać wartości 
-różnych typów. Programowanie obiektowe polega na powiązaniu ze sobą danych oraz 
+# Python is a language supporting various programming paradigms:
+#     - object oriented programming,
+#     - imperative programming,
+#     - functional programming (to a lesser extent).
+#
+# Python is dynamically typed, which means that variables does not have types assigned statically, before program
+# execution. Type of variable is a consequence of the value that is stored by variable. It makes operations on variables
+# easier, but on the other hand makes control of the integrity harder. Variable can have different type in various
+# moments of program execution.
+#
+# Object oriented programming (OOP)
+#
+#
+
+
+
+"""Programowanie obiektowe polega na powiązaniu ze sobą danych oraz
 zachowań i zamknęciu ich w czymś, co nazywamy obiektem. Zazwyczaj wystarczy programować
 w sposób proceduralny, ale podczas pisania dużych programów wygodniej jest skorzystać
 z techniki programowania obiektowo orientowanego. Funkcje obiektów nazywane są metodami.
@@ -317,3 +326,94 @@ for osoba in osoby:
 # Klasy w Pythonie:
 # - każda klasa, która nie dziedziczy po innej, powinna dziedziczyć po klasie object
 # - nie każda klasa musi mieć metodę __init__
+
+
+# 3 kinds of methods in Python:
+#     - instance methods - default methods (self represent instance of object for which method is called)
+#     - static methods
+#     - class methods.
+
+
+class Counter(object):
+    def __init__(self, value=0):
+        self.value = value
+
+    def increment(self, add=1):
+        self.value += add
+
+    @staticmethod
+    def string_number(num):
+        return 'Staticmethod ' + str(num)
+
+    @classmethod
+    def from_other(cls, number):
+        return cls(Counter._value)
+
+print Counter.string_number(9)
+print Counter().string_number(9)
+
+
+# class A(object):
+#     def __init__(self):
+#         print "I'm class A"
+#
+# class B(object):
+#     def __init__(self):
+#         print "I'm class B"
+#
+#     def test(self):
+#         print 'B'
+#
+# class C(A, B):
+#     def __init__(self):
+#         super(C, self).__init__()
+#         B.__init__(self)
+#         print "I'm class C"
+#
+#     def test(self):
+#         super(C, self).test()
+#         print 'C'
+#
+# c = C()
+# c.test()
+
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+Pycharm would not suggest using private methods from one module in other module
+"""
+from time import sleep
+
+
+class Computer(object):
+
+    def __init__(self, name):
+        self.name = name
+
+    # private method - only for module
+    @staticmethod
+    def _power_of_2(number):
+        return number**2
+
+    # private method - only for class
+    @staticmethod
+    def __power_of_3(number):
+        return number**3
+
+    @staticmethod
+    def __power_of_4(number):
+        return number**4
+
+    def return_name(self):
+        return self.name
+
+    def full_computer_ability(self, number):
+        print 'Computer named {} will show its power!'.format(self.name)
+        sleep(2)
+        print self._power_of_2(number)
+        print self.__power_of_3(number)
+        print self.__power_of_4(number)
+
+PC = Computer('Lenovo')
+PC.full_computer_ability(5)
