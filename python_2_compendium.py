@@ -275,9 +275,91 @@
 #     - identity operators (is, is not)
 #
 #
-# IF STATEMENT AND SIMPLE LOOPS EXAMPLES
+# ITERABLE OBJECTS, ITERATORS, GENERATORS
 #
-# It is possible to use a 'for' loop through: list, dict, string etc.
+# Iterable objects - objects that can be used with a for loop (examples types: list, dict, string etc).
+# The iteration protocol - __iter__ method makes an object iterable. Behind the scenes, the built-in 'iter' function
+# calls __iter__ method on the given iterable object. The return value of __iter__ is an iterator. Iterator should have
+# a next() method and raise StopIteration when there are no more elements. Each time the next() method is called the
+# iterator returns the next element.
+#
+# class IterableObject(object):
+#     def __init__(self, n):
+#         self.n = n
+#
+#     def __iter__(self):
+#         return IterableObjectIterator(self.n)
+#
+# class IterableObjectIterator(object):
+#     def __init__(self, n):
+#         self.i = 0
+#         self.n = n
+#
+#     def __iter__(self):
+#         # Iterators are iterables too.
+#         # Adding this functions to make them so.
+#         return self
+#
+#     def next(self):
+#         if self.i < self.n:
+#             i = self.i
+#             self.i += 1
+#             return i
+#         else:
+#             raise StopIteration()
+#
+# iterable = IterableObject(5)
+#
+# print list(iterable)  # prints [0, 1, 2, 3, 4]
+# print list(iterable)  # prints [0, 1, 2, 3, 4]
+#
+# iterator = IterableObjectIterator(5)
+#
+# print list(iterator)  # prints [0, 1, 2, 3, 4]
+# print list(iterator)  # prints [] if iterable and iterator are the same object, it is consumed in a single iteration
+#
+# Generators simplifies creation of iterators. A generator is a function that produces a sequence of results instead of
+# a single value.
+#
+# def generator_object(n):
+#     i = 0
+#     while i < n:
+#         yield i
+#         i += 1
+#
+# Each time the yield statement is executed the function generates a new value.
+#
+# gen = generator_object(3)
+# print gen  # <generator object generator_object at 0x02454C10>
+# print gen.next()  # 0
+# print gen.next()  # 1
+# print gen.next()  # 2
+# print generator.next()  # StopIteration
+#
+# Generator is also an iterator. The word “generator” is sometimes confusingly used to mean both the function that
+# generates and what it generates. I will use the word “generator” to mean the generated object and “generator function”
+# to mean the function that generates it. Can you think about how it is working internally? When a generator function is
+# called, it returns a generator object without even beginning execution of the function. When next() method is called
+# for the first time, the function starts executing until it reaches yield statement. The yielded value is returned by
+# the next call. The following example demonstrates the interplay between yield and call to next() method on generator
+# object.
+#
+# def generator_function():
+#     print "begin"
+#     for i in range(3):
+#         print "before yield", i
+#         yield i
+#         print "after yield", i
+#     print "end"
+#
+# gen = generator_function()
+# print gen.next()  # begin, before yield 0, 0
+# print gen.next()  # after yield 0, before yield 1, 1
+# print gen.next()  # after yield 1, before yield 2, 2
+# print gen.next()  # after yield 2, end, StopIteration
+#
+#
+# IF STATEMENT AND SIMPLE LOOPS EXAMPLES
 #
 # 1 example: for, break
 #
@@ -335,20 +417,27 @@
 #     else:
 #         print b
 #
-# 8 example: for, items()
+# 8 example: for, zip(keys, values)
+#
+# keys = ['a', 'b', 'c']
+# values = [1, 2, 3]
+# dict_from_zip = {}
+# for (k, v) in zip(keys, values):
+#     dict_from_zip[k] = v
+# print dict_from_zip
+#
+# 9 example: for, items()
 #
 # example_dict = {1: 1, 2: 2, 3: 3, 4: 4}
-#
 # for k, v in example_dict.items():
 #     if example_dict[k] is v:
 #         print 'objects are the same'
 #     else:
 #         print 'objects are different'
 #
-# # 9 example: for, iteritems()
+# 10 example: for, iteritems()
 #
 # example_dict = {1: 1, 2: 2, 3: 3, 4: 4}
-#
 # for k, v in example_dict.iteritems():
 #     if example_dict[k] is v:
 #         print 'objects are the same'
@@ -422,13 +511,6 @@
 # print sum([2, 2, 2, 2, 2], 2)  # sums value items in iterable object from start point
 # print len('string_with_25_characters')  # return the length (the number of items) of an object
 # print sorted([1, 2, 3, 4, 5])  # return a new sorted list from the items in iterable object
-
-
-
-# FINISH HERE
-# http://anandology.com/python-practice-book/iterators.html
-# https://stackoverflow.com/questions/9884132/what-exactly-are-pythons-iterator-iterable-and-iteration-protocols
-
 # range() creates a list, which all values are stored in memory and you can read from it item by item during iteration
 # (in Python 3 range is supported, but the type is 'range' not 'list' )
 # for num in range(2, 50, 4):
@@ -437,19 +519,14 @@
 # the values on the fly (in Python 3 xrange is not supported)
 # for num in xrange(2, 50, 4):
 #     print num
+# keys = ['a', 'b', 'c']
+# values = [1, 2, 3]
+# print zip(keys, values)  # returns a list of tuples
 
-# yield
-#
-# zip
-#
-# keys = ['a','b','c']
-# values = [1,2,3]
-# print zip(keys,values)
-#
-# dict_from_zip = {}
-# for (k,v) in zip(keys, values):
-#     dict_from_zip[k] = v
-# print dict_from_zip
+
+
+
+# FINISH HERE
 
 
 
