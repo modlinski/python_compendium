@@ -65,6 +65,82 @@
 #
 # ClassWithGlobal(2).function_with_global()
 # print var
+#
+# 2 example: instance, class and static methods, instance and class variables
+#
+# class Counter(object):
+#
+#     # class variable shared by all instances, accessible only for class
+#     cls_var = 0
+#
+#     def __init__(self, ins_val=0):
+#         # instance variable unique to each instance, accessible only for instance (for all instance methods)
+#         self.ins_val = ins_val
+#
+#     # instance method, can be invoked by instance object and instance is passed as a first argument
+#     def ins_add(self, number=1):
+#         # can access instance variables, like ins_val
+#         # cannot access class variables, like cls_var (can access cls_var but in relation to specific instance)
+#         self.ins_val = self.ins_val + self.cls_var + number
+#         return self.ins_val
+#
+#     # class method, can be invoked by class name or instance object and class is passed as a first argument
+#     @classmethod
+#     def cls_add(cls, number):
+#         # can access class variables, like cls_var
+#         # cannot access instance variables, like ins_val
+#         cls.cls_var = cls.cls_var + number
+#         return cls.cls_var
+#
+#     # static method, can be invoked by class name or instance object - has no interaction with instance or class,
+#     # technically it is a common function that is only placed inside class instead of in the global namespace
+#     @staticmethod
+#     def stc_print(string):
+#         # cannot access class variables, like cls_var
+#         # cannot access instance variables, like ins_val
+#         return string
+#
+# counter_1 = Counter(0)  # first instance of Counter
+# counter_2 = Counter(0)  # second instance of Counter
+#
+# print dir(counter_1)  # contains 'cls_add', 'cls_var', 'ins_add', 'ins_val', 'stc_print'
+# print dir(counter_2)  # contains 'cls_add', 'cls_var', 'ins_add', 'ins_val', 'stc_print'
+# print dir(Counter)  # contains 'cls_add', 'cls_var', 'ins_add', 'stc_print'
+#
+# checking accessibility of cls_var
+#
+# counter_1.cls_var = 1  # change value of cls_var, but only for first instance
+# counter_2.cls_var = 1  # change value of cls_var, but only for second instance
+# Counter.cls_var = 1  # change value of cls_var for all instances
+#
+# print counter_1.cls_var  # value for first instance
+# print counter_2.cls_var  # value for second instance
+# print Counter.cls_var  # value for class
+#
+# checking accessibility of ins_val
+#
+# print counter_1.ins_val  # value for first instance
+# print counter_2.ins_val  # value for first instance
+#
+# checking accessibility of ins_add
+#
+# print counter_1.ins_add(3)  # change value of ins_val for first instance
+# print counter_2.ins_add(3)  # change value of ins_val for second instance
+# print Counter.ins_add(counter_2, 3)  # change value of ins_val for second (Counter instance as first argument)
+#
+# checking accessibility of cls_add
+#
+# print counter_1.cls_add(3)  # change value of cls_var for all instances (because cls.cls_var is returned)
+# print counter_2.cls_add(3)  # change value of cls_var for all instances (because cls.cls_var is returned)
+# print Counter.cls_add(3)  # change value of cls_var for all instances (because cls.cls_var is returned)
+#
+# checking accessibility of stc_print
+#
+# print counter_1.stc_print('static method')
+# print counter_2.stc_print('static method')
+# print Counter.stc_print('static method')
+
+
 
 
 
@@ -76,53 +152,60 @@
 
 # FINISH HERE
 # metaclass
-# @staticmethod
+
+# class ClsDef1():
+#     pass
+# C1 = ClsDef1()
+# print C1
+# print type(C1)
+# print type(ClsDef1)
+# # <__main__.ClsDef1 instance at 0x2aea518>
+#
+# class ClsDef2(object):
+#     pass
+# C2 = ClsDef2()
+# print C2
+# print type(C2)
+# print type(ClsDef2)
+# # <__main__.ClsDef2 object at 0x2ae68d0>
+
+# Short answer: In python, all objects have a type (returned by type(x)) which is also an object.
+# if 't' is a type object, then its type is the special type 'type'. So (type(type(x)) is type) is always True. In old
+# classes, a user defined 'class' is a object of the type 'classobj' - and each instance of any class is an object of
+# type 'instance'. I.e. there are two built-in types 'classobj' and 'instance' which implement classes. The linkage from
+# an instance to its class is via its __class__ member.
+# With new classes: User defined classes are actually new type objects (their type is 'type', not 'classobj') and when
+# you create instances of them, the type() of each instance is the class object. So, objects of different user-defined
+# classes now have distinct types. And classes are on basically the same footing as all builtin types; with old classes
+# there's a separate structure for instance->class and object->type, new classes use object->type for both.
+# There's much more in the docs, but that's the core of it.
 
 
-# 2 example: instance and class methods, instance and class variables
 
 
-class Counter(object):
-
-    counter_results = {}  # class variable shared by all instances, accessible only for class
-    x = 0
-
-    def __init__(self, value=0):
-        self.value = value  # instance variable unique to each instance, accessible only for instance
-
-    def increment(self, add=1):  # instance method, accessible only for instance -
-        self.value += add
-        x += 1
-        return self.value
-
-    @classmethod  # class method, accessible only for class
-    def class_number(cls, number):
-        return number
-
-counter_1 = Counter(0)
-counter_2 = Counter(0)
-counter_1.increment(3)
-counter_2.increment(3)
-counter_1
-counter_2
 
 
-# my_counter = Counter()
+# class Foo(object):
+#
+#     def __init__(self, bar):
+#         self.bar = bar
+#
+#     @staticmethod
+#     def default_foo():
+#         # static methods are often used as alternate constructors, since they don't need access to any part of the class
+#         # if the method doesn't have anything at all to do with the class just use a module level function
+#         return Foo('baz')
+#
+#     def my_method():
+#         print 'static'
+#     my_method = staticmethod(my_method)
 
-# print Counter.increment()
-# print Counter.string_number(9)
-# print Counter.class_number(5)
-# print my_counter.increment()
-# print my_counter.string_number(9)
-# print my_counter.class_number(5)
 
 
-# print Counter.class_variable
-# print Counter.class_variable
-# print Counter.class_variable
-# print my_counter.class_variable
-# print my_counter.class_variable
-# print my_counter.class_variable
+
+
+
+
 
 
 # class A(object):
