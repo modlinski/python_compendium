@@ -27,56 +27,87 @@
 #
 # Class can (but it is not obligatory) contain first methods named __init__(), which is used to initialize objects, that
 # are created by class. __init__(), like all instance methods, takes at least one argument, which refers to the created
-# object. According to the convention this argument should be named 'self' and should be the first from all arguments.
-# We can say that 'self' gives identity to the object. Next arguments (e.q. parameter_1, parameter_2) of __init__()
-# and the rest of the methods should be assigned in methods bodies to variables with prefix self (e.q. self.parameter_1,
-# self.parameter_2). It causes that during creating instance object of the class, variables will be related to the
-# created instance.
+# instance object for which method is called. According to the convention this argument should be named 'self' and
+# should be the first from all arguments. We can say that 'self' gives identity to the object. Next arguments (e.q.
+# parameter_1, parameter_2) of __init__() and the rest of the instance methods should be assigned in methods bodies to
+# variables with prefix self (e.q. self.parameter_1, self.parameter_2). It causes that during creating instance object
+# of the class, variables will be related to the created instance. More about methods and variables of Python classes
+# is in examples below.
+#
+# Inheritance is a process which allows one class to have attributes of other classes. This is a relationship like:
+# 'square is an rectangle'. All classes that do not inherit from any other class, should inherit from 'object' class.
+#
+# 1 example: global and local variables
+#
+# var = 1
+#
+# class ClassWithLocal(object):  # according to the convention the names of classes should use PascalCase convention
+#
+#     def __init__(self, num):
+#         self.num = num
+#
+#     def function_with_local(self):
+#         var = 2 * self.num  # new local var
+#         return var
+#
+# ClassWithLocal(2).function_with_local()
+# print var
+#
+# class ClassWithGlobal(object):
+#
+#     def __init__(self, num):
+#         self.num = num
+#
+#     def function_with_global(self):
+#         global var
+#         var = 2 * self.num  # changes the value of the global var
+#         return var
+#
+# ClassWithGlobal(2).function_with_global()
+# print var
+
+
+
+
+
 
 
 
 
 # FINISH HERE
-
 # metaclass
+# @staticmethod
 
 
-# According to the convention the names of classes should use PascalCase convention.
-#
-# Class attributes (fields and methods) can have different scope:
-#
-#     - variable accessible only for instance (instance variables),
-#     - variable accessible only for class (member variables),
-#     - variable accessible everywhere (global variables),
-#
-#     - method accessible only for instance (instance methods) - default methods (self represent instance of object for
-#       which method is called),
-#     - method accessible only for class (class methods),
-#     - method accessible everywhere (global variables), ???
+# 2 example: instance and class methods, instance and class variables
 
-#     - class methods. ???
-
-# Inheritance is a process which allows one class to have attributes of other classes. This is a relationship like:
-# 'square is an rectangle'. All classes that do not inherit from any other class, should inherit from 'object' class.
 
 class Counter(object):
-    def __init__(self, value=0):
-        self.value = value
 
-    # instance method
-    def increment(self, add=1):
+    counter_results = {}  # class variable shared by all instances, accessible only for class
+    x = 0
+
+    def __init__(self, value=0):
+        self.value = value  # instance variable unique to each instance, accessible only for instance
+
+    def increment(self, add=1):  # instance method, accessible only for instance -
         self.value += add
+        x += 1
         return self.value
 
-    @staticmethod
-    def string_number(num):
-        return 'Staticmethod ' + str(num)
-
-    @classmethod
+    @classmethod  # class method, accessible only for class
     def class_number(cls, number):
         return number
 
-my_counter = Counter()
+counter_1 = Counter(0)
+counter_2 = Counter(0)
+counter_1.increment(3)
+counter_2.increment(3)
+counter_1
+counter_2
+
+
+# my_counter = Counter()
 
 # print Counter.increment()
 # print Counter.string_number(9)
@@ -86,7 +117,12 @@ my_counter = Counter()
 # print my_counter.class_number(5)
 
 
-
+# print Counter.class_variable
+# print Counter.class_variable
+# print Counter.class_variable
+# print my_counter.class_variable
+# print my_counter.class_variable
+# print my_counter.class_variable
 
 
 # class A(object):
