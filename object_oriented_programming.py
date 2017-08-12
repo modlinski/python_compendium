@@ -37,36 +37,7 @@
 # Inheritance is a process which allows one class to have attributes of other classes. This is a relationship like:
 # 'square is an rectangle'. All classes that do not inherit from any other class, should inherit from 'object' class.
 #
-# 1 example: global and local variables
-#
-# var = 1
-#
-# class ClassWithLocal(object):  # according to the convention the names of classes should use PascalCase convention
-#
-#     def __init__(self, num):
-#         self.num = num
-#
-#     def function_with_local(self):
-#         var = 2 * self.num  # new local var
-#         return var
-#
-# ClassWithLocal(2).function_with_local()
-# print var
-#
-# class ClassWithGlobal(object):
-#
-#     def __init__(self, num):
-#         self.num = num
-#
-#     def function_with_global(self):
-#         global var
-#         var = 2 * self.num  # changes the value of the global var
-#         return var
-#
-# ClassWithGlobal(2).function_with_global()
-# print var
-#
-# 2 example: instance, class and static methods, instance and class variables
+# 1 example: instance, class and static methods, instance and class variables
 #
 # class Counter(object):
 #
@@ -139,6 +110,40 @@
 # print counter_1.stc_print('static method')
 # print counter_2.stc_print('static method')
 # print Counter.stc_print('static method')
+#
+# 2 example: global and local variables
+#
+# var = 1
+#
+# class ClassWithLocal(object):  # according to the convention the names of classes should use PascalCase convention
+#
+#     def __init__(self, num):
+#         self.num = num
+#
+#     def function_with_local(self):
+#         var = 2 * self.num  # new local var
+#         return var
+#
+# ClassWithLocal(2).function_with_local()
+# print var
+#
+# class ClassWithGlobal(object):
+#
+#     def __init__(self, num):
+#         self.num = num
+#
+#     def function_with_global(self):
+#         global var
+#         var = 2 * self.num  # changes the value of the global var
+#         return var
+#
+# ClassWithGlobal(2).function_with_global()
+# print var
+
+
+
+
+
 
 
 
@@ -151,34 +156,39 @@
 
 
 # FINISH HERE
-# metaclass
 
-# class ClsDef1():
-#     pass
-# C1 = ClsDef1()
-# print C1
-# print type(C1)
-# print type(ClsDef1)
-# # <__main__.ClsDef1 instance at 0x2aea518>
-#
-# class ClsDef2(object):
-#     pass
-# C2 = ClsDef2()
-# print C2
-# print type(C2)
-# print type(ClsDef2)
-# # <__main__.ClsDef2 object at 0x2ae68d0>
+class OldStyle():
+    pass
 
-# Short answer: In python, all objects have a type (returned by type(x)) which is also an object.
-# if 't' is a type object, then its type is the special type 'type'. So (type(type(x)) is type) is always True. In old
-# classes, a user defined 'class' is a object of the type 'classobj' - and each instance of any class is an object of
-# type 'instance'. I.e. there are two built-in types 'classobj' and 'instance' which implement classes. The linkage from
-# an instance to its class is via its __class__ member.
-# With new classes: User defined classes are actually new type objects (their type is 'type', not 'classobj') and when
-# you create instances of them, the type() of each instance is the class object. So, objects of different user-defined
-# classes now have distinct types. And classes are on basically the same footing as all builtin types; with old classes
-# there's a separate structure for instance->class and object->type, new classes use object->type for both.
-# There's much more in the docs, but that's the core of it.
+class NewStyle(object):
+    pass
+
+old = OldStyle()
+new = NewStyle()
+
+print type(OldStyle)  # <type 'classobj'>
+print type(old)  # <type 'instance'>
+print old  # <__main__.OldStyle instance at 0x7f211dad67a0>
+
+print type(NewStyle)  # <type 'type'> like for e.q. type(int)
+print type(new)  # <class '__main__.NewStyle'>
+print new  # <__main__.NewStyle object at 0x7f211dbc4450>
+
+# In python, all objects have a type (returned by type(x)) which is also an object.
+# if 't' is a type object, then its type is the special type 'type'. So (type(type(x)) is type) is always True.
+
+# In old classes:
+# A user defined 'class' is an object of the type 'classobj' - and each instance of any class is an object of type
+# 'instance'. In example there are two built-in types 'classobj' and 'instance' which implement classes. The linkage
+# from an instance to its class is via its __class__ member.
+
+# In new classes:
+# User defined classes are actually new type objects (their type is 'type', not 'classobj') and when you create
+# instances of them, the type() of each instance is the class object. So, objects of different user-defined classes now
+# have distinct types. And classes are on basically the same footing as all builtin types; with old classes there is a
+# separate structure for instance->class and object->type, new classes use object->type for both. There is much more in
+# the docs, but that's the core of it.
+
 
 
 
@@ -199,7 +209,6 @@
 #     def my_method():
 #         print 'static'
 #     my_method = staticmethod(my_method)
-
 
 
 
@@ -283,8 +292,8 @@
 
 
 
-
-
+# METACLASSES
+#
 # """Przykład 1. Każde konkretne zwierze ma własne imię (bo jest inicjalizowane
 # indywidualnie). Ich imiona są to instance variables. Ale każde zwierze ma dostęp
 # do member variable is_alive, bo wszystkie one są członami klasy Animal. Klasa
