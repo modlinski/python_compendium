@@ -150,7 +150,7 @@
 #
 # old = OldStyle()
 # new = NewStyle()
-
+#
 # In the old style classes (up to Python 2.1. the only available kind of class) a user defined classes are objects of
 # the type 'classobj' and each instance of any class is an object of type 'instance'.
 #
@@ -238,78 +238,34 @@
 
 # FINISH HERE
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 7 example: inheritance
-#
-# When class 2 that inherits from class 1 is initialized, __init__ method from class 1 is not invoked. If __init__ from
-# class 1 need to be invoked the following syntax shold be used:
 
-class BaseClass:
-    ilosc = 0
+class A(object):
     def __init__(self):
-        self.ilosc = 120
-    def ustaw_ilosc(self, ilosc):
-        self.ilosc = ilosc
+        print "I'm class A"
 
-
-class InheritingClass(BaseClass):
+class B(object):
     def __init__(self):
-        BaseClass.__init__(self)
-    opis = u'Pomidory krojone z bazylią'
+        print "I'm class B"
 
-p = InheritingClass()
-print p.ilosc
-print p.opis
+    def test(self):
+        print 'B'
 
+class C(A, B):
+    def __init__(self):
+        super(C, self).__init__()
+        B.__init__(self)
+        print "I'm class C"
 
+    def test(self):
+        super(C, self).test()
+        print 'C'
 
-
-
-# class A(object):
-#     def __init__(self):
-#         print "I'm class A"
-#
-# class B(object):
-#     def __init__(self):
-#         print "I'm class B"
-#
-#     def test(self):
-#         print 'B'
-#
-# class C(A, B):
-#     def __init__(self):
-#         super(C, self).__init__()
-#         B.__init__(self)
-#         print "I'm class C"
-#
-#     def test(self):
-#         super(C, self).test()
-#         print 'C'
-#
-# c = C()
-# c.test()
+c = C()
+c.test()
 
 
-#
+
 
 
 
