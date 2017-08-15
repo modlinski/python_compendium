@@ -139,17 +139,98 @@
 #
 # ClassWithGlobal(2).function_with_global()
 # print var
+#
+# 3 example: new style and old style classes
+#
+# class OldStyle():
+#     pass
+#
+# class NewStyle(object):
+#     pass
+#
+# old = OldStyle()
+# new = NewStyle()
 
-
-
-
-
-
-
-
-
-
-
+# In the old style classes (up to Python 2.1. the only available kind of class) a user defined classes are objects of
+# the type 'classobj' and each instance of any class is an object of type 'instance'.
+#
+# print type(OldStyle)  # <type 'classobj'>
+# print type(old)  # <type 'instance'>
+# print old  # <__main__.OldStyle instance at 0x7f211dad67a0>
+#
+# In the new style classes (introduced in Python 2.2 to unify the concepts of class and type) a user defined classes are
+# actually new type objects (their type is 'type', not 'classobj') and when you create instances of them, the type() of
+# each instance is the class object, so objects of different user-defined classes have distinct types and classes are on
+# basically the same footing as all builtin types.
+#
+# print type(NewStyle)  # <type 'type'> like for e.q. type(int)
+# print type(new)  # <class '__main__.NewStyle'>
+# print new  # <__main__.NewStyle object at 0x7f211dbc4450>
+#
+# With old classes there is a separate structure for instance->class and object->type and new classes use object->type
+# for both.
+#
+# 4 example: static methods
+#
+# class WithStatics(object):
+#
+#     # Static methods are often used as alternate constructors
+#     @staticmethod
+#     def default_with_statics():
+#         return WithStatics()
+#
+#     def defined_other_way():
+#         return 'defined_other_way method'
+#     defined_other_way = staticmethod(defined_other_way)
+#
+# instance = WithStatics.default_with_statics()
+# print instance.defined_other_way()
+#
+# 5 example: private methods
+#
+# Pycharm will not suggest using private methods from one module in other module.
+#
+# class Computer(object):
+#
+#     def __init__(self, name):
+#         self.name = name
+#
+#     # private method - only for module
+#     @staticmethod
+#     def _power_of_2(number):
+#         return number**2
+#
+#     # private method - only for class
+#     @staticmethod
+#     def __power_of_3(number):
+#         return number**3
+#
+#     def full_computer_ability(self, number):
+#         print 'Computer named {} will show its power!'.format(self.name)
+#         print self._power_of_2(number)
+#         print self.__power_of_3(number)
+#
+# PC = Computer('Lenovo')
+# PC.full_computer_ability(5)
+#
+# 6 example: inheritance
+#
+# class Customer(object):
+#
+#     def __init__(self, customer_id):
+#         self.customer_id = customer_id
+#
+#     def display_cart(self):
+#         print "I'm a string that stands in for the contents of your shopping cart!"
+#
+# class ReturningCustomer(Customer):
+#
+#     def display_order_history(self):
+#         print "I'm a string that stands in for your order history!"
+#
+# monty_python = ReturningCustomer("ID: 12345")
+# monty_python.display_cart()
+# monty_python.display_order_history()
 
 
 
@@ -157,37 +238,6 @@
 
 # FINISH HERE
 
-class OldStyle():
-    pass
-
-class NewStyle(object):
-    pass
-
-old = OldStyle()
-new = NewStyle()
-
-print type(OldStyle)  # <type 'classobj'>
-print type(old)  # <type 'instance'>
-print old  # <__main__.OldStyle instance at 0x7f211dad67a0>
-
-print type(NewStyle)  # <type 'type'> like for e.q. type(int)
-print type(new)  # <class '__main__.NewStyle'>
-print new  # <__main__.NewStyle object at 0x7f211dbc4450>
-
-# In python, all objects have a type (returned by type(x)) which is also an object.
-# if 't' is a type object, then its type is the special type 'type'. So (type(type(x)) is type) is always True.
-
-# In old classes:
-# A user defined 'class' is an object of the type 'classobj' - and each instance of any class is an object of type
-# 'instance'. In example there are two built-in types 'classobj' and 'instance' which implement classes. The linkage
-# from an instance to its class is via its __class__ member.
-
-# In new classes:
-# User defined classes are actually new type objects (their type is 'type', not 'classobj') and when you create
-# instances of them, the type() of each instance is the class object. So, objects of different user-defined classes now
-# have distinct types. And classes are on basically the same footing as all builtin types; with old classes there is a
-# separate structure for instance->class and object->type, new classes use object->type for both. There is much more in
-# the docs, but that's the core of it.
 
 
 
@@ -195,23 +245,40 @@ print new  # <__main__.NewStyle object at 0x7f211dbc4450>
 
 
 
-# class Foo(object):
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 7 example: inheritance
 #
-#     def __init__(self, bar):
-#         self.bar = bar
-#
-#     @staticmethod
-#     def default_foo():
-#         # static methods are often used as alternate constructors, since they don't need access to any part of the class
-#         # if the method doesn't have anything at all to do with the class just use a module level function
-#         return Foo('baz')
-#
-#     def my_method():
-#         print 'static'
-#     my_method = staticmethod(my_method)
+# When class 2 that inherits from class 1 is initialized, __init__ method from class 1 is not invoked. If __init__ from
+# class 1 need to be invoked the following syntax shold be used:
+
+class BaseClass:
+    ilosc = 0
+    def __init__(self):
+        self.ilosc = 120
+    def ustaw_ilosc(self, ilosc):
+        self.ilosc = ilosc
 
 
+class InheritingClass(BaseClass):
+    def __init__(self):
+        BaseClass.__init__(self)
+    opis = u'Pomidory krojone z bazylią'
 
+p = InheritingClass()
+print p.ilosc
+print p.opis
 
 
 
@@ -243,42 +310,6 @@ print new  # <__main__.NewStyle object at 0x7f211dbc4450>
 
 
 #
-# """
-# Pycharm would not suggest using private methods from one module in other module
-# """
-# from time import sleep
-#
-# class Computer(object):
-#
-#     def __init__(self, name):
-#         self.name = name
-#
-#     # private method - only for module
-#     @staticmethod
-#     def _power_of_2(number):
-#         return number**2
-#
-#     # private method - only for class
-#     @staticmethod
-#     def __power_of_3(number):
-#         return number**3
-#
-#     @staticmethod
-#     def __power_of_4(number):
-#         return number**4
-#
-#     def return_name(self):
-#         return self.name
-#
-#     def full_computer_ability(self, number):
-#         print 'Computer named {} will show its power!'.format(self.name)
-#         sleep(2)
-#         print self._power_of_2(number)
-#         print self.__power_of_3(number)
-#         print self.__power_of_4(number)
-#
-# PC = Computer('Lenovo')
-# PC.full_computer_ability(5)
 
 
 
@@ -288,111 +319,6 @@ print new  # <__main__.NewStyle object at 0x7f211dbc4450>
 
 
 
-
-
-
-
-# METACLASSES
-#
-# """Przykład 1. Każde konkretne zwierze ma własne imię (bo jest inicjalizowane
-# indywidualnie). Ich imiona są to instance variables. Ale każde zwierze ma dostęp
-# do member variable is_alive, bo wszystkie one są członami klasy Animal. Klasa
-# Animal dziedziczy po wbudowanej klasie object."""
-#
-#
-# class AnimalProducer(object):
-#     is_alive = True
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
-#
-# zebra = Animal("Jeffrey", 2)
-# giraffe = Animal("Bruce", 1)
-# panda = Animal("Chad", 7)
-#
-# print zebra.name, zebra.age, zebra.is_alive
-# print giraffe.name, giraffe.age, giraffe.is_alive
-# print panda.name, panda.age, panda.is_alive
-#
-# """Przykład 2."""
-#
-# class Koszyk(object):
-# 	def __init__ (self, login):
-# 		self.koszyk = []
-# 		self.login = login
-# 	def dodaj(self,obiekt):
-# 		self.koszyk.append(obiekt)
-# 	def rozmiar(self):
-# 		return len(self.koszyk)
-#
-# a = Koszyk('cyryl')
-# print a
-# a.dodaj(1)
-# a.dodaj(2)
-# a.dodaj('A')
-# a.dodaj('B')
-# a.atrybut = 3
-#
-# print a.rozmiar()
-# print Koszyk('gustaw').rozmiar()
-#
-# print a.__dict__
-# print dir(a)
-#
-# """Przykład 3. Dziedziczenie."""
-#
-# class Customer(object):
-#     """Produces objects that represent customers."""
-#     def __init__(self, customer_id):
-#         self.customer_id = customer_id
-#
-#     def display_cart(self):
-#         print "I'm a string that stands in for the contents of your shopping cart!"
-#
-# class ReturningCustomer(Customer):
-#     """For customers of the repeat variety."""
-#     def display_order_history(self):
-#         print "I'm a string that stands in for your order history!"
-#
-# monty_python = ReturningCustomer("ID: 12345")
-# monty_python.display_cart()
-# monty_python.display_order_history()
-#
-# """Przykład 4. Dziedziczenie."""
-#
-# class Produkt1(object):
-# 	ilosc = 0
-# 	def ustaw_ilosc(self, ilosc):
-# 		self.ilosc = ilosc
-#
-# class Pomidor1(Produkt1):
-# 	opis = u'Pomidory krojone z bazylią'
-#
-# p = Pomidor1()
-# p.ustaw_ilosc(80)
-# print p.ilosc
-# print p.opis
-#
-# """Przykład 5 - należy pamiętać, że podczas inicjalizowania instancji klasy
-# pochodnej nie jest wywoływana metoda __init__ klasy bazowej. Jeżeli musimy
-# wykonać tę metodę wystarczy skorzystać ze składni pokazanej poniżej."""
-#
-# class Produkt2:
-# 	ilosc = 0
-# 	def __init__(self):
-# 		self.ilosc = 120
-# 	def ustaw_ilosc(self, ilosc):
-# 		self.ilosc = ilosc
-#
-# class Pomidor2(Produkt2):
-# 	def __init__(self):
-# 		Produkt2.__init__(self)
-# 	opis = u'Pomidory krojone z bazylią'
-#
-# p = Pomidor2()
-# print p.ilosc
-# print p.opis
-#
 # """Przykład 6 - ukrywanie danych. Domyślnie wszystkie atrybuty są "publiczne" i
 # dostępne są bez ograniczeń. Czasami, np. w przypadku dziedziczenia, może dojść
 # do konfliktu nazw. By temu zaradzić wszystkie nazwy atrybutów zaczynających się
@@ -417,15 +343,6 @@ print new  # <__main__.NewStyle object at 0x7f211dbc4450>
 # print p._Produkt3__ilosc
 # print p.ilosc
 # print p.opis
-#
-# """Przykład 7. Wszystkie definicje są typu "ClassType", a wszystkie instancje
-# "InstanceType". Aby sprawdzić przynależność obiektu do jakiejś klasy można użyć
-# funkcji isinstance(obiekt,klasa), która zwróci wartość True jeżeli "obiekt" należy
-# do "klasy". Funkcja issubclass(A,B) zwróci wartość True, jeżeli klasa A jest
-# podklasą klasy B."""
-#
-# print isinstance(p,Pomidor3)
-# print issubclass(Pomidor3,Produkt2)
 #
 # """Przykład 8. Przeważanie/nadpisywanie (override) - czasami chcemy nie tylko
 # przejąć przez klasę pochodną od klasy podstawowej jakieś atrybuty, ale również
@@ -517,47 +434,3 @@ print new  # <__main__.NewStyle object at 0x7f211dbc4450>
 # my_point = Point3D(1, 2, 3)
 #
 # print my_point
-#
-# """Przykład 12. Mały program napisany klasami"""
-#
-# class SchoolMember:
-#     '''Reprezentuje człowieka związanego z uczelnią.'''
-#     def __init__(self, imie, wiek):
-#         self.imie = imie
-#         self.wiek = wiek
-#         print '(Inicjalizacja SchoolMember: %s)' % self.imie
-#
-#     def powiedz(self):
-#         '''Opowiedz o sobie.'''
-#         print u'Imię:"%s" Wiek:"%s"' % (self.imie, self.wiek),
-#
-# class Wykladowca(SchoolMember):
-#     '''Reprezentuje wykładowcę.'''
-#     def __init__(self, imie, wiek, pensja):
-#         SchoolMember.__init__(self, imie, wiek)
-#         self.pensja = pensja
-#         print '(Inicjalizacja Wykladowcy: %s)' % self.imie
-#
-#     def powiedz(self):
-#         SchoolMember.powiedz(self)
-#         print 'Pensja: "%d"' % self.pensja
-#
-# class Student(SchoolMember):
-#     '''Reprezentuje studenta.'''
-#     def __init__(self, imie, wiek, oceny):
-#         SchoolMember.__init__(self, imie, wiek)
-#         self.oceny = oceny
-#         print '(Inicjalizacja Studenta: %s)' % self.imie
-#
-#     def powiedz(self):
-#         SchoolMember.powiedz(self)
-#         print 'Oceny: "%d"' % self.oceny
-#
-# w = Wykladowca('Mrs. Shrividya', 40, 30000)
-# s = Student('Swaroop', 25, 75)
-#
-# print # wypisuje pustą linię
-#
-# osoby = [w, s]
-# for osoba in osoby:
-#     osoba.powiedz() # działa zarówno dla Wykładowców, jak i Studentów
