@@ -231,160 +231,59 @@
 # monty_python = ReturningCustomer("ID: 12345")
 # monty_python.display_cart()
 # monty_python.display_order_history()
-
-
-
-
-
-# FINISH HERE
-
-# 7 example: inheritance
-
-class A(object):
-    def __init__(self):
-        print "I'm class A"
-
-class B(object):
-    def __init__(self):
-        print "I'm class B"
-
-    def test(self):
-        print 'B'
-
-class C(A, B):
-    def __init__(self):
-        super(C, self).__init__()
-        B.__init__(self)
-        print "I'm class C"
-
-    def test(self):
-        super(C, self).test()
-        print 'C'
-
-c = C()
-c.test()
-
-
-
-
-
-
-
-
-
-
-
-
-# """Przykład 6 - ukrywanie danych. Domyślnie wszystkie atrybuty są "publiczne" i
-# dostępne są bez ograniczeń. Czasami, np. w przypadku dziedziczenia, może dojść
-# do konfliktu nazw. By temu zaradzić wszystkie nazwy atrybutów zaczynających się
-# od "__" przekształcane są na nowe nazwy o postaci: _NazwaKlasy__NazwaAtrybutu.
-# W przykładzie atrybut "ilosc" występuje w obu klasach i zastosowanie "__"
-# uchroniło nas przed nadpisaniem atrybutu/wartości z klasy bazowej."""
 #
-# class Produkt3:
-# 	__ilosc = 0
-# 	def __init__(self):
-# 		self.__ilosc = 120
-# 	def ustaw_ilosc(self, ilosc):
-# 		self.__ilosc = ilosc
+# 7 example: inheritance and private attributes
 #
-# class Pomidor3(Produkt3):
-# 	def __init__(self):
-# 		Produkt3.__init__(self)
-# 		self.ilosc = 10
-# 	opis = u'Pomidory krojone z bazylią'
+# To avoid naming conflict, if attributes of parent and child classes have the same names, '__' is used. All attributes
+# names which starts with '__' are translated to new names '_ClassName__AttributeName'.
 #
-# p = Pomidor3()
-# print p._Produkt3__ilosc
-# print p.ilosc
-# print p.opis
+# class Parent(object):
 #
-# """Przykład 8. Przeważanie/nadpisywanie (override) - czasami chcemy nie tylko
-# przejąć przez klasę pochodną od klasy podstawowej jakieś atrybuty, ale również
-# nadpisać je. Na przykład ElectricCar jest bardziej wyspecjalizowaną klasą niż Car,
-# więc możemy dać ElectricCar jego własną metodę drive_car(), która będzie inna niż
-# oryginalna metoda klasy Car."""
+#     amount = 0
 #
-# class Car(object):
-#     condition = "new"
-#     def __init__(self, model, color, mpg):
-#         self.model = model
-#         self.color = color
-#         self.mpg = mpg
-#     def display_car(self):
-#         return "This is a %s %s with %s MPG." % (self.color, self.model, self.mpg)
-#     def drive_car(self):
-#         self.condition = "used"
+#     def __init__(self):
+#         self.__amount = 120
 #
-# my_car = Car("DeLorean", "silver", 88)
-# print my_car.condition
-# my_car.drive_car()
-# print my_car.condition
+# class Child(Parent):
 #
-# class ElectricCar(Car):
-#     def __init__(self, model, color, mpg, battery_type):
-#         self.model = model
-#         self.color = color
-#         self.mpg = mpg
-#         self.battery_type = battery_type
-#     def drive_car(self):
-#         self.condition = "like new"
+#     def __init__(self):
+#         super(Child, self).__init__()
+#         self.__amount = 10
 #
-# my_car = ElectricCar("Audi", "Green", 99, "molten salt")
-# print my_car.condition
-# my_car.drive_car()
-# print my_car.condition
+# p = Child()
+# print p._Parent__amount  # Pycharm does not recognize it, but is printed
+# print p._Child__amount  # Pycharm does not recognize it, but is printed
 #
-# """Przykład 9. Przeważanie/nadpisywanie (override)"""
+# 8 example: overriding
 #
 # class Employee(object):
+#
 #     def __init__(self, name):
 #         self.name = name
+#
 #     def greet(self, other):
 #         print "Hello, %s" % other.name
 #
 # class CEO(Employee):
+#
 #     def greet(self, other):
 #         print "Get back to work, %s!" % other.name
 #
 # ceo = CEO("Emily")
 # emp = Employee("Steve")
-# emp.greet(ceo)
-# ceo.greet(emp)
+# emp.greet(ceo)  # Hello, Emily
+# ceo.greet(emp)  # Get back to work, Steve!
 #
-# """Przykład 10. Przeważanie/nadpisywanie (override)"""
-#
-# class Employee(object):
-#     """Models real-life employees!"""
-#     def __init__(self, employee_name):
-#         self.employee_name = employee_name
-#
-#     def calculate_wage(self, hours):
-#         self.hours = hours
-#         return hours * 20.00
-#
-# class PartTimeEmployee(Employee):
-#     def calculate_wage(self, hours):
-#         self.hours = hours
-#         return hours * 12.00
-#     def full_time_wage(self, hours):
-#         return super(PartTimeEmployee, self).calculate_wage(hours)
-#
-# milton = PartTimeEmployee("Michal")
-# print milton.full_time_wage(10)
-#
-# """Przykład 11. Jedną z użytycznych metod specjalnych jest wbudowana metoda
-# __repr__(). Poprzez zapewnienie tej metodzie wartości zwrotnej, możemy powiedziecieć
-# Pythonowi jak reprezentować dany object naszej klasy (na przykład, gdy używamy
-# komendy print)"""
+# 9 example: __repr__ method
 #
 # class Point3D(object):
+#
 #     def __init__(self, x, y, z):
 #         self.x = x
 #         self.y = y
 #         self.z = z
-#     def __repr__(self):
+#
+#     def __repr__(self):  # return a string containing a printable representation of an object
 #         return "(%d, %d, %d)" % (self.x, self.y, self.z)
 #
 # my_point = Point3D(1, 2, 3)
