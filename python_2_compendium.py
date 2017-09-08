@@ -450,6 +450,18 @@
 #     else:
 #         print 'objects are different'
 #
+# 11 example: if, elif, else
+#
+# num = 5
+# if num > 2:
+#     print 'first if'
+# elif num > 3:
+#     print 'elif'
+# if num > 4:
+#     print 'second if'
+# else:
+#     print 'else'
+#
 #
 # FUNCTIONS
 #
@@ -660,10 +672,6 @@
 
 
 
-
-
-
-# if
 # property() - to object oriented programming
 # __import__()
 # vars()
