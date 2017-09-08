@@ -48,10 +48,6 @@
 # print callable(int)  # return True if the object argument appears callable, False if not
 # print hasattr(int, 'real')  # return True if the string is the name of one of the object’s attributes
 # print getattr(int, 'real')  # return the value of the named attribute
-# print help()  # invoke the built-in help system - this function is intended for interactive use
-# print globals()  # return a dictionary representing the current global symbol table.
-# print locals()  # update and return a dictionary representing the current local symbol table
-# print issubclass(str, basestring)  # return true if class is a subclass (direct, indirect or virtual) of classinfo
 #
 # example - filter callable methods of object:
 #
@@ -64,6 +60,9 @@
 # callable_methods(list)
 #
 # print help()  # invoke the built-in help system - this function is intended for interactive use
+# print globals()  # return a dictionary representing the current global symbol table.
+# print locals()  # update and return a dictionary representing the current local symbol table
+# print issubclass(str, basestring)  # return true if class is a subclass (direct, indirect or virtual) of classinfo
 # print isinstance('example', basestring)  # basestring is the superclass for str and unicode
 #
 #
