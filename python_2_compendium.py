@@ -606,6 +606,12 @@
 # for byte in bytearray('example_string'):  # return a new array of bytes
 #     print byte
 #
+# print unicode(97)  # return the Unicode string version of object
+# print type(unicode(97))
+#
+# print unichr(97)  # return the Unicode string of one character whose Unicode code is the integer i
+# print type(unichr(97))
+#
 # print chr(97)  # return a string of one character whose ASCII code is the integer i
 #
 # print ord('a')  # return an integer representing the Unicode code point of the character
@@ -632,6 +638,8 @@
 #     return reduce(lambda x, y: x * y, numbers)
 #
 # print product([1, 2, 3, 4, 5])
+#
+# print(vars(str))  # return __dict__ attribute for a module, class, instance, or any object with a __dict__ attribute
 #
 #
 # UNIT TESTING
@@ -669,11 +677,3 @@
 # PYTHON TRICKS
 #
 # False = True  # In Python 2 False can be assigned to True
-
-
-
-# property() - to object oriented programming
-# __import__()
-# vars()
-# unicode()
-# unichr()
