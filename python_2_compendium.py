@@ -46,8 +46,8 @@
 # print id(int)  # return the “identity” of an object that is unique and constant for this object during its lifetime
 # print dir(int)  # return a list of valid attributes for that object
 # print callable(int)  # return True if the object argument appears callable, False if not
-# print getattr(int, 'real')  # return the value of the named attribute
 # print hasattr(int, 'real')  # return True if the string is the name of one of the object’s attributes
+# print getattr(int, 'real')  # return the value of the named attribute
 # print help()  # invoke the built-in help system - this function is intended for interactive use
 # print globals()  # return a dictionary representing the current global symbol table.
 # print locals()  # update and return a dictionary representing the current local symbol table
@@ -62,6 +62,9 @@
 #             print attr
 #
 # callable_methods(list)
+#
+# print help()  # invoke the built-in help system - this function is intended for interactive use
+# print isinstance('example', basestring)  # basestring is the superclass for str and unicode
 #
 #
 # COMPARATORS AND BOOLEANS
@@ -247,6 +250,7 @@
 # print long('5500')  # converts x to a long integer
 # print float(7)  # converts x to a floating-point number
 # print complex('1+2j')  # creates a complex number
+# print bin(1000)  # converts an x to a binary string e.q. '0b1111101000'
 # print str(now)  # converts x to a string representation - computes a string containing the value of now
 # print repr(now)  # converts x to an expression string - returns the code needed to rebuild now object with eval()
 # print eval('1 + 4')  # interprets a string as code and evaluates it
@@ -582,6 +586,42 @@
 #
 # print map(lambda x, y: x**y, range(1, 5), range(2, 6))  # apply function to every item of iterables and return a list
 #
+# print all([1, 2, 3, 0])  # return True if all elements of the iterable are true (or if the iterable is empty)
+#
+# print any([0, 0, 0, 1])  # return True if any element of the iterable is true. If the iterable is empty, return False
+#
+# print bool([1])  # return a Boolean value, x is converted using the standard truth testing procedure
+#
+# for byte in bytearray('example_string'):  # return a new array of bytes
+#     print byte
+#
+# print chr(97)  # return a string of one character whose ASCII code is the integer i
+#
+# print ord('a')  # return an integer representing the Unicode code point of the character
+#
+# class Foobar(object):
+#     att_1 = 'exist'
+#
+# print Foobar.att_1
+#
+# delattr(Foobar, 'att_1')  # equivalent to del Foobar.att_1
+#
+# print Foobar.att_1  # AttributeError: type object 'Foobar' has no attribute 'att_1'
+#
+# print hash('michal')  # return the hash value of the object (if it has one)
+#
+# print input()  # equivalent to eval(raw_input(prompt))
+#
+# print iter([1, 2, 3, 4, 5, 6])  # return an iterator object
+#
+# for i in reversed([1, 2, 3, 4, 5]):  # return a reverse iterator
+#     print i
+#
+# def product(numbers):  # reduce apply function of two arguments cumulatively to the items of iterable, from the left
+#     return reduce(lambda x, y: x * y, numbers)
+#
+# print product([1, 2, 3, 4, 5])
+#
 #
 # UNIT TESTING
 #
@@ -618,3 +658,15 @@
 # PYTHON TRICKS
 #
 # False = True  # In Python 2 False can be assigned to True
+
+
+
+
+
+
+# if
+# property() - to object oriented programming
+# __import__()
+# vars()
+# unicode()
+# unichr()
