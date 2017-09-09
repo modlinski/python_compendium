@@ -677,3 +677,48 @@
 # PYTHON TRICKS
 #
 # False = True  # In Python 2 False can be assigned to True
+#
+# print "oblivion"[::-1]  # reversing a string in Python
+#
+# mat = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+# print zip(*mat)  # transposing a matrix
+#
+# x, y, z = [1, 2, 3]  # store all three values of the list in 3 new variables
+# print x, y, z
+#
+# a = 7
+# b = 2
+# b, a = a, b  # swap two numbers with one line of code
+# print a, b
+#
+# nums = [0, 1, 2, 3, 4, 5]
+# last_three = slice(-3, None)  # naming slices (slice(start, end, step))
+# print nums[last_three]
+#
+# a = [1, 2, 3]
+# b = ['a', 'b', 'c']
+# zipped = zip(a, b)  # zipping iterables by zip()
+# unzipped = zip(*zipped)  # unzipping iterables by *
+# print zipped
+# print unzipped
+#
+# letters = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+# print zip(letters.values(), letters.keys())
+# inverted = dict(zip(letters.values(), letters.keys()))  # inverting a dictionary from a list of tuples using zip
+# print inverted
+#
+# a = [[1, 2], [3, 4], [5, 6]]
+# print sum(a, [])  # flattening list using sum() with start parameter equal to [], not default 0
+# print [x for l in a for x in l]  # flattening list using list comprehension
+# flatten = []  # flattening list using loop - compare syntax with code above
+# for l in a:
+#     for x in l:
+#         flatten.append(x)
+# print flatten
+# a = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
+# def flatten(to_flat):  # flattening list using recursive function - can flat all kind of nested list
+#     if type(to_flat) is list:
+#         return [y for l in to_flat for y in flatten(l)]
+#     else:
+#         return [to_flat]
+# print flatten(a)
