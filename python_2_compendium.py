@@ -703,8 +703,13 @@
 # print unzipped
 #
 # letters = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+# print letters.values(), letters.keys()
 # print zip(letters.values(), letters.keys())
-# inverted = dict(zip(letters.values(), letters.keys()))  # inverting a dictionary from a list of tuples using zip
+# inverted = dict(zip(letters.values(), letters.keys()))  # inverting a dictionary using zip
+# print inverted
+#
+# letters = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+# inverted = {v: k for k, v in letters.items()}  # inverting a dictionary using dit comprehension
 # print inverted
 #
 # a = [[1, 2], [3, 4], [5, 6]]
