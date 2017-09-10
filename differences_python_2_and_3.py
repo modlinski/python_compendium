@@ -34,7 +34,7 @@
 # print('Hello, World!')
 # print("some text,", end="")
 # print(' print more text on the same line')
-# print 'Hello, World!'  # invalid syntax
+# print 'Hello, World!'  # SyntaxError: invalid syntax
 #
 # 3. Integer division
 #
@@ -72,7 +72,7 @@
 # print(' has', type(b' bytes for storing data'))
 # print('and Python', python_version(), end="")
 # print(' also has', type(bytearray(b'bytearrays')))
-# 'note that we cannot add a string' + b'bytes for data'
+# 'note that we cannot add a string' + b'bytes for data'  # TypeError: Can't convert 'bytes' object to str implicitly
 #
 # 5. xrange and range
 #
@@ -133,9 +133,12 @@
 #
 # print('Python', python_version())
 # my_generator = (letter for letter in 'abcdefg')
-# print next(my_generator)
+# print(next(my_generator))
+# print(my_generator.next())  # AttributeError: 'generator' object has no attribute 'next'
 #
 # 9. For-loop variables and the global namespace leak
+#
+# In Python 3 for-loop variables do not leak into the global namespace anymore.
 #
 # Python 2
 #
@@ -165,9 +168,9 @@
 # Python 3
 #
 # print('Python', python_version())
-# print("[1, 2] > 'foo' = ", [1, 2] > 'foo')
-# print("(1, 2) > 'foo' = ", (1, 2) > 'foo')
-# print("[1, 2] > (1, 2) = ", [1, 2] > (1, 2))
+# print("[1, 2] > 'foo' = ", [1, 2] > 'foo')  # TypeError: unorderable types: list() > str()
+# print("(1, 2) > 'foo' = ", (1, 2) > 'foo')  # TypeError: unorderable types: tuple() > str()
+# print("[1, 2] > (1, 2) = ", [1, 2] > (1, 2))  # TypeError: unorderable types: list() > tuple()
 #
 # 11. Parsing user inputs via input()
 #
@@ -190,35 +193,37 @@
 # Python 2
 #
 # print 'Python', python_version()
-# print type(range(3))
-# print type(zip([1, 2], [3, 4]))
-# print type(map(lambda x: x**2, [1, 2, 3, 4, 5]))
-# print type(filter(lambda x: 30 < x < 70, [x ** 2 for x in range(1, 11)]))
-# print type({1: 'a'}.keys())
-# print type({1: 'a'}.values())
-# print type({1: 'a'}.items())
+# print type(range(3))  # <type 'list'>
+# print type(zip([1, 2], [3, 4]))  # <type 'list'>
+# print type(map(lambda x: x**2, [1, 2, 3, 4, 5]))  # <type 'list'>
+# print type(filter(lambda x: 30 < x < 70, [x ** 2 for x in range(1, 11)]))  # <type 'list'>
+# print type({1: 'a'}.keys())  # <type 'list'>
+# print type({1: 'a'}.values())  # <type 'list'>
+# print type({1: 'a'}.items())  # <type 'list'>
 #
 # Python 3
 #
 # print('Python', python_version())
-# print(type(range(3)))
-# print(type(zip([1, 2], [3, 4])))
-# print(type(map(lambda x: x**2, [1, 2, 3, 4, 5])))
-# print(type(filter(lambda x: 30 < x < 70, [x ** 2 for x in range(1, 11)])))
-# print(type({1: 'a'}.keys()))
-# print(type({1: 'a'}.values()))
-# print(type({1: 'a'}.items()))
+# print(type(range(3)))  # <class 'range'>
+# print(type(zip([1, 2], [3, 4])))  # <class 'zip'>
+# print(type(map(lambda x: x**2, [1, 2, 3, 4, 5])))  # <class 'map'>
+# print(type(filter(lambda x: 30 < x < 70, [x ** 2 for x in range(1, 11)])))  # <class 'filter'>
+# print(type({1: 'a'}.keys()))  # <class 'dict_keys'>
+# print(type({1: 'a'}.values()))  # <class 'dict_values'>
+# print(type({1: 'a'}.items()))  # <class 'dict_items'>
 #
 # 13. Banker’s Rounding
+#
+# In Python 3 decimals are rounded to the nearest even number.
 #
 # Python 2
 #
 # print 'Python', python_version()
-# print round(15.5)
-# print round(16.5)
+# print round(15.5)  # 16.0
+# print round(16.5)  # 17.0
 #
 # Python 3
 #
 # print('Python', python_version())
-# print(round(15.5))
-# print(round(16.5))
+# print(round(15.5))  # 16
+# print(round(16.5))  # 16
