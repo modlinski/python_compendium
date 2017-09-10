@@ -476,6 +476,10 @@
 #     sub_str = word[letter:letter + length]
 #     return sub_str
 #
+# import sys
+# print sys.getrecursionlimit()  # default recursion limit in Python 1000
+# sys.setrecursionlimit(1500)  # recursion limit can be changed
+#
 # def recursive_reverse(word):  # recursive function
 #     word = str(word)
 #     if len_string(word) == 0:
