@@ -776,3 +776,32 @@
 #
 # print [1, 2, 3] == [1, 2, 3]
 # print [1, 2, 3] is [1, 2, 3]
+#
+# An augmented assignment expression like x += 1 can be rewritten as x = x + 1 to achieve a similar, but not exactly
+# equal effect. In the augmented version, x is only evaluated once. Also, when possible, the actual operation is
+# performed in-place, meaning that rather than creating a new object and assigning that to the target, the old object is
+# modified instead. It has no implication for integers or float as they are immutable, but for most mutable containers
+# there is a difference between x += 1 and x = x + 1. For example if you have multiple variables all referring to the
+# same list:
+#
+# x = []
+# y = x
+# x += [1]  # the interpreter treats it like x = x.__iadd__([1]); it extends an existing list
+# print id(x), x
+# print id(y), y
+# x = x + [1]  # the interpreter treats it like x = x.__add__([1]); it returns a new list
+# print id(x), x
+# print id(y), y
+#
+# __iadd__ can be much more efficient because it does not necessarily need to make a copy of x
+#
+# import dis  # The dis module supports the analysis of CPython bytecode by disassembling it
+#
+# def test1(x):
+#     x = x + 1
+#
+# def test2(x):
+#     x += 1
+#
+# print dis.dis(test1)
+# print dis.dis(test2)
