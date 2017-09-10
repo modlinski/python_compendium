@@ -1,6 +1,6 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
-# from platform import python_version
+from platform import python_version
 
 # 1. The __future__ module
 #
@@ -41,18 +41,18 @@
 # Python 2
 #
 # print 'Python', python_version()
-# print '3 / 2 =', 3 / 2
-# print '3 // 2 =', 3 // 2
-# print '3 / 2.0 =', 3 / 2.0
-# print '3 // 2.0 =', 3 // 2.0
+# print '3 / 2 =', 3 / 2  # = 1
+# print '3 // 2 =', 3 // 2  # = 1
+# print '3 / 2.0 =', 3 / 2.0  # = 1.5
+# print '3 // 2.0 =', 3 // 2.0  # = 1.0
 #
 # Python 3
 #
 # print('Python', python_version())
-# print('3 / 2 =', 3 / 2)
-# print('3 // 2 =', 3 // 2)
-# print('3 / 2.0 =', 3 / 2.0)
-# print('3 // 2.0 =', 3 // 2.0)
+# print('3 / 2 =', 3 / 2)  # = 1.5
+# print('3 // 2 =', 3 // 2)  # = 1
+# print('3 / 2.0 =', 3 / 2.0)  # = 1.5
+# print('3 // 2.0 =', 3 // 2.0)  # = 1.0
 #
 # 4. Unicode
 #
