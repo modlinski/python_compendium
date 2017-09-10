@@ -717,7 +717,7 @@
 #     unittest.main()
 #
 #
-# PYTHON TRICKS
+# PYTHON TRICKS AND TIPS
 #
 # False = True  # In Python 2 False can be assigned to True
 #
@@ -770,3 +770,9 @@
 #     else:
 #         return [to_flat]
 # print flatten(a)
+#
+# The "==" operator compares by checking for equality. The "is" operator, however, compares identities.
+# Python uses the same object instance for numbers from -1 to 256
+#
+# print [1, 2, 3] == [1, 2, 3]
+# print [1, 2, 3] is [1, 2, 3]
