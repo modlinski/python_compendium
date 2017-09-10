@@ -585,7 +585,44 @@
 # xrange() is generally faster than range() and needs less memory. range() is generally slower than xrange() and needs
 # more memory (to create array of integers). range() can be better if you iterate multiple times over the same range of
 # values, because xrange has to generate an integer object every time you access an index, whereas range is a static
-# list and the integers are already "there" to use.
+# list and the integers are already "there" to use. Examples:
+#
+# from time import time
+#
+# n = 1000
+# lst = range(n)
+# gen = xrange(n)
+#
+# def test_range(n):
+#     for _ in range(n*n):
+#         pass
+#
+# def test_xrange(n):
+#     for _ in xrange(n*n):
+#         pass
+#
+# def test_range_read_from_list(n):
+#     for i in xrange(n):
+#         for _ in lst:
+#             pass
+#
+# def test_xrange_generate_integer(n):
+#     for i in xrange(n):
+#         for _ in gen:
+#             pass
+#
+# start = time()
+# test_range(n)
+# print "Time of execution for test_range(n): ", time() - start
+# start = time()
+# test_xrange(n)
+# print "Time of execution for test_xrange(n): ", time() - start
+# start = time()
+# test_range_read_from_list(n)
+# print "Time of execution for test_range_read_from_list(n): ", time() - start
+# start = time()
+# test_xrange_generate_integer(n)
+# print "Time of execution for test_xrange_generate_integer(n): ", time() - start
 #
 # keys = ['a', 'b', 'c']
 # values = [1, 2, 3]
