@@ -186,7 +186,7 @@ from platform import python_version
 #
 # print('Python', python_version())
 # my_input = input('enter a number: ')  # enter 123
-# print type(my_input)  # <class 'str'>
+# print(type(my_input))  # <class 'str'>
 #
 # 12. Returning iterable objects instead of lists
 #
