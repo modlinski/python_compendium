@@ -822,3 +822,8 @@
 # for j in num_lis_2:  # we iterate over deep copy of the original list
 #     del num_lis[-1]  # modify the original list
 #     print j
+#
+# def power(fun, x):  # passing function as parameter
+#     return fun(x)
+#
+# print power(lambda x: x * x, 3)
