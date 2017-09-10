@@ -809,3 +809,16 @@
 #
 # print dis.dis(test1)
 # print dis.dis(test2)
+#
+# from copy import deepcopy
+#
+# num_lis = [1, 2, 3, 4, 5, 6, 7, 8]
+# num_lis_2 = deepcopy(num_lis)
+#
+# for i in num_lis:
+#     del num_lis[-1]  # modify the list over which we iterate
+#     print i
+#
+# for j in num_lis_2:  # we iterate over deep copy of the original list
+#     del num_lis[-1]  # modify the original list
+#     print j
