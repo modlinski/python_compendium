@@ -1,6 +1,6 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
-from platform import python_version
+# from platform import python_version
 
 # 1. The __future__ module
 #
@@ -129,7 +129,7 @@ from platform import python_version
 # print next(my_generator)
 # print my_generator.next()
 #
-# # Python 3
+# Python 3
 #
 # print('Python', python_version())
 # my_generator = (letter for letter in 'abcdefg')
@@ -178,6 +178,7 @@ from platform import python_version
 # print type(my_input)  # <type 'int'>
 # my_raw_input = raw_input('enter a number: ')  # enter 123
 # print type(my_raw_input)  # <type 'str'>
+#
 # Python 3
 #
 # print('Python', python_version())
