@@ -177,7 +177,7 @@ from platform import python_version
 # Python 2
 #
 # print 'Python', python_version()
-#  my_input = input('enter a number: ')  # enter 123
+# my_input = input('enter a number: ')  # enter 123
 # print type(my_input)  # <type 'int'>
 # my_raw_input = raw_input('enter a number: ')  # enter 123
 # print type(my_raw_input)  # <type 'str'>
