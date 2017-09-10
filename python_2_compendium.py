@@ -571,15 +571,21 @@
 #
 # print sorted([1, 2, 3, 4, 5])  # return a new sorted list from the items in iterable object
 #
-# range() creates a list, which all values are stored in memory and you can read from it item by item during iteration
-# (in Python 3 range is supported, but the type is 'range' not 'list' )
+# range() creates a list object <type 'list'>, which all values are stored in memory and you can read from it item by
+# item during iteration (in Python 3 range is supported, but the type of it is 'range' not 'list' and it is implemented
+# like 'xrange' in Python 2)
 # for num in range(2, 50, 4):
 #     print num
 #
-# xrange() creates a generator object, that is iterator, which all values are not stored in the memory. They generate
-# the values on the fly (in Python 3 xrange is not supported)
+# xrange() creates a generator object <type 'xrange'>, that is an iterator, which all values are not stored in the
+# memory. They generate the values on the fly (in Python 3 xrange is not supported)
 # for num in xrange(2, 50, 4):
 #     print num
+#
+# xrange() is generally faster than range() and needs less memory. range() is generally slower than xrange() and needs
+# more memory (to create array of integers). range() can be better if you iterate multiple times over the same range of
+# values, because xrange has to generate an integer object every time you access an index, whereas range is a static
+# list and the integers are already "there" to use.
 #
 # keys = ['a', 'b', 'c']
 # values = [1, 2, 3]
