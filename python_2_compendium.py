@@ -827,3 +827,12 @@
 #     return fun(x)
 #
 # print power(lambda x: x * x, 3)
+#
+# '__main__' is the name of the scope in which top-level code executes. A module’s __name__ is set equal to '__main__'
+# when read from standard input, a script, or from an interactive prompt. When the file is imported by another module,
+# __name__ is set to the module's name. A module can discover whether or not it is running in the main scope by checking
+# its own __name__, which allows a common idiom for conditionally executing code in a module when it is run as a script
+# or with python -m but not when it is imported. So if file is imported the following 'print' will be not executed:
+#
+# if __name__ == "__main__":
+#     print __name__
