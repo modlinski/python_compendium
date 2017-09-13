@@ -721,6 +721,68 @@
 #     unittest.main()
 #
 #
+# BUILT-IN EXCEPTIONS
+#
+# Built-in exceptions that are only used as base classes for other exceptions:
+#
+# BaseException - the base for all built-in exceptions. It is not meant to be directly inherited by user-defined classes
+# Exception - all user-defined exceptions should be derived from this class
+# StandardError, ArithmeticError, BufferError, LookupError, EnvironmentError
+#
+# Built-in exceptions that are actually raised:
+#
+# SyntaxError - also known as parsing errors
+# AssertionError - raised when an assert statement fails
+# AttributeError, GeneratorExit, IOError, ImportError, IndexError, KeyError, KeyboardInterrupt, MemoryError, NameError,
+# NotImplementedError, OverflowError, ReferenceError, RuntimeError, StopIteration, IndentationError, SystemError,
+# SystemExit, TypeError, UnicodeError, ValueError, ZeroDivisionError
+#
+# Built-in exceptions that are used as warning categories (all are used as base class for warnings:
+#
+# Warning, UserWarning, DeprecationWarning, PendingDeprecationWarning, SyntaxWarning, RuntimeWarning, FutureWarning,
+# ImportWarning, UnicodeWarning
+#
+# Examples:
+# print 10 * (1/0)  # ZeroDivisionError: integer division or modulo by zero
+# print 4 + spam*3  # NameError: name 'spam' is not defined
+# print '2' + 2  # TypeError: cannot concatenate 'str' and 'int' objects
+#
+#
+# HANDLING AND RAISING EXCEPTIONS, USER-DEFINED EXCEPTIONS
+#
+# It is possible to write programs that handle selected exceptions.
+#
+# while True:
+#     try:
+#         x = int(raw_input("Please enter a number: "))
+#         break
+#     # if ValueError or MemoryError occur during execution of the try clause, the rest of the clause is skipped and the
+#     # except clause is executed, and then execution continues after the try statement
+#     except (ValueError, MemoryError):  # parentheses are required
+#         print "Oops!  That was no valid number.  Try again..."
+#
+# sys module provides access to some variables used or maintained by the interpreter and to functions that interact
+# strongly with the interpreter. It is always available.
+# import sys
+#
+# try:
+#     f = open('myfile.txt')
+#     s = f.readline()
+#     i = int(s.strip())
+# # except IOError, e:  # old syntax supported for backwards compatibility
+# except IOError as e:  # modern Python syntax
+#     # attributes of super class EnvironmentError: errno (error number) and strerror (associated error message)
+#     print "I/O error({0}): {1}".format(e.errno, e.strerror)
+# except ValueError:
+#     print "Could not convert data to an integer."
+# # the last except clause may omit the exception name(s), to serve as a wildcard;
+# # it can also be used to print an error message and then re-raise the exception;
+# # this syntax is not recommended since it is easy to mask a real programming error in this way
+# except:
+#     print "Unexpected error:", sys.exc_info()[0]
+#     raise
+#
+#
 # PYTHON TRICKS AND TIPS
 #
 # False = True  # In Python 2 False can be assigned to True
