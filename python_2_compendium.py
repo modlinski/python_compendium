@@ -1017,3 +1017,34 @@
 #
 # if __name__ == "__main__":
 #     print __name__
+#
+# mutable default arguments
+#
+# def append_to(element, to=[]):  # works like append_to_list_before
+#     to.append(element)
+#     return to
+#
+# to = []
+# def append_to_list_before(element):
+#     to.append(element)
+#     return to
+#
+# def append_to_list_inside(element):
+#     to = []
+#     to.append(element)
+#     return to
+#
+# my_list = append_to(12)
+# print my_list  # [12]
+# my_other_list = append_to(42)
+# print my_other_list  # [12, 42]
+#
+# my_list = append_to_list_before(12)
+# print my_list  # [12]
+# my_other_list = append_to_list_before(42)
+# print my_other_list  # [12, 42]
+#
+# my_list = append_to_list_inside(12)
+# print my_list  # [12]
+# my_other_list = append_to_list_inside(42)
+# print my_other_list  # [42]
