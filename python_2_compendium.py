@@ -782,6 +782,49 @@
 #     print "Unexpected error:", sys.exc_info()[0]
 #     raise
 #
+# try:
+#     f = open('myfile.txt')
+#     s = f.readline()
+#     i = int(s.strip())
+# except IOError as e:
+#     print "I/O error({0}): {1}".format(e.errno, e.strerror)
+# except ValueError:
+#     print "Could not convert data to an integer."
+# # else clause will be executed if the try clause does not raise an exception
+# else:
+#     print i
+#     f.close()
+#
+# When an exception occurs, it may have an associated value (exception’s argument). The except clause may specify a
+# variable after the exception name (or tuple). The variable is bound to an exception instance with the arguments stored
+# in instance.args. For convenience, the exception instance defines __str__() so the arguments can be printed directly
+# without having to reference .args.
+#
+# try:
+#     raise Exception('spam', 'eggs')
+# except Exception as inst:
+#     print type(inst.args)  # <type 'tuple'>
+#     print type(inst)  # the exception instance: <type 'exceptions.Exception'>
+#     print inst.args  # arguments stored in .args: ('spam', 'eggs')
+#     print inst  # __str__ allows args to be printed directly: ('spam', 'eggs')
+#     x, y = inst.args
+#     print 'x =', x
+#     print 'y =', y
+#
+# The raise statement allows the programmer to force a specified exception to occur. The sole argument to raise must be
+# either an exception instance or an exception class:
+#
+# raise NameError('HiThere')
+#
+# If you need to determine whether an exception was raised but don’t intend to handle it, a simpler form of the raise
+# statement allows you to re-raise the exception:
+#
+# try:
+#     raise NameError('HiThere')
+# except NameError:
+#     print 'An exception flew by!'
+#     raise
+#
 #
 # PYTHON TRICKS AND TIPS
 #
