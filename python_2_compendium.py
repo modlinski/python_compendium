@@ -846,37 +846,60 @@
 # In a module that can raise several distinct errors, a common practice is to create a base class for exceptions defined
 # by that module, and subclass that to create specific exception classes for different error conditions.
 #
-class Error(Exception):
-    """Base class for exceptions in this module."""
-    pass
-
-class InputError(Error):
-    """Exception raised for errors in the input.
-
-    Attributes:
-        expr -- input expression in which the error occurred
-        msg  -- explanation of the error
-    """
-
-    def __init__(self, expr, msg):
-        self.expr = expr
-        self.msg = msg
-
-class TransitionError(Error):
-    """Raised when an operation attempts a state transition that's not
-    allowed.
-
-    Attributes:
-        prv -- state at beginning of transition
-        nxt -- attempted new state
-        msg  -- explanation of why the specific transition is not allowed
-    """
-
-    def __init__(self, prv, nxt, msg):
-        self.prv = prv
-        self.nxt = nxt
-        self.msg = msg
-
+# class Error(Exception):
+#     """Base class for exceptions in this module."""
+#     pass
+#
+# class TransitionError(Error):
+#     """Raised when an operation attempts a state transition that's not
+#     allowed.
+#
+#     Attributes:
+#         prv -- state at beginning of transition
+#         nxt -- attempted new state
+#         msg  -- explanation of why the specific transition is not allowed
+#     """
+#
+#     def __init__(self, prv, nxt, msg):
+#         self.prv = prv
+#         self.nxt = nxt
+#         self.msg = msg
+#
+# try:
+#     raise TransitionError(0, 2, "Transition from 0 state not allowed!")
+# except TransitionError as error:
+#     print 'A New Exception occurred: ', error.msg
+#
+# The try statement has another optional clause which is intended to define clean-up actions that must be executed under
+# all circumstances.
+#
+# try:
+#     raise KeyboardInterrupt
+# finally:
+#     print 'Clean-up action'
+#
+# finally clause is always executed before leaving the try statement, whether an exception has occurred or not. When an
+# exception has occurred in the try clause and has not been handled by an except clause (or it has occurred in an except
+# or else clause), it is re-raised after the finally clause has been executed. The finally clause is also executed “on
+# the way out” when any other clause of the try statement is left via a break, continue or return statement. A more
+# complicated example (having except and finally clauses in the same try statement works as of Python 2.5):
+#
+# def divide(x, y):
+#     try:
+#         result = x / y
+#     # except TypeError:  # uncomment to cause unhandled exception
+#     except ZeroDivisionError:
+#         # print 1 / 0  # uncomment to cause exception in except clause
+#         print "division by zero!"
+#     else:
+#         # print 1 / 0  # uncomment to cause exception in else clause
+#         print "result is", result
+#         # return
+#     finally:
+#         print "executing finally clause"
+#
+# divide(4, 0)
+# divide(4, 2)
 #
 #
 # PYTHON TRICKS AND TIPS
