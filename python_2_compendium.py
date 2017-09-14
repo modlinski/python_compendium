@@ -825,6 +825,61 @@
 #     print 'An exception flew by!'
 #     raise
 #
+# Programs may name their own exceptions by creating a new exception class. Exceptions should typically be derived
+# from the Exception class, either directly or indirectly.
+#
+# class MyError(Exception):
+#
+#     # The default __init__() of Exception has been overridden. The new behavior simply creates the value attribute.
+#     # This replaces the default behavior of creating the args attribute.
+#     def __init__(self, value):
+#         self.value = value
+#
+#     def __str__(self):
+#         return repr(self.value)
+#
+# try:
+#     raise MyError(2*2)
+# except MyError as e:
+#     print 'My exception occurred, value:', e.value
+#
+# In a module that can raise several distinct errors, a common practice is to create a base class for exceptions defined
+# by that module, and subclass that to create specific exception classes for different error conditions.
+#
+class Error(Exception):
+    """Base class for exceptions in this module."""
+    pass
+
+class InputError(Error):
+    """Exception raised for errors in the input.
+
+    Attributes:
+        expr -- input expression in which the error occurred
+        msg  -- explanation of the error
+    """
+
+    def __init__(self, expr, msg):
+        self.expr = expr
+        self.msg = msg
+
+class TransitionError(Error):
+    """Raised when an operation attempts a state transition that's not
+    allowed.
+
+    Attributes:
+        prev -- state at beginning of transition
+        next -- attempted new state
+        msg  -- explanation of why the specific transition is not allowed
+    """
+
+    def __init__(self, prev, next, msg):
+        self.prev = prev
+        self.next = next
+        self.msg = msg
+
+
+
+#
 #
 # PYTHON TRICKS AND TIPS
 #
