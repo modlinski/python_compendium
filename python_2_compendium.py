@@ -878,11 +878,11 @@
 # finally:
 #     print 'Clean-up action'
 #
-# finally clause is always executed before leaving the try statement, whether an exception has occurred or not. When an
-# exception has occurred in the try clause and has not been handled by an except clause (or it has occurred in an except
-# or else clause), it is re-raised after the finally clause has been executed. The finally clause is also executed “on
-# the way out” when any other clause of the try statement is left via a break, continue or return statement. A more
-# complicated example (having except and finally clauses in the same try statement works as of Python 2.5):
+# The finally clause is always executed before leaving the try statement, whether an exception has occurred or not. When
+# an exception has occurred in the try clause and has not been handled by an except clause (or it has occurred in an
+# except or else clause), it is re-raised after the finally clause has been executed. The finally clause is also
+# executed “on the way out” when any other clause of the try statement is left via a break/continue/return statement. As
+# you can see, in a more complicated example below, the finally clause is executed in any event:
 #
 # def divide(x, y):
 #     try:
