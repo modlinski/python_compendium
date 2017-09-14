@@ -462,6 +462,19 @@
 # else:
 #     print 'else'
 #
+# 12 example: for, else
+#
+# container = [1, 2, 3, 4, 5, 6, 7]  # container to execute else clause
+# container = [1, 2, 3, 0, 5, 6, 7]  # container to not execute else clause
+#
+# for item in container:
+#     if item == 0:
+#         print "Finds zero!"
+#         break
+# The else clause executes when the loop completes normally. This means that the loop did not encounter any break.
+# else:
+#     print "Didn't find anything..."
+#
 #
 # FUNCTIONS
 #
