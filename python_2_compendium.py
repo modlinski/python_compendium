@@ -210,7 +210,7 @@
 # print {'ineffable', 'ineffable', 'aquiver', 'nefarious'}  # returns a set of elements
 # print set(['ineffable', 'ineffable', 'aquiver', 'nefarious'])  # returns a set of elements
 # print set('ineffable')  # returns a set of elements
-# print(frozenset('sonorous'))  # # returns a frozenset of elements
+# print(frozenset('sonorous'))  # returns a frozenset of elements
 #
 # list_to_convert = ['A', 'B', 'C', 'D', 'A']
 # set_from_list = set(list_to_convert)
