@@ -1018,9 +1018,17 @@
 # if __name__ == "__main__":
 #     print __name__
 #
-# mutable default arguments
+# Python’s default arguments are evaluated once when the function is defined, not each time the function is called (like
+#  it is in say, Ruby). This means that if you use a mutable default argument and mutate it, you will and have mutated
+# that object for all future calls to the function as well.
 #
 # def append_to(element, to=[]):  # works like append_to_list_before
+#     to.append(element)
+#     return to
+#
+# def append_to(element, to=None):  # works like append_to_list_inside
+#     if to is None:
+#         to = []
 #     to.append(element)
 #     return to
 #
@@ -1037,7 +1045,7 @@
 # my_list = append_to(12)
 # print my_list  # [12]
 # my_other_list = append_to(42)
-# print my_other_list  # [12, 42]
+# print my_other_list  # [12, 42] or [42]
 #
 # my_list = append_to_list_before(12)
 # print my_list  # [12]
