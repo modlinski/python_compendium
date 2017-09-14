@@ -867,17 +867,15 @@ class TransitionError(Error):
     allowed.
 
     Attributes:
-        prev -- state at beginning of transition
-        next -- attempted new state
+        prv -- state at beginning of transition
+        nxt -- attempted new state
         msg  -- explanation of why the specific transition is not allowed
     """
 
-    def __init__(self, prev, next, msg):
-        self.prev = prev
-        self.next = next
+    def __init__(self, prv, nxt, msg):
+        self.prv = prv
+        self.nxt = nxt
         self.msg = msg
-
-
 
 #
 #
