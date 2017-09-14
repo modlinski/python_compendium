@@ -1058,6 +1058,10 @@
 # my_other_list = append_to_list_inside(42)
 # print my_other_list  # [42]
 #
+# Late binding closures - another common source of confusion is the way Python binds its variables in closures (or in
+# the surrounding global scope). Python’s closures are late binding. This means that the values of variables used in
+# closures are looked up at the time the inner function is called.
+#
 # def create_multipliers_with_lambda():
 #     return [lambda x: i * x for i in range(5)]
 #
@@ -1069,7 +1073,11 @@
 #         multipliers.append(multiplier)
 #     return multipliers
 #
-# you can create a closure that binds immediately to its arguments by using a default arg
+# Here, in create_multipliers_with_lambda or create_multipliers_without_lambda methods, whenever any of the returned
+# functions are called, the value of i is looked up in the surrounding scope at call time. By then, the loop has
+# completed and i is left with its final value of 4.
+#
+# to change the behaviour you can create a closure that binds immediately to its arguments by using a default arg
 # def create_multipliers_default_arg():
 #     return [lambda x, i=i: i * x for i in range(5)]
 #
@@ -1081,13 +1089,14 @@
 # def create_multipliers_partial_mul():
 #     return [partial(mul, i) for i in range(5)]
 #
-# print create_multipliers_with_lambda()
-# print create_multipliers_without_lambda()
-# print create_multipliers_default_arg()
-# print create_multipliers_partial_mul()
-#
 # for multiplier in create_multipliers_with_lambda():
 #     print multiplier(2)
 #
 # for multiplier in create_multipliers_without_lambda():
+#     print multiplier(2)
+#
+# for multiplier in create_multipliers_default_arg():
+#     print multiplier(2)
+#
+# for multiplier in create_multipliers_partial_mul():
 #     print multiplier(2)
