@@ -1026,6 +1026,7 @@
 #     to.append(element)
 #     return to
 #
+# Create a new object each time the function is called, by using a default arg to signal that no argument was provided.
 # def append_to(element, to=None):  # works like append_to_list_inside
 #     if to is None:
 #         to = []
@@ -1056,3 +1057,37 @@
 # print my_list  # [12]
 # my_other_list = append_to_list_inside(42)
 # print my_other_list  # [42]
+#
+# def create_multipliers_with_lambda():
+#     return [lambda x: i * x for i in range(5)]
+#
+# def create_multipliers_without_lambda():
+#     multipliers = []
+#     for i in range(5):
+#         def multiplier(x):
+#             return i * x
+#         multipliers.append(multiplier)
+#     return multipliers
+#
+# you can create a closure that binds immediately to its arguments by using a default arg
+# def create_multipliers_default_arg():
+#     return [lambda x, i=i: i * x for i in range(5)]
+#
+# Alternatively, you can use the functools.partial function
+#
+# from functools import partial
+# from operator import mul
+#
+# def create_multipliers_partial_mul():
+#     return [partial(mul, i) for i in range(5)]
+#
+# print create_multipliers_with_lambda()
+# print create_multipliers_without_lambda()
+# print create_multipliers_default_arg()
+# print create_multipliers_partial_mul()
+#
+# for multiplier in create_multipliers_with_lambda():
+#     print multiplier(2)
+#
+# for multiplier in create_multipliers_without_lambda():
+#     print multiplier(2)
