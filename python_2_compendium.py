@@ -1079,10 +1079,9 @@
 #
 # to change the behaviour you can create a closure that binds immediately to its arguments by using a default arg
 # def create_multipliers_default_arg():
-#     return [lambda x, i=i: i * x for i in range(5)]
+#     return [lambda x, n=i: n * x for i in range(5)]
 #
-# Alternatively, you can use the functools.partial function
-#
+# alternatively, you can use the functools.partial function
 # from functools import partial
 # from operator import mul
 #
