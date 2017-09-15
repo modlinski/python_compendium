@@ -1194,3 +1194,15 @@
 #
 # change_global()
 # print global_var  # prints 2
+#
+# There are some differences between Python 2 and 3 in namespaces rules. It is worth noticing that In Python 2 the list
+# comprehensions do not create a variable scope (while generators and dict comprehensions do). Instead they leak the
+# value in the function or the global scope. In Python 3 the loop variable is created in a new scope.
+#
+# i = 0
+# list_scope = [i for i in range(5)]
+# print(i)  # in Python 2 prints 4, in Python 3 prints 0
+#
+# j = 0
+# dict_scope = {j: str(j) for j in range(5)}
+# print(j)  # prints 0
