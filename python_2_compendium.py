@@ -1206,3 +1206,95 @@
 # j = 0
 # dict_scope = {j: str(j) for j in range(5)}
 # print(j)  # prints 0
+#
+# READING AND WRITING FILES
+#
+# Python provides basic functions and methods necessary to manipulate files. You can do most of the file manipulation
+# using a file object. Before you can read or write a file, you have to open it using Python's built-in open() function.
+# This function creates a file object, which would be utilized to call other support methods associated with it.
+#
+# f = open('file_name', 'w+')
+# f = open('file_name.txt', 'w+')
+#
+# The first argument is a string containing the file name. The second argument defines access mode in which the file has
+# to be opened - this is optional parameter and the default file access mode is read (r). Available modes:
+#
+# - 'r' - opens a file for reading only. The file pointer is placed at the beginning of the file.
+# - 'r+' - opens a file for both reading and writing. The file pointer placed at the beginning of the file.
+# - 'w' - opens a file for writing only. Overwrites the file if the file exists. If the file does not exist, creates a
+# new file for writing.
+# - 'w+' - opens a file for both writing and reading. Overwrites the existing file if the file exists. If the file does
+# not exist, creates a new file for reading and writing.
+# -'a' - opens a file for appending. The file pointer is at the end of the file if the file exists. That is, the file is
+# - in the append mode. If the file does not exist, it creates a new file for writing.
+# - 'a+' - opens a file for both appending and reading. The file pointer is at the end of the file if the file exists.
+# The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
+#
+# The file object attributes:
+#
+# print f.closed  # returns true if file is closed, false otherwise
+# print f.mode  # returns access mode with which file was opened
+# print f.name  # returns name of the file
+#
+# write() method - writes any string to an open file. It is important to note that Python strings can have binary data
+# and not just text. The write() method does not add a newline character ('\n') to the end of the string.
+#
+# read() method - reads a string from an open file. It is important to note that Python strings can have binary data.
+# apart from text data. Note also, that when you write a file at first, a then you read a file, the line you begin
+# reading from is the line when you finished writing.
+#
+# close() method - closes file and frees up any system resources taken up by the opened file. After calling close()
+# any attempt to use the file object will automatically fail. Python automatically closes a file when the reference
+# object of a file is reassigned to another file. It is a good practice to use the close() method explicitly.
+#
+# tell() method - returns an integer giving the file object’s current position in the file, measured in bytes from the
+# beginning of the file.
+#
+# seek(offset, from_what) - changes the file object’s position. The position is computed by adding an offset to a
+# reference point. The reference point is selected by the from_what argument. A from_what value of 0 measures from the
+# beginning of the file (it is default value if from_what is omitted), 1 uses the current file position, and 2 uses the
+# end of the file as the reference point.
+#
+# f = open('file_name', 'w+')
+# f.write('This is the 1 line\nThis is the 2 line - before empty line\n\nThis is the 4 line - after empty line')
+# f.seek(0)  # to read from the beginning of the file
+# f.seek(8, 0)  # to read from the 8th position of he file
+# f.seek(-8, 2)  # to read from the 8th position before the end
+# print f.tell()
+# print f.read()
+# f.close()
+# print f.read()  # ValueError: I/O operation on closed file
+#
+# Different kinds of reading file content:
+#
+# f = open('file_name', 'w+')
+# f.write('This is the 1 line\nThis is the 2 line - before empty line\n\nThis is the 4 line - after empty line')
+# f.seek(0)
+# print "line 1:  " + f.readline()  # returns first line of file
+# print "line 2:  " + f.readline()  # returns second line of file
+# print "line 3:  " + f.readline()  # returns third line of file
+# print "line 4:  " + f.readline()  # returns fourth line of file
+# f.close()
+#
+# f = open('file_name', 'w+')
+# f.write('This is the 1 line\nThis is the 2 line - before empty line\n\nThis is the 4 line - after empty line')
+# f.seek(0)
+# print list(f)
+#
+# f = open('file_name', 'w+')
+# f.write('This is the 1 line\nThis is the 2 line - before empty line\n\nThis is the 4 line - after empty line')
+# f.seek(0)
+# for line in f:
+#     print line
+#
+# Context manager - it is a good practice to use the with keyword when dealing with file objects. This has the advantage
+# that the file is properly closed after its suite finishes, even if an exception is raised on the way. It is also much
+# shorter than writing equivalent try-finally blocks.
+#
+# with open('file_name', 'w+') as f:
+#     f.write('This is the 1 line\nThis is the 2 line - before empty line\n\nThis is the 4 line - after empty line')
+#     f.seek(0)
+#     read_data = f.read()
+#     print read_data
+#     print f.closed  # returns False
+# print f.closed  # returns True
