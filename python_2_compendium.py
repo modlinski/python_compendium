@@ -1125,15 +1125,21 @@
 #
 # For loop or if statement have not their own namespace.
 #
+# global_var = 0
 # class ScopeClass(object):
-#     class_var = 1
+#     # this will not affect global_var, but will create a new variable in inner scope
+#     global_var = global_var + 1
 #     def scope_method(self):
 #         def_var = 2
 #         for _ in range(10):
 #             loop_var = 3
+#             break
 #         else:
 #             loop_var = 6
-#         print class_var, def_var, loop_var  # can access def_var, loop_var
+#         print global_var, self.global_var  # prints 0, 1
+#         print def_var, loop_var  # prints 2, 3
+#
+# ScopeClass().scope_method()
 #
 # def scope_function():
 #     x = 4
@@ -1144,3 +1150,47 @@
 #     inside_function()  # prints 5
 #
 # scope_function()
+#
+# Variables in scopes other than the local function's variables can be accessed, but can't be rebound to new parameters
+# without further syntax. Instead, assignment will create a new local variable instead of affecting the variable in the
+# parent scope. For example:
+#
+# global_var_1 = []
+# global_var_2 = 1
+#
+# def scope_function():
+#
+#     # this will affect global_var_1 and will not create a new variable in inner scope
+#     global_var_1.append(4)
+#     print global_var_1  # prints [4]
+#
+#     # this will not affect global_var_2, but will create a new variable in inner scope
+#     global_var_2 = 2  # shadow name 'global_var_2' from outer scope
+#     print global_var_2  # prints 2
+#
+#     local_var_1 = 4
+#     def inside_function():
+#         # this will not affect local_var_1, but will create a new variable in inner scope
+#         local_var_1 = 5  # shadow name 'local_var_1' from outer scope
+#         print local_var_1
+#
+#     inside_function()  # prints 5
+#     print local_var_1  # prints 4
+#
+# scope_function()
+# print global_var_1  # prints [4]
+# print global_var_2  # prints 1
+#
+# In order to actually modify the bindings of global variables from within a function scope, you need to specify that
+# the variable is global with the global keyword. Currently there is no way to do the same for variables in enclosing
+# function scopes, but Python 3 introduces a new keyword, "nonlocal" which will act in a similar way to global, but for
+# nested function scopes.
+#
+# global_var = 1
+#
+# def change_global():
+#     global global_var
+#     global_var = global_var + 1
+#
+# change_global()
+# print global_var  # prints 2
