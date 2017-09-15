@@ -1112,3 +1112,35 @@
 #
 # for multiplier in create_multipliers_partial_mul():
 #     print multiplier(2)
+#
+# LEGB is a set of rules for Python scope resolution. These rules are specific to variable names, not attributes. If you
+# reference it without a period, these rules apply:
+#
+# L, Local - names assigned in any way within a function (def or lambda), and not declared global in that function.
+# E, Enclosing-function locals - name in the local scope of any and all statically enclosing functions (def or lambda),
+# from inner to outer.
+# G, Global (module) - names assigned at the top-level of a module file, or by executing a global statement in a def
+# within the file.
+# B, Built-in (Python) - names preassigned in the built-in names module, like e.q.: open, range, list etc.
+#
+# For loop or if statement have not their own namespace.
+#
+# class ScopeClass(object):
+#     class_var = 1
+#     def scope_method(self):
+#         def_var = 2
+#         for _ in range(10):
+#             loop_var = 3
+#         else:
+#             loop_var = 6
+#         print class_var, def_var, loop_var  # can access def_var, loop_var
+#
+# def scope_function():
+#     x = 4
+#     def inside_function():
+#         print x  # accesses x from scope_function scope
+#     inside_function()  # prints 4
+#     x = 5
+#     inside_function()  # prints 5
+#
+# scope_function()
