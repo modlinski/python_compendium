@@ -1404,5 +1404,5 @@
 # python3 -V  # prints version of Python3
 # quit()  # raises the SystemExit; this function should only be used in the interpreter
 # print quit  # prints "use quit() or Ctrl-D (i.e. EOF) to exit"
-# exit()  #
+# exit()  # alias for quit()
 # print exit  # prints "use quit() or Ctrl-D (i.e. EOF) to exit"
