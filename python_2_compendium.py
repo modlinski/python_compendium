@@ -915,6 +915,20 @@
 # divide(4, 2)
 #
 #
+# WORK WITH PYTHON USING TERMINAL
+#
+# python  # starts Python 2
+# python2  # starts Python 2
+# python3  # starts Python 3
+# python -V  # prints version of Python2
+# python2 -V  # prints version of Python2
+# python3 -V  # prints version of Python3
+# quit()  # raises the SystemExit; this function should only be used in the interpreter
+# print quit  # prints "use quit() or Ctrl-D (i.e. EOF) to exit"
+# exit()  # alias for quit()
+# print exit  # prints "use quit() or Ctrl-D (i.e. EOF) to exit"
+#
+#
 # PYTHON TRICKS AND TIPS
 #
 # False = True  # In Python 2 False can be assigned to True
@@ -1393,16 +1407,3 @@
 # start = time()
 # print fib(70)  # no counting - value read directly from memory
 # print "Time of execution: ", time() - start
-#
-# WORK WITH PYTHON USING TERMINAL
-#
-# python  # starts Python 2
-# python2  # starts Python 2
-# python3  # starts Python 3
-# python -V  # prints version of Python2
-# python2 -V  # prints version of Python2
-# python3 -V  # prints version of Python3
-# quit()  # raises the SystemExit; this function should only be used in the interpreter
-# print quit  # prints "use quit() or Ctrl-D (i.e. EOF) to exit"
-# exit()  # alias for quit()
-# print exit  # prints "use quit() or Ctrl-D (i.e. EOF) to exit"
