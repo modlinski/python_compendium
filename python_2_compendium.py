@@ -1298,3 +1298,98 @@
 #     print read_data
 #     print f.closed  # returns False
 # print f.closed  # returns True
+#
+# DECORATORS
+#
+# A decorator is a function or a class that wraps (or decorates) a function or a method. The ‘decorated’ function or
+# method will replace the original ‘undecorated’ function or method. Because functions are first-class objects in Python
+# this can be done ‘manually’, but using the @decorator syntax is clearer and thus preferred. This mechanism is useful
+# for separating concerns and avoiding external un-related logic ‘polluting’ the core logic of the function or method.
+#
+# def power(x):
+#     return x ** 2
+#
+# def decorator_double(func):
+#     print 'message from decorator'
+#     def double(x):
+#         doubled_value = 2 * func(x)
+#         return doubled_value
+#     return double
+#
+# power = decorator_double(power)  # manually decorated
+#
+# @decorator_double  # decorated by @
+# def power(x):
+#     return x ** 2
+#
+# print power(3)  # prints 18
+#
+# A good example of a piece of functionality that is better handled with decoration is memoization or caching: you want
+# to store the results of an expensive function in a table and use them directly instead of recomputing them when they
+# have already been computed. This is clearly not a part of the function logic. It is possible to easily optimize and
+# speed up e.q. recursive method returning numbers of Fibonacci sequence using memoization, because during computing the
+# same values are called a lot of time. In addiction every next call of this method will be faster, because values will
+# be still in saved in memory and method will have access to them.
+#
+# Recursive, decorated fib method with memoization - implemented using def:
+#
+# def fib(n):
+#     if n == 0:
+#         return 0
+#     elif n == 1:
+#         return 1
+#     else:
+#         return fib(n - 1) + fib(n - 2)
+#
+# def memoize(f):
+#     memo = {}
+#     def helper(x):
+#         if x not in memo:
+#             memo[x] = f(x)
+#         return memo[x]
+#     return helper
+#
+# fib = memoize(fib)  # names of variable and method must be the same
+#
+# @memoize
+# def fib(n):
+#     if n == 0:
+#         return 0
+#     elif n == 1:
+#         return 1
+#     else:
+#         return fib(n - 1) + fib(n - 2)
+#
+# Recursive, decorated fib method with memoization - implemented using class:
+#
+# class Memoize:
+#     def __init__(self, fn):
+#         self.fn = fn
+#         self.memo = {}
+#     def __call__(self, *args):
+#         if args not in self.memo:
+#             self.memo[args] = self.fn(*args)
+#         return self.memo[args]
+#
+# @Memoize
+# def fib(n):
+#     if n == 0:
+#         return 0
+#     elif n == 1:
+#         return 1
+#     else:
+#         return fib(n-1) + fib(n-2)
+#
+# from time import time
+#
+# start = time()
+# print fib(50)
+# print "Time of execution: ", time() - start
+#
+# start = time()
+# print fib(100)  # saves a lot of counting
+# print "Time of execution: ", time() - start
+#
+# start = time()
+# print fib(70)  # no counting - value read directly from memory
+# print "Time of execution: ", time() - start
