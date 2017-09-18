@@ -289,3 +289,64 @@
 # my_point = Point3D(1, 2, 3)
 #
 # print my_point
+#
+# 10 example: property() as decorator
+#
+# class property([fget[, fset[, fdel[, doc]]]]) - returns a property attribute for new-style classes (classes that
+# derive from object):
+#
+#     - fget is a function for getting an attribute value
+#     - fset is a function for setting an attribute value
+#     - fdel is a function for deleting an attribute value
+#     - doc creates a docstring for the attribute.
+#
+# A typical use is to define a managed attribute x:
+#
+# class C(object):
+#     def __init__(self):
+#         self._x = 0
+#
+#     def getx(self):
+#         """Getx method."""
+#         return self._x
+#
+#     def setx(self, value):
+#         self._x = value
+#
+#     def delx(self):
+#         del self._x
+#
+#     x = property(getx, setx, delx, "I'm the 'x' property.")
+#
+# print C.x.__doc__  # if given, returns property's docstring, otherwise returns fget’s docstring
+# c = C()
+# print c.x  # will invoke the getter
+# c.x = 50  # will invoke the setter
+# del c.x  # will invoke the deleter
+#
+# A property object has getter, setter, and deleter methods usable as decorators that create a copy of the property with
+# the corresponding accessor function set to the decorated function. This is best explained with an example that is
+# exactly equivalent to the first example.
+#
+# class C(object):
+#     def __init__(self):
+#         self._x = None
+#
+#     @property
+#     def x(self):
+#         """I'm the 'x' property."""
+#         return self._x
+#
+#     @x.setter
+#     def x(self, value):
+#         self._x = value
+#
+#     @x.deleter
+#     def x(self):
+#         del self._x
+#
+# print C.x.__doc__
+# c = C()
+# print c.x
+# c.x = 50
+# del c.x
