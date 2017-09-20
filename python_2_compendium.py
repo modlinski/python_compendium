@@ -714,9 +714,9 @@
 #
 # class TestLetters(unittest.TestCase):
 #     def setUp(self):
-#         print 'setUp'
+#         print 'setUp: TestLetters'
 #     def tearDown(self):
-#         print 'tearDown'
+#         print 'tearDown: TestLetters'
 #     def test_letter_m_in(self):
 #         x = check_letter('michal', 'm')
 #         self.assertTrue(x)
@@ -731,8 +731,12 @@
 #         self.assertFalse(x)
 #
 # class TestMath(unittest.TestCase):
-#    def test_add(self):
-#        self.assertEqual(2+3, 5)
+#     def setUp(self):
+#         print 'setUp: TestMath'
+#     def tearDown(self):
+#         print 'tearDown: TestMath'
+#     def test_add(self):
+#         self.assertEqual(2+3, 5)
 #
 # if __name__ == '__main__':
 #     unittest.main()
