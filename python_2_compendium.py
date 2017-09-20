@@ -751,7 +751,21 @@
 #
 # if __name__ == '__main__':
 #     unittest.main()
-
+#
+# $ pip install pytest
+#
+# def func(x):
+#     return x + 1
+#
+# def test_answer():
+#     assert func(3) == 5  # test case will fail
+#
+# ~/PycharmProjects/python_compendium$ py.test python_2_compendium.py
+#
+# $ pip install nose  # nose extends unittest to make testing easier
+# $ pip install tox  # tox is a tool for automating test environment management
+# $ pip install unittest2  # unittest2 is a backport of Python 2.7’s unittest module
+#
 #
 # BUILT-IN EXCEPTIONS
 #
