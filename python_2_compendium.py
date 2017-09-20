@@ -730,6 +730,17 @@
 #         x = check_letter('michal', 'f')
 #         self.assertFalse(x)
 #
+# def add(x):
+#     return x + 1
+#
+# class TestAdd(unittest.TestCase):
+#     def setUp(self):
+#         print 'setUp: TestAdd'
+#     def tearDown(self):
+#         print 'tearDown: TestAdd'
+#     def testThreePlusOne(self):
+#         self.assertEqual(add(3), 4)
+#
 # class TestMath(unittest.TestCase):
 #     def setUp(self):
 #         print 'setUp: TestMath'
@@ -740,7 +751,7 @@
 #
 # if __name__ == '__main__':
 #     unittest.main()
-#
+
 #
 # BUILT-IN EXCEPTIONS
 #
