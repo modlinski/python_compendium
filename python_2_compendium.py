@@ -713,6 +713,10 @@
 #         return False
 #
 # class TestLetters(unittest.TestCase):
+#     def setUp(self):
+#         print 'setUp'
+#     def tearDown(self):
+#         print 'tearDown'
 #     def test_letter_m_in(self):
 #         x = check_letter('michal', 'm')
 #         self.assertTrue(x)
