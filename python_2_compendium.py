@@ -339,7 +339,7 @@
 # print gen.next()  # 0
 # print gen.next()  # 1
 # print gen.next()  # 2
-# print generator.next()  # StopIteration
+# print gen.next()  # StopIteration
 #
 # Generator is also an iterator. The word “generator” is sometimes confusingly used to mean both the function that
 # generates and what it generates. I will use the word “generator” to mean the generated object and “generator function”
