@@ -22,7 +22,7 @@
 #     - string - set of letters, numbers, or other characters: 'word', '123',
 #     - tuple - list with a fixed number of elements: (1, 2, 3,),
 #     - list - list without a fixed number of elements: [1, 2, 3],
-#     - dictionary - type with multiple elements, in which values are addressed by keys: {1: 'a','b': 2,3: 3}.
+#     - dictionary - type with multiple elements, in which values are addressed by keys: {1: 'a','b': 2, 3: 3}.
 #
 # The following types are immutable objects:
 #
@@ -316,7 +316,6 @@
 #
 # iterable = IterableObject(5)
 #
-# print list(iterable)  # prints [0, 1, 2, 3, 4]
 # print list(iterable)  # prints [0, 1, 2, 3, 4]
 #
 # iterator = IterableObjectIterator(5)
